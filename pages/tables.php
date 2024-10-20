@@ -55,7 +55,7 @@
   </head>
 
   <body class="g-sidenav-show bg-gray-200">
-    <aside
+  <aside
       class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 bg-gradient-dark"
       id="sidenav-main"
     >
@@ -71,7 +71,7 @@
           target="_blank"
         >
           <img
-            src="../assets/img/logo-ct.png"
+            src="./assets/img/logo-ct.png"
             class="navbar-brand-img h-100"
             alt="main_logo"
           />
@@ -85,7 +85,10 @@
       >
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link text-white" href="../index.html">
+            <a
+              class="nav-link text-white active bg-gradient-primary"
+              href="../index.html"
+            >
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
               >
@@ -95,16 +98,53 @@
             </a>
           </li>
           <li class="nav-item">
-            <a
-              class="nav-link text-white active bg-gradient-primary"
-              href="./pages/tables.html"
-            >
+            <a class="nav-link text-white" href="./pages/tables.php">
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
               >
                 <i class="material-icons opacity-10">table_view</i>
               </div>
               <span class="nav-link-text ms-1">Tables</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link text-white active bg-gradient-primary"
+              href="../index.html"
+            >
+              <div
+                class="text-white text-center me-2 d-flex align-items-center justify-content-center"
+              >
+                <i class="material-icons opacity-10">Products</i>
+              </div>
+              <span class="nav-link-text ms-1">Products</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link text-white active bg-gradient-primary"
+              href="../index.html"
+            >
+              <div
+                class="text-white text-center me-2 d-flex align-items-center justify-content-center"
+              >
+                <i class="material-icons opacity-10">Review</i>
+              </div>
+              <span class="nav-link-text ms-1">Review</span>
+              
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link text-white active bg-gradient-primary"
+              href="../index.html"
+            >
+              <div
+                class="text-white text-center me-2 d-flex align-items-center justify-content-center"
+              >
+                <i class="material-icons opacity-10">Brands</i>
+              </div>
+              <span class="nav-link-text ms-1">Brands</span>
             </a>
           </li>
         </ul>
@@ -153,10 +193,11 @@
        <!-- PHP-->
         <?php
 // Database configuration
-$host = 'localhost';
-$dbname = 'your_database_name';
-$username = 'your_db_username';
-$password = 'your_db_password';
+$host = "192.250.235.20";  // Replace with your server name
+$username = "epravidi_osrt_data";   // Replace with your database username
+$password = "UQ!r.gTOz=oo";      // Replace with your database password
+$dbname = "epravidi_osrt";       // Replace with your database name
+
 
 // Create connection
 $conn = new mysqli($host, $username, $password, $dbname);
@@ -167,7 +208,7 @@ if ($conn->connect_error) {
 }
 
 // Query to fetch the contact form data
-$sql = "SELECT id, name, email, website, comment, created_at FROM contacts";
+$sql = "SELECT id, name, email, website, comment, created_at FROM contact_form";
 $result = $conn->query($sql);
 ?>
 <div class="container-fluid py-4">
