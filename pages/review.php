@@ -115,7 +115,7 @@
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
               >
-                <i class="material-icons opacity-10">Products</i>
+              <i class="material-icons opacity-10">table_view</i>
               </div>
               <span class="nav-link-text ms-1">Products</span>
             </a>
@@ -128,7 +128,7 @@
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
               >
-                <i class="material-icons opacity-10">Review</i>
+              <i class="material-icons opacity-10">table_view</i>
               </div>
               <span class="nav-link-text ms-1">Review</span>
               
@@ -142,7 +142,7 @@
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
               >
-                <i class="material-icons opacity-10">Brands</i>
+              <i class="material-icons opacity-10">table_view</i>
               </div>
               <span class="nav-link-text ms-1">Brands</span>
             </a>
