@@ -12,6 +12,14 @@
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
+<?php
+// Check if the 'osrt_login' cookie is NOT set
+if (!isset($_COOKIE['osrt_login'])) {
+  // Redirect the user to the sign-up page if the cookie is not set
+  header("Location: /pages/sign-up.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -192,27 +200,53 @@
       <div class="container-fluid py-4">
         <div class="row">
           <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-            <div class="card">
-              <div class="card-header p-3 pt-2">
-                <div
-                  class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute"
-                >
-                  <i class="material-icons opacity-10">weekend</i>
-                </div>
-                <div class="text-end pt-1">
-                  <p class="text-sm mb-0 text-capitalize">Today's Money</p>
-                  <h4 class="mb-0">$53k</h4>
-                </div>
-              </div>
-              <hr class="dark horizontal my-0" />
-              <div class="card-footer p-3">
-                <p class="mb-0">
-                  <span class="text-success text-sm font-weight-bolder"
-                    >+55% </span
-                  >than lask week
-                </p>
-              </div>
-            </div>
+            <?php
+// Database configuration
+$host = "192.250.235.20";  // Replace with your server name
+$username = "epravidi_osrt_data";   // Replace with your database username
+$password = "UQ!r.gTOz=oo";      // Replace with your database password
+$dbname = "epravidi_osrt"; 
+
+// Create connection
+$conn = new mysqli($host, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Query to count the number of products
+$sql = "SELECT COUNT(*) AS product_count FROM products";
+$result = $conn->query($sql);
+
+// Fetch the product count
+$product_count = 0; // Default in case of failure
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $product_count = $row['product_count'];
+}
+
+$conn->close();
+?>
+<div class="card">
+  <div class="card-header p-3 pt-2">
+    <div
+      class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute"
+    >
+      <i class="material-icons opacity-10">weekend</i>
+    </div>
+    <div class="text-end pt-1">
+      <p class="text-sm mb-0 text-capitalize">Total Products</p>
+      <h4 class="mb-0"><?php echo $product_count; ?></h4>
+    </div>
+  </div>
+  <hr class="dark horizontal my-0" />
+  <div class="card-footer p-3">
+    <p class="mb-0">
+      <span class="text-success text-sm font-weight-bolder">+55% </span>than last week
+    </p>
+  </div>
+</div>
           </div>
           <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
             <div class="card">
