@@ -86,7 +86,7 @@
         <ul class="navbar-nav">
           <li class="nav-item">
             <a
-              class="nav-link text-white active bg-gradient-primary"
+              class="nav-link text-white"
               href="../index.html"
             >
               <div
@@ -98,7 +98,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="./pages/tables.php">
+            <a class="nav-link text-white active bg-gradient-primary" href="./pages/tables.php">
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
               >
@@ -109,40 +109,39 @@
           </li>
           <li class="nav-item">
             <a
-              class="nav-link text-white active bg-gradient-primary"
+              class="nav-link text-white "
               href="../index.html"
             >
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
               >
-                <i class="material-icons opacity-10">Products</i>
+                <i class="material-icons opacity-10">table_view</i>
               </div>
               <span class="nav-link-text ms-1">Products</span>
             </a>
           </li>
           <li class="nav-item">
             <a
-              class="nav-link text-white active bg-gradient-primary"
+              class="nav-link text-white "
               href="../index.html"
             >
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
               >
-                <i class="material-icons opacity-10">Review</i>
+                <i class="material-icons opacity-10">table_view</i>
               </div>
               <span class="nav-link-text ms-1">Review</span>
-              
             </a>
           </li>
           <li class="nav-item">
             <a
-              class="nav-link text-white active bg-gradient-primary"
+              class="nav-link text-white "
               href="../index.html"
             >
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
               >
-                <i class="material-icons opacity-10">Brands</i>
+                <i class="material-icons opacity-10">table_view</i>
               </div>
               <span class="nav-link-text ms-1">Brands</span>
             </a>
