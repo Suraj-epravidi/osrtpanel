@@ -86,7 +86,7 @@
         <ul class="navbar-nav">
           <li class="nav-item">
             <a
-              class="nav-link text-white active bg-gradient-primary"
+              class="nav-link text-white"
               href="../index.html"
             >
               <div
@@ -109,8 +109,8 @@
           </li>
           <li class="nav-item">
             <a
-              class="nav-link text-white active bg-gradient-primary"
-              href="../index.html"
+              class="nav-link text-white"
+              href="../pages/products.php"
             >
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
@@ -123,7 +123,7 @@
           <li class="nav-item">
             <a
               class="nav-link text-white active bg-gradient-primary"
-              href="../index.html"
+              href="../pages/review.php"
             >
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
@@ -137,7 +137,7 @@
           <li class="nav-item">
             <a
               class="nav-link text-white active bg-gradient-primary"
-              href="../index.html"
+              href="../pages/branch.php"
             >
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
@@ -191,73 +191,107 @@
       </nav>
       <!-- End Navbar -->
        <!-- PHP-->
-        <?php
-// Database configuration
-$host = "192.250.235.20";  // Replace with your server name
-$username = "epravidi_osrt_data";   // Replace with your database username
-$password = "UQ!r.gTOz=oo";      // Replace with your database password
-$dbname = "epravidi_osrt";       // Replace with your database name
+       <?php
+// Database connection function
+function connectToDatabase() {
+    $servername = "192.250.235.20"; // Replace with your server name
+    $username = "epravidi_osrt_data"; // Replace with your database username
+    $password = "UQ!r.gTOz=oo"; // Replace with your database password
+    $dbname = "epravidi_osrt"; // Replace with your database name
 
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Create connection
-$conn = new mysqli($host, $username, $password, $dbname);
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    return $conn;
 }
 
-// Query to fetch the contact form data
-$sql = "SELECT id, name, email, website, comment, created_at FROM contact_form";
-$result = $conn->query($sql);
+// Function to fetch reviews from the database
+function getProductReviews($conn) {
+    $sql = "SELECT comments, product_id, created_at FROM reviews";
+    $result = $conn->query($sql);
+
+    if ($result && $result->num_rows > 0) {
+        return $result->fetch_all(MYSQLI_ASSOC);
+    } else {
+        return [];
+    }
+}
+
+// Main logic to display reviews in a table
+$conn = connectToDatabase();
+$reviews = getProductReviews($conn);
+$conn->close();
 ?>
-<div class="container-fluid py-4">
-  <div class="row">
-    <div class="col-12">
-      <div class="card my-4">
-        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-          <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-            <h6 class="text-white text-capitalize ps-3">Contact Form</h6>
-          </div>
-        </div>
-        <div class="card-body px-0 pb-2">
-          <div class="table-responsive p-0">
-            <table class="table align-items-center mb-0">
-              <thead>
-                <tr>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sn no</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Product ID</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Review</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Comments</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Created At</th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php
-                if ($result->num_rows > 0) {
-                    // Output data of each row
-                    while($row = $result->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<td>" . $row['id'] . "</td>";
-                        echo "<td>" . htmlspecialchars($row['name']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['email']) . "</td>";
-                        echo "<td class='text-center'>" . htmlspecialchars($row['website']) . "</td>";
-                        echo "<td class='text-center'>" . htmlspecialchars($row['comment']) . "</td>";
-                        echo "<td class='text-center'>" . $row['created_at'] . "</td>";
-                        echo "</tr>";
-                    }
-                } else {
-                    echo "<tr><td colspan='6' class='text-center'>No records found</td></tr>";
-                }
-                $conn->close();
-                ?>
-              </tbody>
-            </table>
-          </div>
-        </div>
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addReviewModal">
+  Add Review
+</button>
+
+<!-- Modal for adding a review -->
+<div class="modal fade" id="addReviewModal" tabindex="-1" aria-labelledby="addReviewModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addReviewModalLabel">Add a Review</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <form action="add_review.php" method="POST">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="product_id" class="form-label">Product ID</label>
+            <input type="text" class="form-control" id="product_id" name="product_id" required>
+          </div>
+          <div class="mb-3">
+            <label for="comments" class="form-label">Comments</label>
+            <textarea class="form-control" id="comments" name="comments" rows="3" required></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Submit Review</button>
+        </div>
+      </form>
     </div>
   </div>
+</div>
+
+
+
+
+<div class="card-body px-0 pb-2">
+    <div class="table-responsive p-0">
+        <table class="table align-items-center mb-0">
+            <thead>
+                <tr>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sn no</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Product ID</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Comments</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Created At</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if (!empty($reviews)): ?>
+                    <?php foreach ($reviews as $index => $review): ?>
+                        <tr>
+                            <td class="text-xs font-weight-bold mb-0"><?php echo $index + 1; ?></td>
+                            <td class="text-xs font-weight-bold mb-0"><?php echo htmlspecialchars($review['product_id']); ?></td>
+                            <td class="text-center text-xs font-weight-bold mb-0"><?php echo htmlspecialchars($review['comments']); ?></td>
+                            <td class="text-center text-xs font-weight-bold mb-0"><?php echo htmlspecialchars($review['created_at']); ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="5" class="text-center text-xs font-weight-bold mb-0">No reviews found.</td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
 </div>
     </main>
    
