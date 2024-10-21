@@ -71,7 +71,7 @@
           target="_blank"
         >
           <img
-            src="./assets/img/logo-ct.png"
+            src="../assets/img/logo-ct.png"
             class="navbar-brand-img h-100"
             alt="main_logo"
           />
@@ -86,7 +86,7 @@
         <ul class="navbar-nav">
           <li class="nav-item">
             <a
-              class="nav-link text-white"
+              class="nav-link text-white "
               href="../index.html"
             >
               <div
@@ -98,7 +98,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white active bg-gradient-primary" href="./pages/tables.php">
+            <a class="nav-link text-white active bg-gradient-primary" href="../pages/tables.php">
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
               >
@@ -110,7 +110,7 @@
           <li class="nav-item">
             <a
               class="nav-link text-white "
-              href="../index.html"
+              href="../pages/products.php"
             >
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
@@ -123,7 +123,7 @@
           <li class="nav-item">
             <a
               class="nav-link text-white "
-              href="../index.html"
+              href="../pages/review.php"
             >
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
@@ -136,7 +136,7 @@
           <li class="nav-item">
             <a
               class="nav-link text-white "
-              href="../index.html"
+              href="../pages/brands.php"
             >
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"

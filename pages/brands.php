@@ -109,7 +109,7 @@
           </li>
           <li class="nav-item">
             <a
-              class="nav-link text-white active bg-gradient-primary "
+              class="nav-link text-white"
               href="../pages/products.php"
             >
               <div
@@ -135,7 +135,7 @@
           </li>
           <li class="nav-item">
             <a
-              class="nav-link text-white "
+              class="nav-link text-white active bg-gradient-primary"
               href="../pages/brands.php"
             >
               <div

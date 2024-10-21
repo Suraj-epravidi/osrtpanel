@@ -1,22 +1,7 @@
-<!--
-=========================================================
-* Material Dashboard 2 - v3.0.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard
-* Copyright 2021 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
 <?php
-// Check if the 'osrt_login' cookie is NOT set
 if (!isset($_COOKIE['osrt_login'])) {
-  // Redirect the user to the sign-up page if the cookie is not set
   header("Location: /pages/sign-up.php");
+  exit();
 }
 ?>
 
@@ -106,7 +91,7 @@ if (!isset($_COOKIE['osrt_login'])) {
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="./pages/tables.php">
+            <a class="nav-link text-white" href="../pages/tables.php">
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
               >
@@ -118,7 +103,7 @@ if (!isset($_COOKIE['osrt_login'])) {
           <li class="nav-item">
             <a
               class="nav-link text-white "
-              href="../index.html"
+              href="../pages/products.php"
             >
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
@@ -131,7 +116,7 @@ if (!isset($_COOKIE['osrt_login'])) {
           <li class="nav-item">
             <a
               class="nav-link text-white "
-              href="../index.html"
+              href="../pages/review.php"
             >
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
@@ -144,7 +129,7 @@ if (!isset($_COOKIE['osrt_login'])) {
           <li class="nav-item">
             <a
               class="nav-link text-white "
-              href="../index.html"
+              href="../pages/brands.php"
             >
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
