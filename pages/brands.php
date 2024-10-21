@@ -1,17 +1,10 @@
-<!--
-=========================================================
-* Material Dashboard 2 - v3.0.0
-=========================================================
+<?php
+if (!isset($_COOKIE['osrt_login'])) {
+  header("Location: /pages/sign-up.php");
+  exit();
+}
+?>
 
-* Product Page: https://www.creative-tim.com/product/material-dashboard
-* Copyright 2021 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -115,33 +108,34 @@
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
               >
-                <i class="material-icons opacity-10">table_view</i>
+              <i class="material-icons opacity-10">table_view</i>
               </div>
               <span class="nav-link-text ms-1">Products</span>
             </a>
           </li>
           <li class="nav-item">
             <a
-              class="nav-link text-white "
+              class="nav-link text-white active bg-gradient-primary"
               href="../pages/review.php"
             >
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
               >
-                <i class="material-icons opacity-10">table_view</i>
+              <i class="material-icons opacity-10">table_view</i>
               </div>
               <span class="nav-link-text ms-1">Review</span>
+              
             </a>
           </li>
           <li class="nav-item">
             <a
-              class="nav-link text-white active bg-gradient-primary"
+              class="nav-link text-white"
               href="../pages/brands.php"
             >
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
               >
-                <i class="material-icons opacity-10">table_view</i>
+              <i class="material-icons opacity-10">table_view</i>
               </div>
               <span class="nav-link-text ms-1">Brands</span>
             </a>
@@ -190,75 +184,194 @@
       </nav>
       <!-- End Navbar -->
        <!-- PHP-->
-        <?php
-// Database configuration
-$host = "192.250.235.20";  // Replace with your server name
-$username = "epravidi_osrt_data";   // Replace with your database username
-$password = "UQ!r.gTOz=oo";      // Replace with your database password
-$dbname = "epravidi_osrt";       // Replace with your database name
+       <?php
+// Database connection function
+function connectToDatabase() {
+    $servername = "192.250.235.20";
+    $username = "epravidi_osrt_data";
+    $password = "UQ!r.gTOz=oo";
+    $dbname = "epravidi_osrt";
 
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Create connection
-$conn = new mysqli($host, $username, $password, $dbname);
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    return $conn;
 }
 
-// Query to fetch the contact form data
-$sql = "SELECT id, name, email, website, comment, created_at FROM contact_form";
-$result = $conn->query($sql);
+// Function to fetch reviews from the database
+function getProductReviews($conn) {
+    $sql = "SELECT brand_name, brand_website, brand_logo FROM brands";
+    $result = $conn->query($sql);
+
+    if ($result && $result->num_rows > 0) {
+        return $result->fetch_all(MYSQLI_ASSOC);
+    } else {
+        return [];
+    }
+}
+
+// Main logic to display reviews in a table
+$conn = connectToDatabase();
+$reviews = getProductReviews($conn);
+$conn->close();
 ?>
+
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addReviewModal">
+  Add Brand
+</button>
+
+<!-- Modal for adding a review -->
+<div class="modal fade" id="addReviewModal" tabindex="-1" aria-labelledby="addReviewModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addReviewModalLabel">Add a Brand</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="add_brand.php" method="POST" enctype="multipart/form-data">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="product_id" class="form-label">Brand Name</label>
+            <input type="text" class="form-control" id="product_id" name="brandName" required>
+          </div>
+          <div class="mb-3">
+            <label for="comments" class="form-label">Brand Website</label>
+            <textarea class="form-control" id="comments" name="brandWebsite" rows="3" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="review_image" class="form-label">Upload Logo</label>
+            <div class="input-group">
+              <input type="file" class="form-control" id="review_image" name="review_image" accept="image/*" aria-describedby="inputGroupFileAddon" aria-label="Upload">
+              <label class="input-group-text" for="review_image">Browse</label>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<style>
+  .custom-file-upload {
+    border: 2px solid #007bff;
+    display: inline-block;
+    padding: 10px 12px;
+    cursor: pointer;
+    background-color: #3a3ac7;
+    color: #007bff;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+
+  .custom-file-upload:hover {
+    background-color: #3a3ac7;
+    color: #fff;
+  }
+
+  #review_image {
+    display: none;
+  }
+</style>
+
+<div class="modal fade" id="addReviewModal" tabindex="-1" aria-labelledby="addReviewModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addReviewModalLabel">Brand</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="add_brand.php" method="POST" enctype="multipart/form-data">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="product_id" class="form-label">Brand Name</label>
+            <input type="text" class="form-control" id="product_id" name="brandName" required>
+          </div>
+          <div class="mb-3">
+            <label for="comments" class="form-label">Brand Website</label>
+            <textarea class="form-control" id="comments" name="brandWebsite" rows="3" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Upload Logo</label>
+            <label class="custom-file-upload">
+              <input type="file" id="review_image" name="review_image" accept="image/*">
+              Upload Image
+            </label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
 <div class="container-fluid py-4">
   <div class="row">
     <div class="col-12">
       <div class="card my-4">
         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
           <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-            <h6 class="text-white text-capitalize ps-3">Contact Form</h6>
+            <h6 class="text-white text-capitalize ps-3">Brands</h6>
           </div>
-        </div>
+        </div>  
         <div class="card-body px-0 pb-2">
           <div class="table-responsive p-0">
             <table class="table align-items-center mb-0">
               <thead>
                 <tr>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sn no</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Website</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Comment</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Created At</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Brand Name</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Brand Website</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Image</th>
                 </tr>
               </thead>
               <tbody>
-                <?php
-                if ($result->num_rows > 0) {
-                    // Output data of each row
-                    while($row = $result->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<td>" . $row['id'] . "</td>";
-                        echo "<td>" . htmlspecialchars($row['name']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['email']) . "</td>";
-                        echo "<td class='text-center'>" . htmlspecialchars($row['website']) . "</td>";
-                        echo "<td class='text-center'>" . htmlspecialchars($row['comment']) . "</td>";
-                        echo "<td class='text-center'>" . $row['created_at'] . "</td>";
-                        echo "</tr>";
-                    }
-                } else {
-                    echo "<tr><td colspan='6' class='text-center'>No records found</td></tr>";
-                }
-                $conn->close();
-                ?>
+                <?php if (!empty($reviews)): ?>
+                  <?php foreach ($reviews as $index => $review): ?>
+                    <tr>
+                      <td class="text-xs font-weight-bold mb-0"><?php echo $index + 1; ?></td>
+                      <td class="text-xs font-weight-bold mb-0"><?php echo htmlspecialchars($review['brand_name']); ?></td>
+                      <td class="text-center text-xs font-weight-bold mb-0" style="word-wrap: break-word; white-space: normal; text-align: left;">
+                        <?php echo htmlspecialchars($review['brand_website']); ?>
+                      </td>
+                      <td class="text-center text-xs font-weight-bold mb-0">
+                        <?php if (!empty($review['brand_logo'])): ?>
+                          <img src="/pages/brands/<?php echo htmlspecialchars($review['brand_logo']); ?>" alt="Profile Image" style="width: 50px; height: 50px; border-radius: 50%;">
+                        <?php else: ?>
+                          <span>No Image</span>
+                        <?php endif; ?>
+                      </td>
+                    </tr>
+                  <?php endforeach; ?>
+                <?php else: ?>
+                  <tr>
+                    <td colspan="5" class="text-center text-xs font-weight-bold mb-0">No brands found.</td>
+                  </tr>
+                <?php endif; ?>
               </tbody>
             </table>
           </div>
         </div>
-      </div>
+      </div> 
     </div>
   </div>
 </div>
+
     </main>
    
     <!--   Core JS Files   -->
