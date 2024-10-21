@@ -1,17 +1,4 @@
-<!--
-=========================================================
-* Material Dashboard 2 - v3.0.0
-=========================================================
 
-* Product Page: https://www.creative-tim.com/product/material-dashboard
-* Copyright 2021 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -190,33 +177,139 @@
       </nav>
       <!-- End Navbar -->
        <!-- PHP-->
-        <?php
-// Database configuration
-$host = "192.250.235.20";  // Replace with your server name
-$username = "epravidi_osrt_data";   // Replace with your database username
-$password = "UQ!r.gTOz=oo";      // Replace with your database password
-$dbname = "epravidi_osrt";       // Replace with your database name
+       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addReviewModal">
+  Add Product
+</button>
+  <!-- Modal for Adding a Product -->
+<div class="modal fade" id="addReviewModal" tabindex="-1" aria-labelledby="addReviewModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addProductModalLabel">Add a New Product</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="add_product.php" method="POST" enctype="multipart/form-data">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="product_name" class="form-label">Product Name</label>
+            <input type="text" class="form-control" id="product_name" name="product_name" required>
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="product_code" class="form-label">Product Code</label>
+            <input type="text" class="form-control" id="product_code" name="product_code" required>
+          </div>
+          <div class="mb-3">
+            <label for="color" class="form-label">Color</label>
+            <input type="text" class="form-control" id="color" name="color" required>
+          </div>
+          <div class="mb-3">
+            <label for="brand" class="form-label">Brand</label>
+            <input type="text" class="form-control" id="brand" name="brand" required>
+          </div>
+          <div class="mb-3">
+            <label for="material" class="form-label">Material</label>
+            <input type="text" class="form-control" id="material" name="material" required>
+          </div>
+          <div class="mb-3">
+            <label for="dimensions" class="form-label">Dimensions</label>
+            <input type="text" class="form-control" id="dimensions" name="dimensions" required>
+          </div>
+          <div class="mb-3">
+            <label for="category" class="form-label">Category</label>
+            <input type="text" class="form-control" id="category" name="category" required>
+          </div>
+          <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input type="number" class="form-control" id="price" name="price" required>
+          </div>
+          <div class="mb-3">
+            <label for="product_image" class="form-label">Upload Product Image</label>
+            <div class="input-group">
+              <input type="file" class="form-control" id="product_image" name="product_image" accept="image/*" aria-describedby="inputGroupFileAddon" aria-label="Upload" required>
+              <label class="input-group-text" for="product_image">Browse</label>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Add Product</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
+<style>
+  .custom-file-upload {
+    border: 2px solid #007bff;
+    display: inline-block;
+    padding: 10px 12px;
+    cursor: pointer;
+    background-color: #3a3ac7;
+    color: #007bff;
+    border-radius: 5px;
+    font-weight: bold;
+  }
 
-// Create connection
-$conn = new mysqli($host, $username, $password, $dbname);
+  .custom-file-upload:hover {
+    background-color: #3a3ac7;
+    color: #fff;
+  }
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+  #review_image {
+    display: none;
+  }
+</style>
+       <?php
+// Database connection function
+function connectToDatabase() {
+    $servername = "192.250.235.20";
+    $username = "epravidi_osrt_data";
+    $password = "UQ!r.gTOz=oo";
+    $dbname = "epravidi_osrt";
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    return $conn;
 }
 
-// Query to fetch the contact form data
-$sql = "SELECT id, name, email, website, comment, created_at FROM contact_form";
-$result = $conn->query($sql);
+// Function to fetch products from the database
+function getProducts($conn) {
+    $sql = "SELECT product_id, product_name, description, product_code, color, brand, material, dimensions, category, price, image FROM products";
+    $result = $conn->query($sql);
+
+    if ($result && $result->num_rows > 0) {
+        return $result->fetch_all(MYSQLI_ASSOC);
+    } else {
+        return [];
+    }
+}
+
+// Main logic to display products in a table
+$conn = connectToDatabase();
+$products = getProducts($conn);
+$conn->close();
 ?>
+
+<!-- HTML for displaying the products -->
+
 <div class="container-fluid py-4">
   <div class="row">
     <div class="col-12">
       <div class="card my-4">
         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
           <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-            <h6 class="text-white text-capitalize ps-3">Contact Form</h6>
+            <h6 class="text-white text-capitalize ps-3">Products</h6>
           </div>
         </div>
         <div class="card-body px-0 pb-2">
@@ -225,32 +318,46 @@ $result = $conn->query($sql);
               <thead>
                 <tr>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sn no</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Website</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Comment</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Created At</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Product Name</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Description</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Product Code</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Color</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Brand</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Material</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Dimensions</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Category</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Price</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Image</th>
                 </tr>
               </thead>
               <tbody>
-                <?php
-                if ($result->num_rows > 0) {
-                    // Output data of each row
-                    while($row = $result->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<td>" . $row['id'] . "</td>";
-                        echo "<td>" . htmlspecialchars($row['name']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['email']) . "</td>";
-                        echo "<td class='text-center'>" . htmlspecialchars($row['website']) . "</td>";
-                        echo "<td class='text-center'>" . htmlspecialchars($row['comment']) . "</td>";
-                        echo "<td class='text-center'>" . $row['created_at'] . "</td>";
-                        echo "</tr>";
-                    }
-                } else {
-                    echo "<tr><td colspan='6' class='text-center'>No records found</td></tr>";
-                }
-                $conn->close();
-                ?>
+                <?php if (!empty($products)): ?>
+                  <?php foreach ($products as $index => $product): ?>
+                    <tr>
+                      <td class="text-xs font-weight-bold mb-0" ><?php echo htmlspecialchars($product['product_id']); ?></td>
+                      <td class="text-xs font-weight-bold mb-0" id="product_name"><?php echo htmlspecialchars($product['product_name']); ?></td>
+                      <td class="text-xs font-weight-bold mb-0" id="description"><?php echo htmlspecialchars($product['description']); ?></td>
+                      <td class="text-center text-xs font-weight-bold mb-0" id="product_code"><?php echo htmlspecialchars($product['product_code']); ?></td>
+                      <td class="text-center text-xs font-weight-bold mb-0" id="color"><?php echo htmlspecialchars($product['color']); ?></td>
+                      <td class="text-center text-xs font-weight-bold mb-0" id="brand"><?php echo htmlspecialchars($product['brand']); ?></td>
+                      <td class="text-center text-xs font-weight-bold mb-0" id="material"><?php echo htmlspecialchars($product['material']); ?></td>
+                      <td class="text-center text-xs font-weight-bold mb-0" id="dimensions"><?php echo htmlspecialchars($product['dimensions']); ?></td>
+                      <td class="text-center text-xs font-weight-bold mb-0" id="category"><?php echo htmlspecialchars($product['category']); ?></td>
+                      <td class="text-center text-xs font-weight-bold mb-0" id="price">Rs. <?php echo htmlspecialchars($product['price']); ?></td>
+                      <td class="text-center">
+                        <?php if (!empty($product['image'])): ?>
+                          <img src="../pages/product_image/<?php echo htmlspecialchars($product['image']); ?>" alt="Product Image" style="width: 50px; height: 50px;">
+                        <?php else: ?>
+                          <span>No image</span>
+                        <?php endif; ?>
+                      </td>
+                    </tr>
+                  <?php endforeach; ?>
+                <?php else: ?>
+                  <tr>
+                    <td colspan="11" class="text-center text-xs font-weight-bold mb-0">No products found.</td>
+                  </tr>
+                <?php endif; ?>
               </tbody>
             </table>
           </div>
@@ -259,6 +366,137 @@ $result = $conn->query($sql);
     </div>
   </div>
 </div>
+<!-- Lightbox Modal -->
+<div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editProductModalLabel">Edit Product</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form id="editProductForm" action="update_product.php" method="POST" enctype="multipart/form-data">
+        <div class="modal-body">
+          <input type="hidden" name="product_id" id="edit_product_id">
+          <div class="mb-3">
+            <label for="edit_product_name" class="form-label">Product Name</label>
+            <input type="text" class="form-control" id="edit_product_name" name="product_name" required>
+          </div>
+          <div class="mb-3">
+            <label for="edit_description" class="form-label">Description</label>
+            <textarea class="form-control" id="edit_description" name="description" rows="3" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="edit_product_code" class="form-label">Product Code</label>
+            <input type="text" class="form-control" id="edit_product_code" name="product_code" required>
+          </div>
+          <div class="mb-3">
+            <label for="edit_color" class="form-label">Color</label>
+            <input type="text" class="form-control" id="edit_color" name="color">
+          </div>
+          <div class="mb-3">
+            <label for="edit_brand" class="form-label">Brand</label>
+            <input type="text" class="form-control" id="edit_brand" name="brand">
+          </div>
+          <div class="mb-3">
+            <label for="edit_material" class="form-label">Material</label>
+            <input type="text" class="form-control" id="edit_material" name="material">
+          </div>
+          <div class="mb-3">
+            <label for="edit_dimensions" class="form-label">Dimensions</label>
+            <input type="text" class="form-control" id="edit_dimensions" name="dimensions">
+          </div>
+          <div class="mb-3">
+            <label for="edit_category" class="form-label">Category</label>
+            <input type="text" class="form-control" id="edit_category" name="category">
+          </div>
+          <div class="mb-3">
+            <label for="edit_price" class="form-label">Price</label>
+            <input type="number" class="form-control" id="edit_price" name="price" required>
+          </div>
+          <div class="mb-3">
+            <label for="edit_product_image" class="form-label">Upload New Image (optional)</label>
+            <div class="input-group">
+              <input type="file" class="form-control" id="edit_product_image" name="new_image" accept="image/*">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+          <button type="button" class="btn btn-danger" id="deleteProductBtn">Delete Product</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+  document.getElementById("deleteProductBtn").addEventListener("click", () => {
+    const productId = document.getElementById("edit_product_id").value;
+
+    if (confirm("Are you sure you want to delete this product?")) {
+        // Send a request to the delete script
+        fetch("./delete_product.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ product_id: productId })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert("Product deleted successfully.");
+                // Optionally, refresh the page or remove the product row from the table
+                location.reload(); // Refresh the page
+            } else {
+                alert("Error deleting product: " + data.message);
+            }
+        })
+        .catch(error => {
+            alert("An error occurred: " + error);
+        });
+    }
+});
+
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const rows = document.querySelectorAll("tbody tr");
+  console.log(rows);
+  rows.forEach(row => {
+    row.addEventListener("click", () => {
+      const cells = row.querySelectorAll("td");
+      console.log(cells[0].textContent.trim());
+      document.getElementById("edit_product_id").value = cells[0].textContent.trim();
+      document.getElementById("edit_product_name").value = cells[1].textContent.trim();
+      document.getElementById("edit_description").value = cells[2].textContent.trim();
+      document.getElementById("edit_product_code").value = cells[3].textContent.trim();
+      document.getElementById("edit_color").value = cells[4].textContent.trim();
+      document.getElementById("edit_brand").value = cells[5].textContent.trim();
+      document.getElementById("edit_material").value = cells[6].textContent.trim();
+      document.getElementById("edit_dimensions").value = cells[7].textContent.trim();
+      document.getElementById("edit_category").value = cells[8].textContent.trim();
+      document.getElementById("edit_price").value = cells[9].textContent.replace("Rs. ", "").trim();
+      
+      // // Get the old image name from the image cell (assuming it's in the 11th cell)
+      // const imageCell = cells[10].querySelector("img");
+      // if (imageCell) {
+      //   const oldImageName = imageCell.src.split("/").pop(); // Extract file name from the URL
+      //   document.getElementById("old_image_name").value = oldImageName;
+      // } else {
+      //   document.getElementById("old_image_name").value = "";
+      // }
+
+      const editProductModal = new bootstrap.Modal(document.getElementById("editProductModal"));
+      editProductModal.show();
+    
+    });
+  });
+});
+
+</script>
+
+
     </main>
    
     <!--   Core JS Files   -->

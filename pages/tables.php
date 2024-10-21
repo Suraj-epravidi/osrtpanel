@@ -200,7 +200,7 @@ $dbname = "epravidi_osrt";       // Replace with your database name
 
 // Create connection
 $conn = new mysqli($host, $username, $password, $dbname);
-
+        print_r($conn);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
