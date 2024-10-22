@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 <?php
 if (!isset($_COOKIE['osrt_login'])) {
   header("Location: ./sign-up.php");
   exit();
 }
 ?>
+=======
+
+>>>>>>> a5e4bf865476cd2878d9a7ff1cc303efec655016
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -192,7 +196,6 @@ $dbname = "epravidi_osrt";       // Replace with your database name
 
 // Create connection
 $conn = new mysqli($host, $username, $password, $dbname);
-        print_r($conn);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
