@@ -1,13 +1,13 @@
-<<<<<<< HEAD
+
 <?php
 if (!isset($_COOKIE['osrt_login'])) {
   header("Location: ./sign-up.php");
   exit();
 }
 ?>
-=======
 
->>>>>>> a5e4bf865476cd2878d9a7ff1cc303efec655016
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
