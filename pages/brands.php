@@ -115,7 +115,7 @@ if (!isset($_COOKIE['osrt_login'])) {
           </li>
           <li class="nav-item">
             <a
-              class="nav-link text-white active bg-gradient-primary"
+              class="nav-link text-white"
               href="../pages/review.php"
             >
               <div
@@ -129,7 +129,7 @@ if (!isset($_COOKIE['osrt_login'])) {
           </li>
           <li class="nav-item">
             <a
-              class="nav-link text-white"
+              class="nav-link text-white active bg-gradient-primary"
               href="../pages/brands.php"
             >
               <div
@@ -334,36 +334,46 @@ $conn->close();
             <table class="table align-items-center mb-0">
               <thead>
                 <tr>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sn no</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Brand Name</th>
+                  <th class="text-uppercase text-secondary text-xxs text-center font-weight-bolder opacity-7">Sn no</th>
+                  <th class="text-uppercase text-secondary text-xxs text-center font-weight-bolder opacity-7">Brand Name</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Brand Website</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Image</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Delete</th>
+
                 </tr>
               </thead>
               <tbody>
-                <?php if (!empty($reviews)): ?>
-                  <?php foreach ($reviews as $index => $review): ?>
-                    <tr>
-                      <td class="text-xs font-weight-bold mb-0"><?php echo $index + 1; ?></td>
-                      <td class="text-xs font-weight-bold mb-0"><?php echo htmlspecialchars($review['brand_name']); ?></td>
-                      <td class="text-center text-xs font-weight-bold mb-0" style="word-wrap: break-word; white-space: normal; text-align: left;">
-                        <?php echo htmlspecialchars($review['brand_website']); ?>
-                      </td>
-                      <td class="text-center text-xs font-weight-bold mb-0">
-                        <?php if (!empty($review['brand_logo'])): ?>
-                          <img src="/pages/brands/<?php echo htmlspecialchars($review['brand_logo']); ?>" alt="Profile Image" style="width: 50px; height: 50px; border-radius: 50%;">
-                        <?php else: ?>
-                          <span>No Image</span>
-                        <?php endif; ?>
-                      </td>
-                    </tr>
-                  <?php endforeach; ?>
-                <?php else: ?>
-                  <tr>
-                    <td colspan="5" class="text-center text-xs font-weight-bold mb-0">No brands found.</td>
-                  </tr>
-                <?php endif; ?>
-              </tbody>
+    <?php if (!empty($reviews)): ?>
+        <?php foreach ($reviews as $index => $review): ?>
+            <tr>
+                <td class="text-xs text-center font-weight-bold mb-0"><?php echo $index + 1; ?></td>
+                <td class="text-xs text-center font-weight-bold mb-0"><?php echo htmlspecialchars($review['brand_name']); ?></td>
+                <td class="text-center text-xs font-weight-bold mb-0" style="word-wrap: break-word; white-space: normal; text-align: left;">
+                    <?php echo htmlspecialchars($review['brand_website']); ?>
+                </td>
+                <td class="text-center text-xs font-weight-bold mb-0">
+                    <?php if (!empty($review['brand_logo'])): ?>
+                        <img src="/pages/brands/<?php echo htmlspecialchars($review['brand_logo']); ?>" alt="Brand Logo" style="width: 50px; height: 50px; border-radius: 50%;">
+                    <?php else: ?>
+                        <span>No Image</span>
+                    <?php endif; ?>
+                </td>
+                <td class="text-center">
+                    <!-- Delete button -->
+                    <form action="delete_brand.php" method="POST" onsubmit="return confirm('Are you sure you want to delete this brand?');">
+                        <input type="hidden" name="brand_name" value="<?php echo htmlspecialchars($review['brand_name']); ?>">
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <tr>
+            <td colspan="5" class="text-center text-xs font-weight-bold mb-0">No brands found.</td>
+        </tr>
+    <?php endif; ?>
+</tbody>
+
             </table>
           </div>
         </div>

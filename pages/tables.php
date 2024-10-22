@@ -210,10 +210,10 @@ $result = $conn->query($sql);
             <table class="table align-items-center mb-0">
               <thead>
                 <tr>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sn no</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Website</th>
+                  <th class="text-uppercase text-secondary text-xxs text-center font-weight-bolder opacity-7">Sn no</th>
+                  <th class="text-uppercase text-secondary text-xxs text-center font-weight-bolder opacity-7">Name</th>
+                  <th class="text-uppercase text-secondary text-xxs text-center font-weight-bolder opacity-7 ps-2">Email</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs text-center font-weight-bolder opacity-7">Website</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Comment</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Created At</th>
                 </tr>
@@ -224,9 +224,9 @@ $result = $conn->query($sql);
                     // Output data of each row
                     while($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<td>" . $row['id'] . "</td>";
-                        echo "<td>" . htmlspecialchars($row['name']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['email']) . "</td>";
+                        echo "<td class='text-center'>" . $row['id'] . "</td>";
+                        echo "<td class='text-center'>" . htmlspecialchars($row['name']) . "</td>";
+                        echo "<td class='text-center'>" . htmlspecialchars($row['email']) . "</td>";
                         echo "<td class='text-center'>" . htmlspecialchars($row['website']) . "</td>";
                         echo "<td class='text-center'>" . htmlspecialchars($row['comment']) . "</td>";
                         echo "<td class='text-center'>" . $row['created_at'] . "</td>";
