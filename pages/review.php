@@ -303,7 +303,7 @@ $conn->close();
           <div class="mb-3">
             <label class="form-label">Upload Image</label>
             <label class="custom-file-upload">
-              <input type="file" id="review_image" name="review_image" accept="image/*">
+              <input type="file" id="review_image" name="review_image" accept="image/*"required>
               Upload Image
             </label>
           </div>
@@ -334,38 +334,45 @@ $conn->close();
             <table class="table align-items-center mb-0">
               <thead>
                 <tr>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sn no</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Product ID</th>
+                  <th class="text-uppercase text-secondary text-xxs text-center font-weight-bolder opacity-7">Sn no</th>
+                  <th class="text-uppercase text-secondary text-xxs text-center font-weight-bolder opacity-7">Product ID</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Comments</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Profile</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Created At</th>
                 </tr>
               </thead>
               <tbody>
-                <?php if (!empty($reviews)): ?>
-                  <?php foreach ($reviews as $index => $review): ?>
-                    <tr>
-                      <td class="text-xs font-weight-bold mb-0"><?php echo $index + 1; ?></td>
-                      <td class="text-xs font-weight-bold mb-0"><?php echo htmlspecialchars($review['product_id']); ?></td>
-                      <td class="text-center text-xs font-weight-bold mb-0" style="word-wrap: break-word; white-space: normal; text-align: left;">
-                        <?php echo htmlspecialchars($review['comments']); ?>
-                      </td>
-                      <td class="text-center text-xs font-weight-bold mb-0">
-                        <?php if (!empty($review['thumbnail'])): ?>
-                          <img src="/pages/profile/<?php echo htmlspecialchars($review['thumbnail']); ?>" alt="Profile Image" style="width: 50px; height: 50px; border-radius: 50%;">
-                        <?php else: ?>
-                          <span>No Image</span>
-                        <?php endif; ?>
-                      </td>
-                      <td class="text-center text-xs font-weight-bold mb-0"><?php echo htmlspecialchars($review['created_at']); ?></td>
-                    </tr>
-                  <?php endforeach; ?>
-                <?php else: ?>
-                  <tr>
-                    <td colspan="5" class="text-center text-xs font-weight-bold mb-0">No reviews found.</td>
-                  </tr>
-                <?php endif; ?>
-              </tbody>
+  <?php if (!empty($reviews)): ?>
+    <?php foreach ($reviews as $index => $review): ?>
+      <tr>
+        <td class="text-xs text-center font-weight-bold mb-0"><?php echo $index + 1; ?></td>
+        <td class="text-xs text-center font-weight-bold mb-0"><?php echo htmlspecialchars($review['product_id']); ?></td>
+        <td class="text-center text-xs font-weight-bold mb-0" style="word-wrap: break-word; white-space: normal; text-align: left;">
+          <?php echo htmlspecialchars($review['comments']); ?>
+        </td>
+        <td class="text-center text-xs font-weight-bold mb-0">
+          <?php if (!empty($review['thumbnail'])): ?>
+            <img src="/pages/profile/<?php echo htmlspecialchars($review['thumbnail']); ?>" alt="Profile Image" style="width: 50px; height: 50px; border-radius: 50%;">
+          <?php else: ?>
+            <span>No Image</span>
+          <?php endif; ?>
+        </td>
+        <td class="text-center text-xs font-weight-bold mb-0"><?php echo htmlspecialchars($review['created_at']); ?></td>
+        <td class="text-center">
+          <form action="delete_review.php" method="POST" onsubmit="return confirm('Are you sure you want to delete this review?');">
+            <input type="hidden" name="review_id" value="<?php echo $review['product_id']; ?>" />
+            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+          </form>
+        </td>
+      </tr>
+    <?php endforeach; ?>
+  <?php else: ?>
+    <tr>
+      <td colspan="6" class="text-center text-xs font-weight-bold mb-0">No reviews found.</td>
+    </tr>
+  <?php endif; ?>
+</tbody>
+
             </table>
           </div>
         </div>
