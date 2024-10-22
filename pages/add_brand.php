@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("sss", $product_id, $comments, $image_name); // "i" for integer product_id, "s" for strings comments and image_name
 
     if ($stmt->execute()) {
-        echo "Brand added successfully!";
+        header("Location: https://panel-osrt.epravidi.com/pages/brands.php");
     } else {
         echo "Error: " . $stmt->error;
     }
@@ -65,4 +65,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header("Location: review.php");
     exit();
 }
-?>
+?>  

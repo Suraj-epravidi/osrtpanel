@@ -334,7 +334,7 @@ $conn->close();
                 <?php if (!empty($products)): ?>
                   <?php foreach ($products as $index => $product): ?>
                     <tr>
-                      <td class="text-xs font-weight-bold mb-0" ><?php echo htmlspecialchars($product['product_id']); ?></td>
+                      <td class="text-center font-weight-bold mb-0" ><?php echo htmlspecialchars($product['product_id']); ?></td>
                       <td class="text-xs font-weight-bold mb-0" id="product_name"><?php echo htmlspecialchars($product['product_name']); ?></td>
                       <td class="text-xs font-weight-bold mb-0" id="description"><?php echo htmlspecialchars($product['description']); ?></td>
                       <td class="text-center text-xs font-weight-bold mb-0" id="product_code"><?php echo htmlspecialchars($product['product_code']); ?></td>
@@ -413,10 +413,15 @@ $conn->close();
             <label for="edit_price" class="form-label">Price</label>
             <input type="number" class="form-control" id="edit_price" name="price" required>
           </div>
+
+          <!-- Display image and trigger input on click -->
           <div class="mb-3">
-            <label for="edit_product_image" class="form-label">Upload New Image (optional)</label>
+            <label for="edit_product_image" class="form-label">Product Image</label>
             <div class="input-group">
-              <input type="file" class="form-control" id="edit_product_image" name="new_image" accept="image/*">
+              <!-- Image tag to display the current image -->
+              <img id="productImagePreview" src="default-image.jpg" alt="Product Image" style="width: 150px; height: 150px; object-fit: cover; cursor: pointer; border: 1px solid #ccc;">
+              <!-- Hidden file input -->
+              <input type="file" class="form-control" id="edit_product_image" name="new_image" accept="image/*" style="display: none;">
             </div>
           </div>
         </div>
@@ -429,6 +434,15 @@ $conn->close();
     </div>
   </div>
 </div>
+
+<script>
+  // Trigger file input when the image is clicked
+  document.getElementById('productImagePreview').addEventListener('click', function() {
+    document.getElementById('edit_product_image').click();
+  });
+
+</script>
+
 <script>
   document.getElementById("deleteProductBtn").addEventListener("click", () => {
     const productId = document.getElementById("edit_product_id").value;
@@ -462,11 +476,12 @@ $conn->close();
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const rows = document.querySelectorAll("tbody tr");
-  console.log(rows);
+
   rows.forEach(row => {
     row.addEventListener("click", () => {
       const cells = row.querySelectorAll("td");
-      console.log(cells[0].textContent.trim());
+
+      // Fill in the form with data from the row
       document.getElementById("edit_product_id").value = cells[0].textContent.trim();
       document.getElementById("edit_product_name").value = cells[1].textContent.trim();
       document.getElementById("edit_description").value = cells[2].textContent.trim();
@@ -477,24 +492,25 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("edit_dimensions").value = cells[7].textContent.trim();
       document.getElementById("edit_category").value = cells[8].textContent.trim();
       document.getElementById("edit_price").value = cells[9].textContent.replace("Rs. ", "").trim();
-      
-      // // Get the old image name from the image cell (assuming it's in the 11th cell)
-      // const imageCell = cells[10].querySelector("img");
-      // if (imageCell) {
-      //   const oldImageName = imageCell.src.split("/").pop(); // Extract file name from the URL
-      //   document.getElementById("old_image_name").value = oldImageName;
-      // } else {
-      //   document.getElementById("old_image_name").value = "";
-      // }
 
+      // Get the image source from the 11th cell (10th index)
+      const imageCell = cells[10].querySelector("img");  // Assuming the image is in the 11th cell
+      if (imageCell) {
+        document.getElementById("productImagePreview").src = imageCell.src;
+      } else {
+        document.getElementById("productImagePreview").src = ""; // Clear if no image
+      }
+
+
+
+      // Show the modal
       const editProductModal = new bootstrap.Modal(document.getElementById("editProductModal"));
       editProductModal.show();
-    
     });
   });
 });
-
 </script>
+
 
 
     </main>

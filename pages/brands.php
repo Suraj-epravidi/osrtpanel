@@ -338,6 +338,8 @@ $conn->close();
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Brand Name</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Brand Website</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Image</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Delete</th>
+
                 </tr>
               </thead>
               <tbody>
