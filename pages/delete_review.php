@@ -1,4 +1,10 @@
 <?php
+if (!isset($_COOKIE['osrt_login'])) {
+  header("Location: ./sign-up.php");
+  exit();
+}
+?>
+<?php
 // Check if the review_id was passed via POST
 if (isset($_POST['review_id'])) {
     $review_id = $_POST['review_id'];

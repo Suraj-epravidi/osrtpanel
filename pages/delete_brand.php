@@ -1,4 +1,10 @@
 <?php
+if (!isset($_COOKIE['osrt_login'])) {
+  header("Location: ./sign-up.php");
+  exit();
+}
+?>
+<?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get the brand name to delete
     $brand_name = $_POST['brand_name'];

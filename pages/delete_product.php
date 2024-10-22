@@ -1,4 +1,10 @@
 <?php
+if (!isset($_COOKIE['osrt_login'])) {
+  header("Location: ./sign-up.php");
+  exit();
+}
+?>
+<?php
 $conn = new mysqli("192.250.235.20", "epravidi_osrt_data", "UQ!r.gTOz=oo", "epravidi_osrt");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);

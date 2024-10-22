@@ -1,4 +1,10 @@
 <?php
+if (!isset($_COOKIE['osrt_login'])) {
+  header("Location: ./sign-up.php");
+  exit();
+}
+?>
+<?php
 // Database configuration
 $host = "192.250.235.20";  // Replace with your server name
 $username = "epravidi_osrt_data";   // Replace with your database username

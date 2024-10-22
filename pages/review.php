@@ -1,6 +1,6 @@
 <?php
 if (!isset($_COOKIE['osrt_login'])) {
-  header("Location: /pages/sign-up.php");
+  header("Location: ./sign-up.php");
   exit();
 }
 ?>
