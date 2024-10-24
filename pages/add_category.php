@@ -7,11 +7,10 @@ if (!isset($_COOKIE['osrt_login'])) {
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get the form inputs
-    $product_id = $_POST['product_id'];
-    $comments = $_POST['comments'];
+    $category_name = $_POST['category_name'];
 
     // Image upload handling
-    $target_dir = "../pages/profile/";
+    $target_dir = "../pages/category/";
     $image_name = null;
     
     if (isset($_FILES['review_image']) && $_FILES['review_image']['error'] == 0) {
@@ -51,14 +50,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Prepare SQL query to insert the review
-    $sql = "INSERT INTO reviews (product_id, comments, thumbnail, created_at) VALUES (?, ?, ?, NOW())";
+    $sql = "INSERT INTO categories (category_name, category_image) VALUES (?, ?)";
     
     // Assuming product_id is an integer in the database
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("iss", $product_id, $comments, $image_name); // "i" for integer product_id, "s" for strings comments and image_name
+    $stmt->bind_param("ss", $category_name,$image_name); 
 
     if ($stmt->execute()) {
-        header("Location: https://panel-osrt.epravidi.com/pages/review.php");
+        header("Location: https://panel-osrt.epravidi.com/pages/category.php");
     } else {
         echo "Error: " . $stmt->error;
     }
@@ -68,7 +67,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->close();
 
     // Redirect back to the page
-    header("Location: review.php");
     exit();
 }
 ?>
