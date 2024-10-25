@@ -19,7 +19,7 @@ if (!isset($_COOKIE['osrt_login'])) {
       href="./assets/img/apple-icon.png"
     />
     <link rel="icon" type="image/png" href="./assets/img/favicon.png" />
-    <title>OSRT-Dashboard</title>
+    <title>OSRT-</title>
     <!--     Fonts and icons     -->
     <link
       rel="stylesheet"
@@ -48,7 +48,7 @@ if (!isset($_COOKIE['osrt_login'])) {
   </head>
 
   <body class="g-sidenav-show bg-gray-200">
-    <aside
+  <aside
       class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 bg-gradient-dark"
       id="sidenav-main"
     >
@@ -64,7 +64,7 @@ if (!isset($_COOKIE['osrt_login'])) {
           target="_blank"
         >
           <img
-            src="./assets/img/logo-ct.png"
+            src="../assets/img/logo-ct.png"
             class="navbar-brand-img h-100"
             alt="main_logo"
           />
@@ -80,7 +80,7 @@ if (!isset($_COOKIE['osrt_login'])) {
           <li class="nav-item">
             <a
               class="nav-link text-white active bg-gradient-primary"
-              href="../index.html"
+              href="../index.php"
             >
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
@@ -102,7 +102,7 @@ if (!isset($_COOKIE['osrt_login'])) {
           </li>
           <li class="nav-item">
             <a
-              class="nav-link text-white "
+              class="nav-link text-white"
               href="../pages/products.php"
             >
               <div
@@ -148,6 +148,17 @@ if (!isset($_COOKIE['osrt_login'])) {
                 <i class="material-icons opacity-10">table_view</i>
               </div>
               <span class="nav-link-text ms-1">FAQs</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" 
+            href="../pages/category.php">
+              <div
+                class="text-white text-center me-2 d-flex align-items-center justify-content-center"
+              >
+                <i class="material-icons opacity-10">table_view</i>
+              </div>
+              <span class="nav-link-text ms-1">Categories</span>
             </a>
           </li>
         </ul>
