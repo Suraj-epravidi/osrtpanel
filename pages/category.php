@@ -245,7 +245,7 @@ $conn->close();
 
 
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addReviewModal">
-  Add Review
+  Add Category
 </button>
 
 <!-- Modal for adding a review -->
