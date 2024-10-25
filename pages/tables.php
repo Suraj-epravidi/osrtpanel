@@ -22,7 +22,7 @@ if (!isset($_COOKIE['osrt_login'])) {
       href="../assets/img/apple-icon.png"
     />
     <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
-    <title>Material Dashboard 2 by Creative Tim</title>
+    <title>OSRT-Contact form</title>
     <!--     Fonts and icons     -->
     <link
       rel="stylesheet"
