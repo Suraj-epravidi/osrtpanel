@@ -60,8 +60,7 @@ if (!isset($_COOKIE['osrt_login'])) {
         ></i>
         <a
           class="navbar-brand m-0"
-          href=" https://demos.creative-tim.com/material-dashboard/pages/dashboard "
-          target="_blank"
+          href="../index.php"
         >
           <img
             src="../assets/img/logo-ct.png"
@@ -265,7 +264,7 @@ $conn->close();
   </div>
 </div>
 <script>
-  redirectPage(){
+  function redirectPage(){
     window.location.href = "./pages/emailTable.php";
   }
 </script>
