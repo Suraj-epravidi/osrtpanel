@@ -12,7 +12,7 @@ if ($conn->connect_error) {
 
 // Set headers to indicate file download
 header("Content-Type: application/vnd.ms-excel");
-header("Content-Disposition: attachment; filename=table_export.xls");
+header("Content-Disposition: attachment; filename=email_export.xls");
 header("Pragma: no-cache");
 header("Expires: 0");
 

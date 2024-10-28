@@ -265,7 +265,7 @@ $conn->close();
   </div>
 </div>
 <script>
-  redirectPage(){
+  function redirectPage(){
     window.location.href = "./pages/emailTable.php";
   }
 </script>
