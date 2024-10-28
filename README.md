@@ -2,4 +2,4 @@
 
 Suraj here.
 
-Added favicon (URL: /img/favicon.ico)
+Added favicon (URL: favicon.ico)
