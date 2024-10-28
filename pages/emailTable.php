@@ -17,7 +17,7 @@ header("Pragma: no-cache");
 header("Expires: 0");
 
 // Specify the table you want to export
-$table = "your_table_name";
+$table = "newsletter";
 $sql = "SELECT * FROM $table";
 $result = $conn->query($sql);
 
