@@ -233,7 +233,7 @@ if ($result_products->num_rows > 0) {
 }
 
 // Query to count the number of emails in newsletters
-$sql_newsletters = "SELECT COUNT(*) AS email_count FROM newsletters";
+$sql_newsletters = "SELECT COUNT(*) AS email_count FROM newsletter";
 $result_newsletters = $conn->query($sql_newsletters);
 
 $email_count = 0;
