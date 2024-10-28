@@ -141,7 +141,7 @@ if (!isset($_COOKIE['osrt_login'])) {
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" 
-            href="../pages/faq.php">
+            href="./pages/faq.php">
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
               >
@@ -152,7 +152,7 @@ if (!isset($_COOKIE['osrt_login'])) {
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" 
-            href="../pages/category.php">
+            href="./pages/category.php">
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
               >
