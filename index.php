@@ -207,7 +207,7 @@ if (!isset($_COOKIE['osrt_login'])) {
       <div class="container-fluid py-4">
         <div class="row">
           <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-            <?php
+          <?php
 // Database configuration
 $host = "192.250.235.20";  // Replace with your server name
 $username = "epravidi_osrt_data";   // Replace with your database username
@@ -223,18 +223,28 @@ if ($conn->connect_error) {
 }
 
 // Query to count the number of products
-$sql = "SELECT COUNT(*) AS product_count FROM products";
-$result = $conn->query($sql);
+$sql_products = "SELECT COUNT(*) AS product_count FROM products";
+$result_products = $conn->query($sql_products);
 
-// Fetch the product count
-$product_count = 0; // Default in case of failure
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
+$product_count = 0;
+if ($result_products->num_rows > 0) {
+    $row = $result_products->fetch_assoc();
     $product_count = $row['product_count'];
+}
+
+// Query to count the number of emails in newsletters
+$sql_newsletters = "SELECT COUNT(*) AS email_count FROM newsletters";
+$result_newsletters = $conn->query($sql_newsletters);
+
+$email_count = 0;
+if ($result_newsletters->num_rows > 0) {
+    $row = $result_newsletters->fetch_assoc();
+    $email_count = $row['email_count'];
 }
 
 $conn->close();
 ?>
+
 <div class="card">
   <div class="card-header p-3 pt-2">
     <div
@@ -254,6 +264,11 @@ $conn->close();
     </p>
   </div>
 </div>
+<script>
+  redirectPage(){
+    window.location.href = "./pages/emailTable.php";
+  }
+</script>
           </div>
           <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
             <div class="card">
@@ -303,16 +318,16 @@ $conn->close();
             </div>
           </div>
           <div class="col-xl-3 col-sm-6">
-            <div class="card">
+            <div class="card" onclick="redirectPage()">
               <div class="card-header p-3 pt-2">
                 <div
                   class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute"
                 >
-                  <i class="material-icons opacity-10">weekend</i>
+                  <i class="material-icons opacity-10">person</i>
                 </div>
                 <div class="text-end pt-1">
-                  <p class="text-sm mb-0 text-capitalize">Sales</p>
-                  <h4 class="mb-0">$103,430</h4>
+                  <p class="text-sm mb-0 text-capitalize">Subscribers</p>
+                  <h4 class="mb-0"><?php echo $email_count;?></h4>
                 </div>
               </div>
               <hr class="dark horizontal my-0" />
