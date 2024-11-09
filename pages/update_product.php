@@ -23,6 +23,7 @@ if (!isset($_COOKIE['osrt_login'])) {
         $dimensions = $_POST['dimensions'];
         $category = $_POST['category'];
         $price = $_POST['price'];
+        $stock = $_POST['stock'];
         $sqlSelect = "SELECT image FROM products WHERE product_id = ?";
     $stmtSelect = $conn->prepare($sqlSelect);
     $stmtSelect->bind_param("i", $productId); // Assuming productId is an integer
@@ -67,11 +68,12 @@ if (!isset($_COOKIE['osrt_login'])) {
                     dimensions = ?, 
                     category = ?, 
                     price = ?, 
+                    stock=?,
                     image = ? 
                 WHERE product_id = ?";
     
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ssssssssssi", 
+        $stmt->bind_param("sssssssssssi", 
                           $productName, 
                           $description, 
                           $productCode, 
@@ -81,6 +83,7 @@ if (!isset($_COOKIE['osrt_login'])) {
                           $dimensions, 
                           $category, 
                           $price, 
+                          $stock,
                           $newImageName, 
                           $productId);
         
