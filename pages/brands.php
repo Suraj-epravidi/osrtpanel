@@ -19,7 +19,7 @@ if (!isset($_COOKIE['osrt_login'])) {
       href="../assets/img/apple-icon.png"
     />
     <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
-    <title>Material Dashboard 2 by Creative Tim</title>
+    <title>OSRT-Brands</title>
     <!--     Fonts and icons     -->
     <link
       rel="stylesheet"
@@ -60,8 +60,7 @@ if (!isset($_COOKIE['osrt_login'])) {
         ></i>
         <a
           class="navbar-brand m-0"
-          href=" https://demos.creative-tim.com/material-dashboard/pages/dashboard "
-          target="_blank"
+          href="../index.php"
         >
           <img
             src="../assets/img/logo-ct.png"
@@ -80,7 +79,7 @@ if (!isset($_COOKIE['osrt_login'])) {
           <li class="nav-item">
             <a
               class="nav-link text-white"
-              href="../index.html"
+              href="../index.php"
             >
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
@@ -153,7 +152,7 @@ if (!isset($_COOKIE['osrt_login'])) {
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" 
-            href="../pages/faq.php">
+            href="../pages/category.php">
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
               >

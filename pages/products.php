@@ -18,7 +18,7 @@ if (!isset($_COOKIE['osrt_login'])) {
       href="../assets/img/apple-icon.png"
     />
     <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
-    <title>Material Dashboard 2 by Creative Tim</title>
+    <title>OSRT-Products</title>
     <!--     Fonts and icons     -->
     <link
       rel="stylesheet"
@@ -59,8 +59,7 @@ if (!isset($_COOKIE['osrt_login'])) {
         ></i>
         <a
           class="navbar-brand m-0"
-          href=" https://demos.creative-tim.com/material-dashboard/pages/dashboard "
-          target="_blank"
+          href="../index.php"
         >
           <img
             src="../assets/img/logo-ct.png"
@@ -79,7 +78,7 @@ if (!isset($_COOKIE['osrt_login'])) {
           <li class="nav-item">
             <a
               class="nav-link text-white"
-              href="../index.html"
+              href="../index.php"
             >
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
@@ -151,7 +150,7 @@ if (!isset($_COOKIE['osrt_login'])) {
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" 
-            href="../pages/faq.php">
+            href="../pages/category.php">
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
               >
@@ -208,7 +207,7 @@ if (!isset($_COOKIE['osrt_login'])) {
   Add Product
 </button>
   <!-- Modal for Adding a Product -->
-<div class="modal fade" id="addReviewModal" tabindex="-1" aria-labelledby="addReviewModalLabel" aria-hidden="true">
+  <div class="modal fade" id="addReviewModal" tabindex="-1" aria-labelledby="addReviewModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -217,7 +216,7 @@ if (!isset($_COOKIE['osrt_login'])) {
       </div>
       <form action="add_product.php" method="POST" enctype="multipart/form-data">
         <div class="modal-body">
-          <div class="mb-3">
+        <div class="mb-3">
             <label for="product_name" class="form-label">Product Name</label>
             <input type="text" class="form-control" id="product_name" name="product_name" required>
           </div>
@@ -245,10 +244,44 @@ if (!isset($_COOKIE['osrt_login'])) {
             <label for="dimensions" class="form-label">Dimensions</label>
             <input type="text" class="form-control" id="dimensions" name="dimensions" required>
           </div>
+
           <div class="mb-3">
             <label for="category" class="form-label">Category</label>
-            <input type="text" class="form-control" id="category" name="category" required>
+            <select class="form-control" id="category" name="category" required>
+              <option value="">Select Category</option>
+              <?php
+               function connectToDatabase() {
+                $servername = "192.250.235.20";
+                $username = "epravidi_osrt_data";
+                $password = "UQ!r.gTOz=oo";
+                $dbname = "epravidi_osrt";
+        
+                // Create connection
+                $conn = new mysqli($servername, $username, $password, $dbname);
+        
+                // Check connection
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+        
+                return $conn;
+            }
+              $conn = connectToDatabase(); // Ensure this function is defined to connect to your DB
+              $sql = "SELECT category_name FROM categories"; // Replace 'categories' with your actual table name
+              $result = $conn->query($sql);
+              
+              if ($result && $result->num_rows > 0) {
+                  while ($row = $result->fetch_assoc()) {
+                      echo '<option value="' . htmlspecialchars($row["category_name"]) . '">' . htmlspecialchars($row["category_name"]) . '</option>';
+                  }
+              } else {
+                  echo '<option value="">No categories found</option>';
+              }
+              $conn->close();
+              ?>
+            </select>
           </div>
+
           <div class="mb-3">
             <label for="stock" class="form-label">Stock</label>
             <input type="number" class="form-control" id="stock" name="stock" required>
@@ -274,6 +307,7 @@ if (!isset($_COOKIE['osrt_login'])) {
   </div>
 </div>
 
+
 <style>
   .custom-file-upload {
     border: 2px solid #007bff;
@@ -297,22 +331,7 @@ if (!isset($_COOKIE['osrt_login'])) {
 </style>
        <?php
 // Database connection function
-function connectToDatabase() {
-    $servername = "192.250.235.20";
-    $username = "epravidi_osrt_data";
-    $password = "UQ!r.gTOz=oo";
-    $dbname = "epravidi_osrt";
 
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    return $conn;
-}
 
 // Function to fetch products from the database
 function getProducts($conn) {
@@ -440,7 +459,24 @@ $conn->close();
           </div>
           <div class="mb-3">
             <label for="edit_category" class="form-label">Category</label>
-            <input type="text" class="form-control" id="edit_category" name="category">
+            <select class="form-control" id="edit_category" name="category" required>
+              <option value="">Select Category</option>
+              <?php
+              // Fetch categories from the database
+              $conn = connectToDatabase();
+              $sql = "SELECT category_name FROM categories"; // Update with actual table name if needed
+              $result = $conn->query($sql);
+
+              if ($result && $result->num_rows > 0) {
+                  while ($row = $result->fetch_assoc()) {
+                      echo '<option value="' . htmlspecialchars($row["category_name"]) . '">' . htmlspecialchars($row["category_name"]) . '</option>';
+                  }
+              } else {
+                  echo '<option value="">No categories found</option>';
+              }
+              $conn->close();
+              ?>
+            </select>
           </div>
           <div class="mb-3">
             <label for="edit_category" class="form-label">Stock</label>
@@ -528,7 +564,8 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("edit_material").value = cells[6].textContent.trim();
       document.getElementById("edit_dimensions").value = cells[7].textContent.trim();
       document.getElementById("edit_category").value = cells[8].textContent.trim();
-      document.getElementById("edit_price").value = cells[9].textContent.replace("Rs. ", "").trim();
+      document.getElementById("edit_price").value = parseInt(cells[9].textContent.replace("Rs. ", "").trim()) || 0;
+
 
       // Get the image source from the 11th cell (10th index)
       const imageCell = cells[10].querySelector("img");  // Assuming the image is in the 11th cell

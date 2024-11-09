@@ -19,7 +19,7 @@ if (!isset($_COOKIE['osrt_login'])) {
       href="./assets/img/apple-icon.png"
     />
     <link rel="icon" type="image/png" href="./assets/img/favicon.png" />
-    <title>Material Dashboard 2 by Creative Tim</title>
+    <title>OSRT-</title>
     <!--     Fonts and icons     -->
     <link
       rel="stylesheet"
@@ -48,7 +48,7 @@ if (!isset($_COOKIE['osrt_login'])) {
   </head>
 
   <body class="g-sidenav-show bg-gray-200">
-    <aside
+  <aside
       class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 bg-gradient-dark"
       id="sidenav-main"
     >
@@ -60,11 +60,10 @@ if (!isset($_COOKIE['osrt_login'])) {
         ></i>
         <a
           class="navbar-brand m-0"
-          href=" https://demos.creative-tim.com/material-dashboard/pages/dashboard "
-          target="_blank"
+          href="../index.php"
         >
           <img
-            src="./assets/img/logo-ct.png"
+            src="../assets/img/logo-ct.png"
             class="navbar-brand-img h-100"
             alt="main_logo"
           />
@@ -80,7 +79,7 @@ if (!isset($_COOKIE['osrt_login'])) {
           <li class="nav-item">
             <a
               class="nav-link text-white active bg-gradient-primary"
-              href="../index.html"
+              href="../index.php"
             >
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
@@ -102,7 +101,7 @@ if (!isset($_COOKIE['osrt_login'])) {
           </li>
           <li class="nav-item">
             <a
-              class="nav-link text-white "
+              class="nav-link text-white"
               href="../pages/products.php"
             >
               <div
@@ -141,13 +140,24 @@ if (!isset($_COOKIE['osrt_login'])) {
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" 
-            href="../pages/faq.php">
+            href="./pages/faq.php">
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
               >
                 <i class="material-icons opacity-10">table_view</i>
               </div>
               <span class="nav-link-text ms-1">FAQs</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" 
+            href="./pages/category.php">
+              <div
+                class="text-white text-center me-2 d-flex align-items-center justify-content-center"
+              >
+                <i class="material-icons opacity-10">table_view</i>
+              </div>
+              <span class="nav-link-text ms-1">Categories</span>
             </a>
           </li>
         </ul>
@@ -196,7 +206,7 @@ if (!isset($_COOKIE['osrt_login'])) {
       <div class="container-fluid py-4">
         <div class="row">
           <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-            <?php
+          <?php
 // Database configuration
 $host = "192.250.235.20";  // Replace with your server name
 $username = "epravidi_osrt_data";   // Replace with your database username
@@ -212,18 +222,28 @@ if ($conn->connect_error) {
 }
 
 // Query to count the number of products
-$sql = "SELECT COUNT(*) AS product_count FROM products";
-$result = $conn->query($sql);
+$sql_products = "SELECT COUNT(*) AS product_count FROM products";
+$result_products = $conn->query($sql_products);
 
-// Fetch the product count
-$product_count = 0; // Default in case of failure
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
+$product_count = 0;
+if ($result_products->num_rows > 0) {
+    $row = $result_products->fetch_assoc();
     $product_count = $row['product_count'];
+}
+
+// Query to count the number of emails in newsletters
+$sql_newsletters = "SELECT COUNT(*) AS email_count FROM newsletter";
+$result_newsletters = $conn->query($sql_newsletters);
+
+$email_count = 0;
+if ($result_newsletters->num_rows > 0) {
+    $row = $result_newsletters->fetch_assoc();
+    $email_count = $row['email_count'];
 }
 
 $conn->close();
 ?>
+
 <div class="card">
   <div class="card-header p-3 pt-2">
     <div
@@ -243,6 +263,11 @@ $conn->close();
     </p>
   </div>
 </div>
+<script>
+  function redirectPage(){
+    window.location.href = "./pages/emailTable.php";
+  }
+</script>
           </div>
           <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
             <div class="card">
@@ -292,16 +317,16 @@ $conn->close();
             </div>
           </div>
           <div class="col-xl-3 col-sm-6">
-            <div class="card">
+            <div class="card" onclick="redirectPage()">
               <div class="card-header p-3 pt-2">
                 <div
                   class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute"
                 >
-                  <i class="material-icons opacity-10">weekend</i>
+                  <i class="material-icons opacity-10">person</i>
                 </div>
                 <div class="text-end pt-1">
-                  <p class="text-sm mb-0 text-capitalize">Sales</p>
-                  <h4 class="mb-0">$103,430</h4>
+                  <p class="text-sm mb-0 text-capitalize">Subscribers</p>
+                  <h4 class="mb-0"><?php echo $email_count;?></h4>
                 </div>
               </div>
               <hr class="dark horizontal my-0" />
