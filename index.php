@@ -268,6 +268,39 @@ $conn->close();
     window.location.href = "./pages/emailTable.php";
   }
 </script>
+<?php 
+                $host = "192.250.235.20";
+                $username = "epravidi_osrt_data";
+                $password = "UQ!r.gTOz=oo";
+                 $dbname="epravidi_osrt";
+try {
+  // Connect to the database
+  $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
+  $stmt = $pdo->query("SELECT COUNT(*) AS total_visitors FROM visitors");
+  $totalVisitors = $stmt->fetch(PDO::FETCH_ASSOC)['total_visitors'];
+
+  $stmt = $pdo->query("SELECT COUNT(*) AS total_reviews FROM reviews");
+  $totalReviews = $stmt->fetch(PDO::FETCH_ASSOC)['total_reviews'];
+
+  $stmt = $pdo->query("SELECT COUNT(*) AS total_brands FROM brands");
+  $totalBrands = $stmt->fetch(PDO::FETCH_ASSOC)['total_brands'];
+
+  $stmt = $pdo->query("SELECT COUNT(*) AS total_categories FROM categories");
+  $totalCategories = $stmt->fetch(PDO::FETCH_ASSOC)['total_categories'];
+
+  $stmt = $pdo->query("SELECT COUNT(*) AS today_visitors FROM visitors WHERE DATE(visited_at) = CURDATE()");
+  $todayVisitors = $stmt->fetch(PDO::FETCH_ASSOC)['today_visitors'];
+
+} catch (PDOException $e) {
+  echo "Error: " . $e->getMessage();
+}
+
+// Close the connection
+$pdo = null;
+                ?>
           </div>
           <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
             <div class="card">
@@ -279,7 +312,7 @@ $conn->close();
                 </div>
                 <div class="text-end pt-1">
                   <p class="text-sm mb-0 text-capitalize">Today's Users</p>
-                  <h4 class="mb-0">2,300</h4>
+                  <h4 class="mb-0"><?php echo $todayVisitors;?></h4>
                 </div>
               </div>
               <hr class="dark horizontal my-0" />
@@ -300,18 +333,19 @@ $conn->close();
                 >
                   <i class="material-icons opacity-10">person</i>
                 </div>
+                
                 <div class="text-end pt-1">
-                  <p class="text-sm mb-0 text-capitalize">New Clients</p>
-                  <h4 class="mb-0">3,462</h4>
+                  <p class="text-sm mb-0 text-capitalize">Total Visitors</p>
+                  <h4 class="mb-0"><?php echo $totalVisitors;?></h4>
                 </div>
               </div>
               <hr class="dark horizontal my-0" />
               <div class="card-footer p-3">
                 <p class="mb-0">
                   <span class="text-danger text-sm font-weight-bolder"
-                    >-2%</span
+                    ></span
                   >
-                  than yesterday
+                  
                 </p>
               </div>
             </div>
@@ -327,6 +361,75 @@ $conn->close();
                 <div class="text-end pt-1">
                   <p class="text-sm mb-0 text-capitalize">Subscribers</p>
                   <h4 class="mb-0"><?php echo $email_count;?></h4>
+                </div>
+              </div>
+              <hr class="dark horizontal my-0" />
+              <div class="card-footer p-3">
+                <p class="mb-0">
+                  <span class="text-success text-sm font-weight-bolder"
+                    >+5% </span
+                  >than yesterday
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-sm-6">
+            <div class="card" onclick="redirectPage()">
+              <div class="card-header p-3 pt-2">
+                <div
+                  class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute"
+                >
+                  <i class="material-icons opacity-10">person</i>
+                </div>
+                <div class="text-end pt-1">
+                  <p class="text-sm mb-0 text-capitalize">Reviews</p>
+                  <h4 class="mb-0"><?php echo $totalReviews;?></h4>
+                </div>
+              </div>
+              <hr class="dark horizontal my-0" />
+              <div class="card-footer p-3">
+                <p class="mb-0">
+                  <span class="text-success text-sm font-weight-bolder"
+                    >+5% </span
+                  >than yesterday
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-sm-6">
+            <div class="card" onclick="redirectPage()">
+              <div class="card-header p-3 pt-2">
+                <div
+                  class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute"
+                >
+                  <i class="material-icons opacity-10">person</i>
+                </div>
+                <div class="text-end pt-1">
+                  <p class="text-sm mb-0 text-capitalize">Brands</p>
+                  <h4 class="mb-0"><?php echo $totalBrands;?></h4>
+                </div>
+              </div>
+              <hr class="dark horizontal my-0" />
+              <div class="card-footer p-3">
+                <p class="mb-0">
+                  <span class="text-success text-sm font-weight-bolder"
+                    >+5% </span
+                  >than yesterday
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-sm-6">
+            <div class="card" onclick="redirectPage()">
+              <div class="card-header p-3 pt-2">
+                <div
+                  class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute"
+                >
+                  <i class="material-icons opacity-10">person</i>
+                </div>
+                <div class="text-end pt-1">
+                  <p class="text-sm mb-0 text-capitalize">Categories</p>
+                  <h4 class="mb-0"><?php echo $totalCategories;?></h4>
                 </div>
               </div>
               <hr class="dark horizontal my-0" />
