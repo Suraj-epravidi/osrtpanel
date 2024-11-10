@@ -367,14 +367,14 @@ $pdo = null;
               <div class="card-footer p-3">
                 <p class="mb-0">
                   <span class="text-success text-sm font-weight-bolder"
-                    >+5% </span
-                  >than yesterday
+                    > </span
+                  >
                 </p>
               </div>
             </div>
           </div>
           <div class="col-xl-3 col-sm-6">
-            <div class="card" onclick="redirectPage()">
+            <div class="card" >
               <div class="card-header p-3 pt-2">
                 <div
                   class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute"
@@ -389,15 +389,15 @@ $pdo = null;
               <hr class="dark horizontal my-0" />
               <div class="card-footer p-3">
                 <p class="mb-0">
-                  <span class="text-success text-sm font-weight-bolder"
-                    >+5% </span
-                  >than yesterday
+                  <span class="text-success text-sm font-weight-bolder">
+</span>
+                 
                 </p>
               </div>
             </div>
           </div>
           <div class="col-xl-3 col-sm-6">
-            <div class="card" onclick="redirectPage()">
+            <div class="card">
               <div class="card-header p-3 pt-2">
                 <div
                   class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute"
@@ -413,14 +413,14 @@ $pdo = null;
               <div class="card-footer p-3">
                 <p class="mb-0">
                   <span class="text-success text-sm font-weight-bolder"
-                    >+5% </span
-                  >than yesterday
+                    > </span
+                  >
                 </p>
               </div>
             </div>
           </div>
           <div class="col-xl-3 col-sm-6">
-            <div class="card" onclick="redirectPage()">
+            <div class="card">
               <div class="card-header p-3 pt-2">
                 <div
                   class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute"
@@ -436,8 +436,8 @@ $pdo = null;
               <div class="card-footer p-3">
                 <p class="mb-0">
                   <span class="text-success text-sm font-weight-bolder"
-                    >+5% </span
-                  >than yesterday
+                    > </span
+                  >
                 </p>
               </div>
             </div>
