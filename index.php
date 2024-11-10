@@ -202,11 +202,15 @@ if (!isset($_COOKIE['osrt_login'])) {
           </div>
         </div>
       </nav>
-    
+    <style>
+.boxStatus{
+  margin-bottom:10%;
+}
+    </style>
       <!-- End Navbar -->
       <div class="container-fluid py-4">
         <div class="row rowStatus">
-          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 boxStatus">
           <?php
 // Database configuration
 $host = "192.250.235.20";  // Replace with your server name
@@ -303,7 +307,7 @@ try {
 $pdo = null;
                 ?>
           </div>
-          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 boxStatus">
             <div class="card">
               <div class="card-header p-3 pt-2">
                 <div
@@ -326,7 +330,7 @@ $pdo = null;
               </div>
             </div>
           </div>
-          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 boxStatus">
             <div class="card">
               <div class="card-header p-3 pt-2">
                 <div
@@ -351,7 +355,7 @@ $pdo = null;
               </div>
             </div>
           </div>
-          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 boxStatus">
             <div class="card" onclick="redirectPage()">
               <div class="card-header p-3 pt-2">
                 <div
@@ -374,7 +378,7 @@ $pdo = null;
               </div>
             </div>
           </div>
-          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 boxStatus">
             <div class="card" >
               <div class="card-header p-3 pt-2">
                 <div
@@ -397,7 +401,7 @@ $pdo = null;
               </div>
             </div>
           </div>
-          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 boxStatus">
             <div class="card">
               <div class="card-header p-3 pt-2">
                 <div
@@ -420,7 +424,7 @@ $pdo = null;
               </div>
             </div>
           </div>
-          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 boxStatus">
             <div class="card">
               <div class="card-header p-3 pt-2">
                 <div
