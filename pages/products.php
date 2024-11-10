@@ -283,6 +283,10 @@ if (!isset($_COOKIE['osrt_login'])) {
           </div>
 
           <div class="mb-3">
+            <label for="stock" class="form-label">Stock</label>
+            <input type="number" class="form-control" id="stock" name="stock" required>
+          </div>
+          <div class="mb-3">
             <label for="price" class="form-label">Price</label>
             <input type="number" class="form-control" id="price" name="price" required>
           </div>
@@ -331,7 +335,7 @@ if (!isset($_COOKIE['osrt_login'])) {
 
 // Function to fetch products from the database
 function getProducts($conn) {
-    $sql = "SELECT product_id, product_name, description, product_code, color, brand, material, dimensions, category, price, image FROM products";
+    $sql = "SELECT product_id, product_name, description, product_code, color, brand, material, dimensions, category,stock, price, image FROM products";
     $result = $conn->query($sql);
 
     if ($result && $result->num_rows > 0) {
@@ -372,6 +376,7 @@ $conn->close();
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Material</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Dimensions</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Category</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Stock</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Price</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Image</th>
                 </tr>
@@ -389,6 +394,7 @@ $conn->close();
                       <td class="text-center text-xs font-weight-bold mb-0" id="material"><?php echo htmlspecialchars($product['material']); ?></td>
                       <td class="text-center text-xs font-weight-bold mb-0" id="dimensions"><?php echo htmlspecialchars($product['dimensions']); ?></td>
                       <td class="text-center text-xs font-weight-bold mb-0" id="category"><?php echo htmlspecialchars($product['category']); ?></td>
+                      <td class="text-center text-xs font-weight-bold mb-0" id="stock"><?php echo htmlspecialchars($product['stock']); ?></td>
                       <td class="text-center text-xs font-weight-bold mb-0" id="price">Rs. <?php echo htmlspecialchars($product['price']); ?></td>
                       <td class="text-center">
                         <?php if (!empty($product['image'])): ?>
@@ -471,6 +477,10 @@ $conn->close();
               $conn->close();
               ?>
             </select>
+          </div>
+          <div class="mb-3">
+            <label for="edit_category" class="form-label">Stock</label>
+            <input type="number" class="form-control" id="edit_stock" name="stock">
           </div>
           <div class="mb-3">
             <label for="edit_price" class="form-label">Price</label>
