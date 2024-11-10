@@ -15,6 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $material = $_POST['material'];
     $dimensions = $_POST['dimensions'];
     $category = $_POST['category'];
+    $stock = $_POST['stock'];
     $price = $_POST['price'];
     
     // File upload handling
@@ -22,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $imageFileType = strtolower(pathinfo($_FILES["product_image"]["name"], PATHINFO_EXTENSION));
     
     // Create the new file name
-    $new_file_name = $product_code . "_" . $product_name . "." . $imageFileType;
+    $new_file_name = $product_code . "_" . $brand . "_". $color . "." . $imageFileType;
     $target_file = $target_dir . $new_file_name;
     $uploadOk = 1;
     // Check if the file is an actual image
@@ -59,9 +60,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
 
             // Prepare SQL query to insert the product data
-            $sql = "INSERT INTO products (product_name, description, product_code, color, brand, material, dimensions, category, price, image) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO products (product_name, description, product_code, color, brand, material, dimensions, category, stock, price, image) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("ssssssssds", $product_name, $description, $product_code, $color, $brand, $material, $dimensions, $category, $price, $new_file_name);
+            $stmt->bind_param("ssssssssdds", $product_name, $description, $product_code, $color, $brand, $material, $dimensions, $category, $stock, $price, $new_file_name);
 
             if ($stmt->execute()) {
                header("Location: https://panel-osrt.epravidi.com/pages/products.php");

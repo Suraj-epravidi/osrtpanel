@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 // Get the JSON input
 $data = json_decode(file_get_contents("php://input"), true);
 $productId = $data['product_id'];
-
+error_log($productId, 0);
 // First, retrieve the image name from the database
 $sql = "SELECT image FROM products WHERE product_id = ?";
 $stmt = $conn->prepare($sql);
