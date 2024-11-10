@@ -206,6 +206,9 @@ if (!isset($_COOKIE['osrt_login'])) {
 .boxStatus{
   margin-bottom:100px; !important
 }
+.subscriberBox{
+  cursor: pointer;
+}
     </style>
       <!-- End Navbar -->
       <div class="container-fluid py-4">
@@ -355,7 +358,7 @@ $pdo = null;
               </div>
             </div>
           </div>
-          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 boxStatus">
+          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 boxStatus subscribersBox">
             <div class="card" onclick="redirectPage()">
               <div class="card-header p-3 pt-2">
                 <div
@@ -372,7 +375,7 @@ $pdo = null;
               <div class="card-footer p-3">
                 <p class="mb-0">
                   <span class="text-success text-sm font-weight-bolder"
-                    > </span
+                    > Click here to download the list.</span
                   >
                 </p>
               </div>
