@@ -568,11 +568,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
       // Get the image source from the 11th cell (10th index)
+      const oldImage=product['image'];
       const imageCell = cells[10].querySelector("img");  // Assuming the image is in the 11th cell
       if (imageCell) {
         document.getElementById("productImagePreview").src = imageCell.src;
       } else {
-        document.getElementById("productImagePreview").src = ""; // Clear if no image
+        document.getElementById("productImagePreview").src = oldImage; // Clear if no image
       }
 
 
