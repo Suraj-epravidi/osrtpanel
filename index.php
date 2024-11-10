@@ -270,7 +270,7 @@ $conn->close();
 </div>
 <script>
   function redirectPage(){
-    window.location.href = "./pages/emailTable.php";
+    window.location.href = "./pages/subscribers.php";
   }
 </script>
 <?php 
