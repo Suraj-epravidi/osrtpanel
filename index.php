@@ -206,7 +206,7 @@ if (!isset($_COOKIE['osrt_login'])) {
 .boxStatus{
   margin-bottom:100px; !important
 }
-.subscriberBox{
+.subscribersBox{
   cursor: pointer;
 }
     </style>
