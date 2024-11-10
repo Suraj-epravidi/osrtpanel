@@ -204,7 +204,7 @@ if (!isset($_COOKIE['osrt_login'])) {
       </nav>
     <style>
 .boxStatus{
-  margin-bottom:10%; !important
+  margin-bottom:100px; !important
 }
     </style>
       <!-- End Navbar -->
