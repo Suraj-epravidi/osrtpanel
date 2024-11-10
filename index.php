@@ -259,7 +259,7 @@ $conn->close();
   <hr class="dark horizontal my-0" />
   <div class="card-footer p-3">
     <p class="mb-0">
-      <span class="text-success text-sm font-weight-bolder">+55% </span>than last week
+      <span class="text-success text-sm font-weight-bolder"></span>
     </p>
   </div>
 </div>
@@ -319,8 +319,8 @@ $pdo = null;
               <div class="card-footer p-3">
                 <p class="mb-0">
                   <span class="text-success text-sm font-weight-bolder"
-                    >+3% </span
-                  >than lask month
+                    > </span
+                  >
                 </p>
               </div>
             </div>
