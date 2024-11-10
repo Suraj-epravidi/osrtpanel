@@ -202,9 +202,10 @@ if (!isset($_COOKIE['osrt_login'])) {
           </div>
         </div>
       </nav>
+    
       <!-- End Navbar -->
       <div class="container-fluid py-4">
-        <div class="row">
+        <div class="row rowStatus">
           <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
           <?php
 // Database configuration
@@ -350,7 +351,7 @@ $pdo = null;
               </div>
             </div>
           </div>
-          <div class="col-xl-3 col-sm-6">
+          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
             <div class="card" onclick="redirectPage()">
               <div class="card-header p-3 pt-2">
                 <div
@@ -373,7 +374,7 @@ $pdo = null;
               </div>
             </div>
           </div>
-          <div class="col-xl-3 col-sm-6">
+          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
             <div class="card" >
               <div class="card-header p-3 pt-2">
                 <div
@@ -396,7 +397,7 @@ $pdo = null;
               </div>
             </div>
           </div>
-          <div class="col-xl-3 col-sm-6">
+          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
             <div class="card">
               <div class="card-header p-3 pt-2">
                 <div
@@ -419,7 +420,7 @@ $pdo = null;
               </div>
             </div>
           </div>
-          <div class="col-xl-3 col-sm-6">
+          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
             <div class="card">
               <div class="card-header p-3 pt-2">
                 <div
@@ -443,7 +444,7 @@ $pdo = null;
             </div>
           </div>
         </div>
-        <div class="row mt-4">
+        <!-- <div class="row mt-4">
           <div class="col-lg-4 col-md-6 mt-4 mb-4">
             <div class="card z-index-2">
               <div
@@ -531,7 +532,7 @@ $pdo = null;
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </main>
 
