@@ -568,10 +568,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
       // Get the image source from the 11th cell (10th index)
-      const imageCell = cells[10].querySelector("img");  // Assuming the image is in the 11th cell
+      const imageCell = document.getElementbyId('osrtImageProduct').src;  // Assuming the image is in the 11th cell
       console.log(cells);
       if (imageCell) {
-        document.getElementById("productImagePreview").src = document.getElementbyId('osrtImageProduct').src;
+        document.getElementById("productImagePreview").src = imageCell;
       } else {
         document.getElementById("productImagePreview").src = ""; // Clear if no image
         console.log("Image not found");
