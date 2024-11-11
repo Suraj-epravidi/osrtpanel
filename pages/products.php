@@ -573,6 +573,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("productImagePreview").src = imageCell.src;
       } else {
         document.getElementById("productImagePreview").src = ""; // Clear if no image
+        console.log("Image not found");
       }
 
 
