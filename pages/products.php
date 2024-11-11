@@ -398,7 +398,7 @@ $conn->close();
                       <td class="text-center text-xs font-weight-bold mb-0" id="price">Rs. <?php echo htmlspecialchars($product['price']); ?></td>
                       <td class="text-center">
                         <?php if (!empty($product['image'])): ?>
-                          <img src="../pages/product_image/<?php echo htmlspecialchars($product['image']); ?>" alt="Product Image" style="width: 50px; height: 50px;">
+                          <img src="../pages/product_image/<?php echo htmlspecialchars($product['image']); ?>" id="osrtImageProduct" alt="Product Image" style="width: 50px; height: 50px;">
                         <?php else: ?>
                           <span>No image</span>
                         <?php endif; ?>
@@ -570,9 +570,8 @@ document.addEventListener("DOMContentLoaded", () => {
       // Get the image source from the 11th cell (10th index)
       const imageCell = cells[10].querySelector("img");  // Assuming the image is in the 11th cell
       console.log(cells[10].querySelector("img"));
-      console.log("Image src is" + imageCell.src);
       if (imageCell) {
-        document.getElementById("productImagePreview").src = imageCell.src;
+        document.getElementById("productImagePreview").src = document.getElementbyId('osrtImageProduct').src;
       } else {
         document.getElementById("productImagePreview").src = ""; // Clear if no image
         console.log("Image not found");
