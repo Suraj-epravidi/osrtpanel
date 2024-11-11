@@ -569,6 +569,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Get the image source from the 11th cell (10th index)
       const imageCell = cells[10].querySelector("img");  // Assuming the image is in the 11th cell
+      console.log(cells[10].querySelector("img"));
+      console.log("Image src is" + imageCell.src);
       if (imageCell) {
         document.getElementById("productImagePreview").src = imageCell.src;
       } else {
