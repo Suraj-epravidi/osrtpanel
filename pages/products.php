@@ -568,7 +568,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
       // Get the image source from the 11th cell (10th index)
-      const imageCell = document.getElementbyId('osrtImageProduct').src;  // Assuming the image is in the 11th cell
+      const imageCell = document.getElementById('osrtImageProduct').src;  // Assuming the image is in the 11th cell
       console.log(cells);
       if (imageCell) {
         document.getElementById("productImagePreview").src = imageCell;
