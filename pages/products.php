@@ -323,9 +323,10 @@ Website: www.epravidi.com<br><br></a>
             <div class="input-group">
               <input type="file" class="form-control" id="product_image" name="product_image" accept="image/*" aria-describedby="inputGroupFileAddon" aria-label="Upload" required>
               <label class="input-group-text" for="product_image">Browse</label>
+              <textarea class="form-control" id="product_image_textarea" name="product_image_textarea" rows="3" placeholder="Paste base64 image data or image URL here"></textarea>
             </div>
             <script>
-              document.getElementById('product_image').addEventListener('paste', function(e) {
+              document.getElementById('product_image_textarea').addEventListener('paste', function(e) {
                 console.log("Paste called.");
                 console.log(e);
                   var items = e.clipboardData.items;
@@ -334,7 +335,7 @@ Website: www.epravidi.com<br><br></a>
                           var blob = items[i].getAsFile();
                           var reader = new FileReader();
                           reader.onloadend = function() {
-                              document.getElementById('product_image').src = reader.result;
+                              document.getElementById('product_image_textarea').src = reader.result;
                           };
                           reader.readAsDataURL(blob);
                       }
