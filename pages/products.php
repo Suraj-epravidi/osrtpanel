@@ -326,6 +326,8 @@ Website: www.epravidi.com<br><br></a>
             </div>
             <script>
               document.getElementById('product_image').addEventListener('paste', function(e) {
+                console.log("Paste called.");
+                console.log(e);
                   var items = e.clipboardData.items;
                   for (var i = 0; i < items.length; i++) {
                       if (items[i].type.indexOf("image") !== -1) {
