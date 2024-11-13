@@ -12,6 +12,7 @@ if (!isset($_COOKIE['osrt_login'])) {
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+    <link rel="stylesheet" href="../assets/css/elegant-icons.css" type="text/css">
     <link
       rel="apple-touch-icon"
       sizes="76x76"
@@ -390,7 +391,7 @@ if ($conn->connect_error) {
 }
 
 // Pagination variables
-$products_per_page = 9; // Display 9 products per page
+$products_per_page = 50; // Display 50 products per page
 $page_no = isset($_GET['page_no']) ? (int)$_GET['page_no'] : 1;
 if ($page_no < 1) $page_no = 1;
 
