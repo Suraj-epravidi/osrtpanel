@@ -12,7 +12,9 @@ if (!isset($_COOKIE['osrt_login'])) {
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+    <link rel="stylesheet" href="material-dashboard.css" type="text/css">
     <link rel="stylesheet" href="../assets/css/nucleo-icons.css" type="text/css">
+    <link rel="stylesheet" href="../assets/css/nucleo-svg.css" type="text/css">
     <link
       rel="apple-touch-icon"
       sizes="76x76"
