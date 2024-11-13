@@ -296,6 +296,21 @@ if (!isset($_COOKIE['osrt_login'])) {
               <input type="file" class="form-control" id="product_image" name="product_image" accept="image/*" aria-describedby="inputGroupFileAddon" aria-label="Upload" required>
               <label class="input-group-text" for="product_image">Browse</label>
             </div>
+            <script>
+              document.getElementById('product_image').addEventListener('paste', function(e) {
+                  var items = e.clipboardData.items;
+                  for (var i = 0; i < items.length; i++) {
+                      if (items[i].type.indexOf("image") !== -1) {
+                          var blob = items[i].getAsFile();
+                          var reader = new FileReader();
+                          reader.onloadend = function() {
+                              document.getElementById('product_image').src = reader.result;
+                          };
+                          reader.readAsDataURL(blob);
+                      }
+                  }
+              });
+            </script>
           </div>
         </div>
         <div class="modal-footer">
@@ -427,83 +442,123 @@ $conn->close();
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <form id="editProductForm" action="update_product.php" method="POST" enctype="multipart/form-data">
-        <div class="modal-body">
-          <input type="hidden" name="product_id" id="edit_product_id">
-          <div class="mb-3">
+    <div class="modal-body">
+        <input type="hidden" name="product_id" id="edit_product_id">
+        <div class="mb-3">
             <label for="edit_product_name" class="form-label">Product Name</label>
             <input type="text" class="form-control" id="edit_product_name" name="product_name" required>
-          </div>
-          <div class="mb-3">
+        </div>
+        <div class="mb-3">
             <label for="edit_description" class="form-label">Description</label>
             <textarea class="form-control" id="edit_description" name="description" rows="3" required></textarea>
-          </div>
-          <div class="mb-3">
+        </div>
+        <div class="mb-3">
             <label for="edit_product_code" class="form-label">Product Code</label>
             <input type="text" class="form-control" id="edit_product_code" name="product_code" required>
-          </div>
-          <div class="mb-3">
+        </div>
+        <div class="mb-3">
             <label for="edit_color" class="form-label">Color</label>
             <input type="text" class="form-control" id="edit_color" name="color">
-          </div>
-          <div class="mb-3">
+        </div>
+        <div class="mb-3">
             <label for="edit_brand" class="form-label">Brand</label>
             <input type="text" class="form-control" id="edit_brand" name="brand">
-          </div>
-          <div class="mb-3">
+        </div>
+        <div class="mb-3">
             <label for="edit_material" class="form-label">Material</label>
             <input type="text" class="form-control" id="edit_material" name="material">
-          </div>
-          <div class="mb-3">
+        </div>
+        <div class="mb-3">
             <label for="edit_dimensions" class="form-label">Dimensions</label>
             <input type="text" class="form-control" id="edit_dimensions" name="dimensions">
-          </div>
-          <div class="mb-3">
+        </div>
+        <div class="mb-3">
             <label for="edit_category" class="form-label">Category</label>
             <select class="form-control" id="edit_category" name="category" required>
-              <option value="">Select Category</option>
-              <?php
-              // Fetch categories from the database
-              $conn = connectToDatabase();
-              $sql = "SELECT category_name FROM categories"; // Update with actual table name if needed
-              $result = $conn->query($sql);
+                <option value="">Select Category</option>
+                <?php
+                // Fetch categories from the database
+                $conn = connectToDatabase();
+                $sql = "SELECT category_name FROM categories"; // Update with actual table name if needed
+                $result = $conn->query($sql);
 
-              if ($result && $result->num_rows > 0) {
-                  while ($row = $result->fetch_assoc()) {
-                      echo '<option value="' . htmlspecialchars($row["category_name"]) . '">' . htmlspecialchars($row["category_name"]) . '</option>';
-                  }
-              } else {
-                  echo '<option value="">No categories found</option>';
-              }
-              $conn->close();
-              ?>
+                if ($result && $result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo '<option value="' . htmlspecialchars($row["category_name"]) . '">' . htmlspecialchars($row["category_name"]) . '</option>';
+                    }
+                } else {
+                    echo '<option value="">No categories found</option>';
+                }
+                $conn->close();
+                ?>
             </select>
-          </div>
-          <div class="mb-3">
+        </div>
+        <div class="mb-3">
             <label for="edit_category" class="form-label">Stock</label>
             <input type="number" class="form-control" id="edit_stock" name="stock">
-          </div>
-          <div class="mb-3">
+        </div>
+        <div class="mb-3">
             <label for="edit_price" class="form-label">Price</label>
             <input type="number" class="form-control" id="edit_price" name="price" required>
-          </div>
+        </div>
 
-          <!-- Display image and trigger input on click -->
-          <div class="mb-3">
+        <!-- Display image and trigger input on click -->
+        <div class="mb-3">
             <label for="edit_product_image" class="form-label">Product Image</label>
             <div class="input-group">
-              <!-- Image tag to display the current image -->
-              <img id="productImagePreview" src="default-image.jpg" alt="Product Image" style="width: 150px; height: 150px; object-fit: cover; cursor: pointer; border: 1px solid #ccc;">
-              <!-- Hidden file input -->
-              <input type="file" class="form-control" id="edit_product_image" name="new_image" accept="image/*" style="display: none;">
+                <!-- Image tag to display the current image -->
+                <img id="productImagePreview" src="default-image.jpg" alt="Product Image" style="width: 150px; height: 150px; object-fit: cover; cursor: pointer; border: 1px solid #ccc;" onclick="document.getElementById('edit_product_image').click();">
+                <!-- Hidden file input -->
+                <input type="file" class="form-control" id="edit_product_image" name="new_image" accept="image/*" style="display: none;">
             </div>
-          </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save Changes</button>
-          <button type="button" class="btn btn-danger" id="deleteProductBtn">Delete Product</button>
-        </div>
-      </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+        <button type="button" class="btn btn-danger" id="deleteProductBtn">Delete Product</button>
+    </div>
+</form>
+
+<script>
+    // Handle image file input change
+    const fileInput = document.getElementById('edit_product_image');
+    const productImagePreview = document.getElementById('productImagePreview');
+
+    fileInput.addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                // Set the image preview to the selected file
+                productImagePreview.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Allow image pasting from clipboard
+    document.getElementById('edit_product_image').addEventListener('paste', function(event) {
+        const items = event.clipboardData.items;
+        for (let i = 0; i < items.length; i++) {
+            if (items[i].type.indexOf('image') !== -1) {
+                const file = items[i].getAsFile();
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // Set the image preview to the clipboard image
+                    productImagePreview.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    });
+
+    // Trigger the hidden file input when image preview is clicked
+    productImagePreview.addEventListener('click', function() {
+        fileInput.click();
+    });
+</script>
+
     </div>
   </div>
 </div>

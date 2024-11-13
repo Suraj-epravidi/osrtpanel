@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("sss", $product_id, $comments, $image_name); // "i" for integer product_id, "s" for strings comments and image_name
 
     if ($stmt->execute()) {
-        header("Location: https://panel-osrt.epravidi.com/pages/brands.php");
+        header("Location: https://osrtpanel.epravidi.com/pages/brands.php");
     } else {
         echo "Error: " . $stmt->error;
     }

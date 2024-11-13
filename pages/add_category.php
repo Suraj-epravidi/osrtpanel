@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("ss", $category_name,$image_name); 
 
     if ($stmt->execute()) {
-        header("Location: https://panel-osrt.epravidi.com/pages/category.php");
+        header("Location: https://osrtpanel.epravidi.com/pages/category.php");
     } else {
         echo "Error: " . $stmt->error;
     }
