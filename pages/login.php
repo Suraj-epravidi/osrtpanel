@@ -35,7 +35,7 @@ if($email="admin@admin.com" && $password="admin@suraj"){
             setcookie($cookie_name, $cookie_value, $expiry_time, "/");
 
             header("Location: ../index.php");
-        exit();
+        
 }
 
     // Prepare and bind
