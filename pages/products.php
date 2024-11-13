@@ -483,37 +483,46 @@ $conn->close();
     </div>
   </div>
 </div>
+
 <div class="col-lg-12">
     <?php 
     echo '<div class="property-pagination">';
-    $last_page = ceil($total_products / 50);
+    $last_page = ceil($total_products / $products_per_page);
 
+    // Left arrow (previous page)
     if ($page_no > 1 ) {
-        echo '<a href="./products?page_no=' . ($page_no - 1) . '" class="icon"><span class="arrow_left"></span></a>';
+        echo '<a href="./products.php?page_no=' . ($page_no - 1) . '" class="icon"><span class="nc-icon nc-minimal-left"></span></a>';
     }
-    
+
+    // First page link if not on the first or second page
     if ($page_no != 1  && $page_no != 2) {
-        echo ' <a href="./products?page_no=1">1</a>';
+        echo '<a href="./products.php?page_no=1">1</a>';
     }
 
+    // Previous page number if applicable
     if ($last_page > 1 && $page_no > 1) {
-        echo '<a href="./products?page_no=' . ($page_no - 1) . '">' . ($page_no - 1) . '</a>';
+        echo '<a href="./products.php?page_no=' . ($page_no - 1) . '">' . ($page_no - 1) . '</a>';
     }
 
-    echo '<a href="./products?page_no=' . $page_no . '">' . $page_no . '</a>';
+    // Current page link
+    echo '<a href="./products.php?page_no=' . $page_no . '">' . $page_no . '</a>';
 
+    // Next page number if applicable
     if ($page_no < $last_page - 1) {
-        echo '<a href="./products?page_no=' . ($page_no + 1) . '">' . ($page_no + 1) . '</a>';
+        echo '<a href="./products.php?page_no=' . ($page_no + 1) . '">' . ($page_no + 1) . '</a>';
     }
 
+    // Last page link if not on the last page
     if ($page_no < $last_page) {
-        echo '<a href="./products?page_no=' . $last_page . '">' . $last_page . '</a>';
-        echo '<a href="./products?page_no=' . ($page_no + 1) . '" class="icon"><span class="arrow_right"></span></a>';
+        echo '<a href="./products.php?page_no=' . $last_page . '">' . $last_page . '</a>';
+        echo '<a href="./products.php?page_no=' . ($page_no + 1) . '" class="icon"><span class="nc-icon nc-minimal-right"></span></a>';
     }
 
     echo '</div>';
     ?>
 </div>
+
+
 
 <!-- Lightbox Modal -->
 <div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
