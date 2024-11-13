@@ -189,17 +189,34 @@ if (!isset($_COOKIE['osrt_login'])) {
               </li>
             </ol>
             <h6 class="font-weight-bolder mb-0">Dashboard</h6>
+            <a class="opacity-5 text-dark" href="javascript:;"><br>How to Use the Add Review Section<br><br>
+
+Adding a New FAQ: <br> To add a new FAQ, click on the Add button located above the FAQ table. This will open a modal window where you can enter the FAQ details.<br><br>
+
+Filling Out the FAQ Form: <br>
+
+In the modal, enter the Question in the provided text area. <br>
+Enter the Answer in the second text area. <br>
+Click on Submit to add the new FAQ to the list.<br><br>
+Deleting an FAQ: <br> To delete an FAQ, locate the entry in the table and click the Delete button in the same row. <br> You will be prompted to confirm the deletion. Click OK to delete the FAQ permanently.
+<br><br>If you encounter any issues or have questions, please don’t hesitate to contact Epravidi for assistance. Our support team is here to help ensure smooth management of your product data.
+<br>
+Contact Epravidi:<br>
+<br>
+Email: support@epravidi.com
+Phone: +977 9813722923
+Website: www.epravidi.com<br><br></a>
           </nav>
           <div
             class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4"
             id="navbar"
           >
-            <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+            <!-- <div class="ms-md-auto pe-md-3 d-flex align-items-center">
               <div class="input-group input-group-outline">
                 <label class="form-label">Type here...</label>
                 <input type="text" class="form-control" />
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </nav>
