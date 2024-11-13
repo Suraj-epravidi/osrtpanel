@@ -486,7 +486,7 @@ $conn->close();
 <div class="col-lg-12">
     <?php 
     echo '<div class="property-pagination">';
-    $last_page = ceil($total_products / 9);
+    $last_page = ceil($total_products / 50);
 
     if ($page_no > 1 ) {
         echo '<a href="./products?page_no=' . ($page_no - 1) . '" class="icon"><span class="arrow_left"></span></a>';
