@@ -330,6 +330,7 @@ Website: www.epravidi.com<br><br></a>
                 console.log("Paste called.");
                 console.log(e);
                   var items = e.clipboardData.items;
+                  console.log(items);
                   for (var i = 0; i < items.length; i++) {
                       if (items[i].type.indexOf("image") !== -1) {
                           var blob = items[i].getAsFile();
