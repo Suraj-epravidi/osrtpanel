@@ -173,9 +173,12 @@ if (!isset($_COOKIE['osrt_login'])) {
       >
         <div class="container-fluid py-1 px-3">
           <nav aria-label="breadcrumb">
+          
             <ol
               class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5"
             >
+            
+
               <li class="breadcrumb-item text-sm">
                 <a class="opacity-5 text-dark" href="javascript:;">Pages</a>
               </li>
@@ -187,21 +190,46 @@ if (!isset($_COOKIE['osrt_login'])) {
               </li>
             </ol>
             <h6 class="font-weight-bolder mb-0">Dashboard</h6>
+            
+
+            
+            <a class="opacity-5 text-dark" href="javascript:;"><br>How to Use the Add Products Section<br>
+1. Adding a New Product:<br>
+<br>
+Click the "Add Product" button located at the top of the page. This will open a form where you can input product details like name, description, code, color, brand, material, dimensions, category, and price.
+After filling in all necessary fields, click "Save" to add the product to your inventory.
+<br>
+2.Exporting Product List to Excel:<br>
+<br>
+To create an Excel file of all products, simply click the "Export to Excel" button at the top of the page. This will download an up-to-date product list in Excel format, making it easy to review or share your inventory.
+<br>
+3. Editing an Existing Product:<br>
+<br>
+To modify details for any existing product, locate the product in the table below and click on it. This will open an editable view of the product’s details.
+Make your changes, and click "Update" to save them.<br>
+If you encounter any issues or have questions, please don’t hesitate to contact Epravidi for assistance. Our support team is here to help ensure smooth management of your product data.
+<br>
+Contact Epravidi:<br>
+<br>
+Email: support@epravidi.com
+Phone: +977 9813722923
+Website: www.epravidi.com<br><br></a>
           </nav>
-          <div
+          
+        </div>
+      </nav>
+      <!-- End Navbar -->
+      <div
             class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4"
             id="navbar"
           >
-            <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+          <div class="ms-md-auto pe-md-3 d-flex align-items-center">
               <div class="input-group input-group-outline">
                 <label class="form-label">Type here...</label>
                 <input type="text" class="form-control" />
               </div>
             </div>
           </div>
-        </div>
-      </nav>
-      <!-- End Navbar -->
        <!-- PHP-->
        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addReviewModal">
   Add Product

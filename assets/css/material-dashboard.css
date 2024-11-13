@@ -2457,7 +2457,8 @@ textarea.form-control-lg {
   padding: 0.625rem 1.5rem;
   font-size: 0.75rem;
   border-radius: 0.5rem;
-  transition: all 0.15s ease-in; }
+  transition: all 0.15s ease-in;
+  }
   @media (prefers-reduced-motion: reduce) {
     .btn {
       transition: none; } }
@@ -12558,7 +12559,9 @@ textarea.form-control-lg {
   background-size: 150%;
   background-position-x: 25%;
   position: relative;
-  overflow: hidden; }
+  overflow: hidden;
+  margin-left: 40px; 
+}
   .btn:not([class*="btn-outline-"]) {
     border: 0; }
   .btn:active, .btn:active:focus, .btn:active:hover {

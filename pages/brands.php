@@ -189,17 +189,41 @@ if (!isset($_COOKIE['osrt_login'])) {
               </li>
             </ol>
             <h6 class="font-weight-bolder mb-0">Dashboard</h6>
+
+
+            <a class="opacity-5 text-dark" href="javascript:;"><br>How to Use the Add Brand Section<br><br>
+
+            Adding a New Brand:<br><br>
+
+Click the "Add Brand" button located above the table. This will open a modal (popup) window where you can add a new brand.<br><br>
+Fill out the following fields in the modal:<br><br>
+Brand Name: Enter the name of the brand.<br>
+Brand Website: Provide the website URL of the brand.<br>
+Upload Logo: Choose an image file for the brand's logo (optional).<br>
+Once all fields are filled, click the "Submit" button to add the brand to the table.<br><br>
+Deleting a Brand:<br>
+
+To delete a brand entry, click the "Delete" button in the last column of the respective brand row.
+A confirmation dialog will appear. Select "OK" if you're sure you want to delete the brand, or "Cancel" to abort the action.<br><br>
+
+If you encounter any issues or have questions, please don’t hesitate to contact Epravidi for assistance. Our support team is here to help ensure smooth management of your product data.
+<br>
+Contact Epravidi:<br>
+<br>
+Email: support@epravidi.com
+Phone: +977 9813722923
+Website: www.epravidi.com<br><br></a>
           </nav>
           <div
             class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4"
             id="navbar"
           >
-            <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+            <!-- <div class="ms-md-auto pe-md-3 d-flex align-items-center">
               <div class="input-group input-group-outline">
                 <label class="form-label">Type here...</label>
                 <input type="text" class="form-control" />
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </nav>

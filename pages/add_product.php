@@ -66,6 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($stmt->execute()) {
                header("Location: https://osrtpanel.epravidi.com/pages/products.php");
+
             } else {
                 echo "Error: " . $stmt->error;
             }
