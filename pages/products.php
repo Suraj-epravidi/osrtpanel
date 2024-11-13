@@ -376,25 +376,42 @@ Website: www.epravidi.com<br><br></a>
     display: none;
   }
 </style>
-       <?php
-// Database connection function
+<?php
+// Database connection
+$servername = "192.250.235.20";
+$username = "epravidi_osrt_data";
+$password = "UQ!r.gTOz=oo";
+$dbname = "epravidi_osrt";
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-
-// Function to fetch products from the database
-function getProducts($conn) {
-    $sql = "SELECT product_id, product_name, description, product_code, color, brand, material, dimensions, category,stock, price, image FROM products";
-    $result = $conn->query($sql);
-
-    if ($result && $result->num_rows > 0) {
-        return $result->fetch_all(MYSQLI_ASSOC);
-    } else {
-        return [];
-    }
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 
-// Main logic to display products in a table
-$conn = connectToDatabase();
-$products = getProducts($conn);
+// Pagination variables
+$products_per_page = 9; // Display 9 products per page
+$page_no = isset($_GET['page_no']) ? (int)$_GET['page_no'] : 1;
+if ($page_no < 1) $page_no = 1;
+
+// Calculate offset for SQL query
+$offset = ($page_no - 1) * $products_per_page;
+
+// Fetch the total number of products for pagination
+$sql_count = "SELECT COUNT(*) AS total_products FROM products";
+$result_count = $conn->query($sql_count);
+$total_products = $result_count->fetch_assoc()['total_products'];
+$total_pages = ceil($total_products / $products_per_page);
+
+// Fetch products for the current page
+$sql = "SELECT product_id, product_name, description, product_code, color, brand, material, dimensions, category, stock, price, image 
+        FROM products 
+        LIMIT ?, ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("ii", $offset, $products_per_page);
+$stmt->execute();
+$products = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+$stmt->close();
 $conn->close();
 ?>
 
@@ -429,34 +446,34 @@ $conn->close();
                 </tr>
               </thead>
               <tbody>
-                <?php if (!empty($products)): ?>
-                  <?php foreach ($products as $index => $product): ?>
-                    <tr>
-                      <td class="text-center font-weight-bold mb-0" ><?php echo htmlspecialchars($product['product_id']); ?></td>
-                      <td class="text-xs font-weight-bold mb-0" id="product_name"><?php echo htmlspecialchars($product['product_name']); ?></td>
-                      <td class="text-xs font-weight-bold mb-0" id="description"><?php echo htmlspecialchars($product['description']); ?></td>
-                      <td class="text-center text-xs font-weight-bold mb-0" id="product_code"><?php echo htmlspecialchars($product['product_code']); ?></td>
-                      <td class="text-center text-xs font-weight-bold mb-0" id="color"><?php echo htmlspecialchars($product['color']); ?></td>
-                      <td class="text-center text-xs font-weight-bold mb-0" id="brand"><?php echo htmlspecialchars($product['brand']); ?></td>
-                      <td class="text-center text-xs font-weight-bold mb-0" id="material"><?php echo htmlspecialchars($product['material']); ?></td>
-                      <td class="text-center text-xs font-weight-bold mb-0" id="dimensions"><?php echo htmlspecialchars($product['dimensions']); ?></td>
-                      <td class="text-center text-xs font-weight-bold mb-0" id="category"><?php echo htmlspecialchars($product['category']); ?></td>
-                      <td class="text-center text-xs font-weight-bold mb-0" id="stock"><?php echo htmlspecialchars($product['stock']); ?></td>
-                      <td class="text-center text-xs font-weight-bold mb-0" id="price">Rs. <?php echo htmlspecialchars($product['price']); ?></td>
-                      <td class="text-center">
+              <?php if (!empty($products)): ?>
+            <?php foreach ($products as $product): ?>
+                <tr>
+                    <td><?php echo htmlspecialchars($product['product_id']); ?></td>
+                    <td><?php echo htmlspecialchars($product['product_name']); ?></td>
+                    <td><?php echo htmlspecialchars($product['description']); ?></td>
+                    <td><?php echo htmlspecialchars($product['product_code']); ?></td>
+                    <td><?php echo htmlspecialchars($product['color']); ?></td>
+                    <td><?php echo htmlspecialchars($product['brand']); ?></td>
+                    <td><?php echo htmlspecialchars($product['material']); ?></td>
+                    <td><?php echo htmlspecialchars($product['dimensions']); ?></td>
+                    <td><?php echo htmlspecialchars($product['category']); ?></td>
+                    <td><?php echo htmlspecialchars($product['stock']); ?></td>
+                    <td>Rs. <?php echo htmlspecialchars($product['price']); ?></td>
+                    <td>
                         <?php if (!empty($product['image'])): ?>
-                          <img src="../pages/product_image/<?php echo htmlspecialchars($product['image']); ?>" id="osrtImageProduct_<?php echo$product['product_id']?>" alt="Product Image" style="width: 50px; height: 50px;">
+                            <img src="../pages/product_image/<?php echo htmlspecialchars($product['image']); ?>" alt="Product Image" style="width: 50px; height: 50px;">
                         <?php else: ?>
-                          <span>No image</span>
+                            <span>No image</span>
                         <?php endif; ?>
-                      </td>
-                    </tr>
-                  <?php endforeach; ?>
-                <?php else: ?>
-                  <tr>
-                    <td colspan="11" class="text-center text-xs font-weight-bold mb-0">No products found.</td>
-                  </tr>
-                <?php endif; ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <tr>
+                <td colspan="12">No products found.</td>
+            </tr>
+        <?php endif; ?>
               </tbody>
             </table>
           </div>
@@ -465,6 +482,38 @@ $conn->close();
     </div>
   </div>
 </div>
+<div class="col-lg-12">
+    <?php 
+    echo '<div class="property-pagination">';
+    $last_page = ceil($total_products / 9);
+
+    if ($page_no > 1 ) {
+        echo '<a href="./products?page_no=' . ($page_no - 1) . '" class="icon"><span class="arrow_left"></span></a>';
+    }
+    
+    if ($page_no != 1  && $page_no != 2) {
+        echo ' <a href="./products?page_no=1">1</a>';
+    }
+
+    if ($last_page > 1 && $page_no > 1) {
+        echo '<a href="./products?page_no=' . ($page_no - 1) . '">' . ($page_no - 1) . '</a>';
+    }
+
+    echo '<a href="./products?page_no=' . $page_no . '">' . $page_no . '</a>';
+
+    if ($page_no < $last_page - 1) {
+        echo '<a href="./products?page_no=' . ($page_no + 1) . '">' . ($page_no + 1) . '</a>';
+    }
+
+    if ($page_no < $last_page) {
+        echo '<a href="./products?page_no=' . $last_page . '">' . $last_page . '</a>';
+        echo '<a href="./products?page_no=' . ($page_no + 1) . '" class="icon"><span class="arrow_right"></span></a>';
+    }
+
+    echo '</div>';
+    ?>
+</div>
+
 <!-- Lightbox Modal -->
 <div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
   <div class="modal-dialog">
