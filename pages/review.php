@@ -364,7 +364,12 @@ $conn->close();
 
 
 <div class="container-fluid py-4">
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addReviewModal" onclick="redirectDownload()">
+<script>
+  function redirectDownload(){
+    window.location.href = "./review_download.php";
+  }
+</script>
+<button type="button" class="btn btn-primary" onclick="redirectDownload()">
 Download
 </button>
   <div class="row">

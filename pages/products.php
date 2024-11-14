@@ -421,13 +421,9 @@ $conn->close();
 <!-- HTML for displaying the products -->
 
 <div class="container-fluid py-4">
-<script>
-  function redirectDownload(){
-    window.location.href = "./product_download.php";
-  }
-</script>
+
 <button type="button" class="btn btn-primary" onclick="redirectDownload()">
-Do
+Download
 </button>
   <div class="row">
     <div class="col-12">

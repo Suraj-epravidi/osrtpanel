@@ -322,6 +322,14 @@ $conn->close();
 
 
 <div class="container-fluid py-4">
+<script>
+  function redirectDownload(){
+    window.location.href = "./faq_download.php";
+  }
+</script>
+<button type="button" class="btn btn-primary" onclick="redirectDownload()">
+Download
+</button>
   <div class="row">
     <div class="col-12">
       <div class="card my-4">
