@@ -1,0 +1,13 @@
+[12-Nov-2024 16:26:57 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/epravidi/osrtPanel/index.php:1) in /home/epravidi/osrtPanel/index.php on line 3
+[12-Nov-2024 16:27:01 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/epravidi/osrtPanel/index.php:1) in /home/epravidi/osrtPanel/index.php on line 3
+[12-Nov-2024 16:27:13 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/epravidi/osrtPanel/index.php:1) in /home/epravidi/osrtPanel/index.php on line 3
+[12-Nov-2024 16:27:23 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/epravidi/osrtPanel/index.php:1) in /home/epravidi/osrtPanel/index.php on line 3
+[12-Nov-2024 16:27:33 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/epravidi/osrtPanel/index.php:1) in /home/epravidi/osrtPanel/index.php on line 3
+[12-Nov-2024 16:27:34 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/epravidi/osrtPanel/index.php:1) in /home/epravidi/osrtPanel/index.php on line 3
+[12-Nov-2024 16:27:34 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/epravidi/osrtPanel/index.php:1) in /home/epravidi/osrtPanel/index.php on line 3
+[12-Nov-2024 16:27:46 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/epravidi/osrtPanel/index.php:1) in /home/epravidi/osrtPanel/index.php on line 3
+[12-Nov-2024 16:28:39 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/epravidi/osrtPanel/index.php:1) in /home/epravidi/osrtPanel/index.php on line 3
+[12-Nov-2024 16:29:09 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/epravidi/osrtPanel/index.php:1) in /home/epravidi/osrtPanel/index.php on line 3
+[12-Nov-2024 16:29:12 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/epravidi/osrtPanel/index.php:1) in /home/epravidi/osrtPanel/index.php on line 3
+[12-Nov-2024 16:29:19 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/epravidi/osrtPanel/index.php:1) in /home/epravidi/osrtPanel/index.php on line 3
+[12-Nov-2024 16:29:20 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/epravidi/osrtPanel/index.php:1) in /home/epravidi/osrtPanel/index.php on line 3

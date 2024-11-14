@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Execute the statement
         if ($stmt->execute()) {
             // Success: redirect back to the FAQ page or show a success message
-            header("Location: https://panel-osrt.epravidi.com/pages/faq.php");
+            header("Location: https://osrtpanel.epravidi.com/pages/faq.php");
             exit();
         } else {
             // Failure: display an error message

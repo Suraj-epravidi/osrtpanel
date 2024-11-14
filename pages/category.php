@@ -189,17 +189,36 @@ if (!isset($_COOKIE['osrt_login'])) {
               </li>
             </ol>
             <h6 class="font-weight-bolder mb-0">Dashboard</h6>
+            <a class="opacity-5 text-dark" href="javascript:;"><br>How to Use the Add Category Section<br><br>
+
+            Click the "Add Category" button located at the top of the page. This will open a modal form where you can input details for the new category, including:<br><br>
+
+Category Name: Enter the name of the category.<br>
+Category Image: Choose an image for the category by clicking the "Browse" button and selecting the file from your device.<br> 
+Once you have filled in the necessary fields, click the "Submit Category" button to add the category to your system.<br>
+Viewing Existing Categories:<br> <br>
+To view all the categories that have been added, simply scroll down to the table below the "Add Category" button. This table will list all categories with their names and associated images.<br>
+
+Deleting a Category:<br> <br>
+To delete a category, find the category in the table below. You will see a "Delete" button next to each category. Click the "Delete" button, and a confirmation dialog will appear asking if you’re sure you want to delete the category. If confirmed, the category will be removed from the list.<br><br>
+If you encounter any issues or have questions, please don’t hesitate to contact Epravidi for assistance. Our support team is here to help ensure smooth management of your product data.
+<br>
+Contact Epravidi:<br>
+<br>
+Email: support@epravidi.com
+Phone: +977 9813722923
+Website: www.epravidi.com<br><br></a>
           </nav>
           <div
             class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4"
             id="navbar"
           >
-            <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+            <!-- <div class="ms-md-auto pe-md-3 d-flex align-items-center">
               <div class="input-group input-group-outline">
                 <label class="form-label">Type here...</label>
                 <input type="text" class="form-control" />
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </nav>

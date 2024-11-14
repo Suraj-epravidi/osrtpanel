@@ -191,17 +191,34 @@ if (!isset($_COOKIE['osrt_login'])) {
               </li>
             </ol>
             <h6 class="font-weight-bolder mb-0">Dashboard</h6>
+            <a class="opacity-5 text-dark" href="javascript:;">
+            <br><br>This page shows a Contact Form table listing entries from users who have submitted inquiries. The table displays:<br><br>
+
+Sn no: Serial number of each entry.<br>
+Name: Name of the person who submitted the form.<br>
+Email: Email address provided by the user.<br>
+Website: Website (if given) by the user.<br>
+Comment: Message or comment submitted.<br>
+Created At: Date and time of submission.<br><br>
+Each row represents a form submission, allowing you to review user inquiries easily.<br><br>
+
+Contact Support<br>
+If you encounter any issues or have questions, you can reach out to support:<br><br>
+
+Email: support@epravidi.com<br>
+Phone: +977 9813722923<br>
+Website: www.epravidi.com<br><br></a>
           </nav>
           <div
             class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4"
             id="navbar"
           >
-            <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+            <!-- <div class="ms-md-auto pe-md-3 d-flex align-items-center">
               <div class="input-group input-group-outline">
                 <label class="form-label">Type here...</label>
                 <input type="text" class="form-control" />
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </nav>

@@ -189,17 +189,39 @@ if (!isset($_COOKIE['osrt_login'])) {
               </li>
             </ol>
             <h6 class="font-weight-bolder mb-0">Dashboard</h6>
+
+            <a class="opacity-5 text-dark" href="javascript:;"><br>How to Use the Add Review Section<br>
+            On the Review page, you can view, add, and delete reviews associated with products.<br><br>
+
+To Add a New Review:<br>
+Click on the Add Review button to open a pop-up form for adding a new review.<br>
+Fill in the form fields:<br>
+Product ID: Enter the ID of the product.<br>
+Comments: Type the review comments.<br>
+Upload Image: Choose an image to accompany the review.<br>
+Click Submit Review to save the review.<br><br>
+To Delete a Review:<br>
+In the reviews table, locate the review you want to delete.<br>
+Click on the Delete button in the last column of the review entry.<br>
+A prompt will appear asking for confirmation; click OK to confirm deletion.<br><br>
+If you encounter any issues or have questions, please don’t hesitate to contact Epravidi for assistance. Our support team is here to help ensure smooth management of your product data.
+<br>
+Contact Epravidi:<br>
+<br>
+Email: support@epravidi.com
+Phone: +977 9813722923
+Website: www.epravidi.com<br><br></a>
           </nav>
           <div
             class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4"
             id="navbar"
           >
-            <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+            <!-- <div class="ms-md-auto pe-md-3 d-flex align-items-center">
               <div class="input-group input-group-outline">
                 <label class="form-label">Type here...</label>
                 <input type="text" class="form-control" />
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </nav>

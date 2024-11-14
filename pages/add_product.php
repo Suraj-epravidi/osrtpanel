@@ -65,7 +65,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bind_param("ssssssssdds", $product_name, $description, $product_code, $color, $brand, $material, $dimensions, $category, $stock, $price, $new_file_name);
 
             if ($stmt->execute()) {
-               header("Location: https://panel-osrt.epravidi.com/pages/products.php");
+               header("Location: https://osrtpanel.epravidi.com/pages/products.php");
+
             } else {
                 echo "Error: " . $stmt->error;
             }
