@@ -342,6 +342,9 @@ $conn->close();
 
 
 <div class="container-fluid py-4">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addReviewModal" onclick="redirectDownload()">
+Download
+</button>
   <div class="row">
     <div class="col-12">
       <div class="card my-4">
