@@ -327,7 +327,7 @@ $conn->close();
 <div class="container-fluid py-4">
 <script>
   function redirectDownload(){
-    window.location.href = "./product_download.php";
+    window.location.href = "./category_download.php";
   }
 </script>
 <button type="button" class="btn btn-primary" onclick="redirectDownload()">
