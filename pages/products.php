@@ -493,7 +493,7 @@ $conn->close();
 
     // Left arrow (previous page)
     if ($page_no > 1 ) {
-        echo '<a href="./products.php?page_no=' . ($page_no - 1) . '" class="icon"><span class="ni-bold-left"><</span></a>';
+        echo '<a href="./products.php?page_no=' . ($page_no - 1) . '" class="icon"><span><</span></a>';
     }
 
     // First page link if not on the first or second page
@@ -517,7 +517,7 @@ $conn->close();
     // Last page link if not on the last page
     if ($page_no < $last_page) {
         echo '<a href="./products.php?page_no=' . $last_page . '">' . $last_page . '</a>';
-        echo '<a href="./products.php?page_no=' . ($page_no + 1) . '" class="icon"><span class="ni-bold-right">></span></a>';
+        echo '<a href="./products.php?page_no=' . ($page_no + 1) . '" class="icon"><span >></span></a>';
     }
 
     echo '</div>';
