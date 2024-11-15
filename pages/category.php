@@ -300,73 +300,20 @@ $conn->close();
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="editProductModalLabel">Edit Product</h5>
+        <h5 class="modal-title" id="editProductModalLabel">Edit Category</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form id="editProductForm" action="update_product.php" method="POST" enctype="multipart/form-data">
+      <form id="editProductForm" action="update_category.php" method="POST" enctype="multipart/form-data">
     <div class="modal-body">
         <input type="hidden" name="product_id" id="edit_product_id">
         <div class="mb-3">
-            <label for="edit_product_name" class="form-label">Product Name</label>
+            <label for="edit_product_name" class="form-label">Category Name</label>
             <input type="text" class="form-control" id="edit_product_name" name="product_name" required>
-        </div>
-        <div class="mb-3">
-            <label for="edit_description" class="form-label">Description</label>
-            <textarea class="form-control" id="edit_description" name="description" rows="3" required></textarea>
-        </div>
-        <div class="mb-3">
-            <label for="edit_product_code" class="form-label">Product Code</label>
-            <input type="text" class="form-control" id="edit_product_code" name="product_code" required>
-        </div>
-        <div class="mb-3">
-            <label for="edit_color" class="form-label">Color</label>
-            <input type="text" class="form-control" id="edit_color" name="color">
-        </div>
-        <div class="mb-3">
-            <label for="edit_brand" class="form-label">Brand</label>
-            <input type="text" class="form-control" id="edit_brand" name="brand">
-        </div>
-        <div class="mb-3">
-            <label for="edit_material" class="form-label">Material</label>
-            <input type="text" class="form-control" id="edit_material" name="material">
-        </div>
-        <div class="mb-3">
-            <label for="edit_dimensions" class="form-label">Dimensions</label>
-            <input type="text" class="form-control" id="edit_dimensions" name="dimensions">
-        </div>
-        <div class="mb-3">
-            <label for="edit_category" class="form-label">Category</label>
-            <select class="form-control" id="edit_category" name="category" required>
-                <option value="">Select Category</option>
-                <?php
-                // Fetch categories from the database
-                $conn = connectToDatabase();
-                $sql = "SELECT category_name FROM categories"; // Update with actual table name if needed
-                $result = $conn->query($sql);
-
-                if ($result && $result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        echo '<option value="' . htmlspecialchars($row["category_name"]) . '">' . htmlspecialchars($row["category_name"]) . '</option>';
-                    }
-                } else {
-                    echo '<option value="">No categories found</option>';
-                }
-                $conn->close();
-                ?>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label for="edit_category" class="form-label">Stock</label>
-            <input type="number" class="form-control" id="edit_stock" name="stock">
-        </div>
-        <div class="mb-3">
-            <label for="edit_price" class="form-label">Price</label>
-            <input type="number" class="form-control" id="edit_price" name="price" required>
         </div>
 
         <!-- Display image and trigger input on click -->
         <div class="mb-3">
-            <label for="edit_product_image" class="form-label">Product Image</label>
+            <label for="edit_product_image" class="form-label">Category Image</label>
             <div class="input-group">
                 <!-- Image tag to display the current image -->
                 <img id="productImagePreview" src="default-image.jpg" alt="Product Image" style="width: 150px; height: 150px; object-fit: cover; cursor: pointer; border: 1px solid #ccc;" onclick="document.getElementById('edit_product_image').click();">
@@ -381,7 +328,36 @@ $conn->close();
        
     </div>
 </form>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const rows = document.querySelectorAll("tbody tr");
 
+  rows.forEach(row => {
+    row.addEventListener("click", () => {
+      const cells = row.querySelectorAll("td");
+
+      // Fill in the form with data from the row
+      document.getElementById("category_id").value = cells[0].textContent.trim();
+      document.getElementById("category_name").value = cells[1].textContent.trim();
+
+      // Get the image source from the 11th cell (10th index)
+      const imageCell = document.getElementById('categoryImage_'  +cells[0].textContent.trim());  // Assuming the image is in the 11th cell
+      if (imageCell) {
+        document.getElementById("productImagePreview").src = imageCell.src;
+      } else {
+        document.getElementById("productImagePreview").src = ""; // Clear if no image
+        console.log("Image not found");
+      }
+
+
+
+      // Show the modal
+      const editProductModal = new bootstrap.Modal(document.getElementById("editProductModal"));
+      editProductModal.show();
+    });
+  });
+});
+</script>
 <script>
     // Handle image file input change
     const fileInput = document.getElementById('edit_product_image');
@@ -494,11 +470,11 @@ Download
   <?php if (!empty($reviews)): ?>
     <?php foreach ($reviews as $index => $review): ?>
       <tr>
-        <td class="text-xs text-center font-weight-bold mb-0"><?php echo htmlspecialchars($review['ID']); ?></td>
-        <td class="text-xs text-center font-weight-bold mb-0">
+        <td class="text-xs text-center font-weight-bold mb-0" id="category_id"><?php echo htmlspecialchars($review['ID']); ?></td>
+        <td class="text-xs text-center font-weight-bold mb-0" id="category_name">
           <?php echo htmlspecialchars($review['category_name']); ?>
           </td> 
-        <td class="text-center text-xs font-weight-bold mb-0">
+        <td class="text-center text-xs font-weight-bold mb-0" id="categoryImage_"<?php echo $review['ID'];?>>
           <?php if (!empty($review['category_image'])): ?>
             <img src="/pages/category/<?php echo htmlspecialchars($review['category_image']); ?>" alt="Profile Image" style="width: 50px; height: 50px; border-radius: 50%;">
           <?php else: ?>
