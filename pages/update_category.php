@@ -13,18 +13,9 @@ if (!isset($_COOKIE['osrt_login'])) {
     // Check if the form is submitted
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Get form inputs
-        $productId = $_POST['product_id'];
-        $productName = $_POST['product_name'];
-        $description = $_POST['description'];
-        $productCode = $_POST['product_code'];
-        $color = $_POST['color'];
-        $brand = $_POST['brand'];
-        $material = $_POST['material'];
-        $dimensions = $_POST['dimensions'];
-        $category = $_POST['category'];
-        $price = $_POST['price'];
-        $stock = $_POST['stock'];
-        $sqlSelect = "SELECT image FROM products WHERE product_id = ?";
+        $productId = $_POST['category_id'];
+        $productName = $_POST['category_name'];
+        $sqlSelect = "SELECT category_image FROM categories WHERE ID = ?";
     $stmtSelect = $conn->prepare($sqlSelect);
     $stmtSelect->bind_param("i", $productId); // Assuming productId is an integer
     $stmtSelect->execute();
@@ -41,7 +32,7 @@ if (!isset($_COOKIE['osrt_login'])) {
 
         // Check if a new image is uploaded
         if (!empty($_FILES['new_image']['name'])) {
-            $imageDir = './product_image/';
+            $imageDir = './pages/category';
             
             // Delete the old image if it exists
             if (!empty($oldImageName) && file_exists($imageDir . $oldImageName)) {
@@ -59,31 +50,13 @@ if (!isset($_COOKIE['osrt_login'])) {
     
         // Update the product in the database
         $sql = "UPDATE products SET 
-                    product_name = ?, 
-                    description = ?, 
-                    product_code = ?, 
-                    color = ?, 
-                    brand = ?, 
-                    material = ?, 
-                    dimensions = ?, 
-                    category = ?, 
-                    price = ?, 
-                    stock=?,
-                    image = ? 
-                WHERE product_id = ?";
+                    category_name = ?, 
+                    category_image = ? 
+                WHERE ID = ?";
     
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssssssssssi", 
+        $stmt->bind_param("ssi", 
                           $productName, 
-                          $description, 
-                          $productCode, 
-                          $color, 
-                          $brand, 
-                          $material, 
-                          $dimensions, 
-                          $category, 
-                          $price, 
-                          $stock,
                           $newImageName, 
                           $productId);
         
