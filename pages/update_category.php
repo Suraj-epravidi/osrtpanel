@@ -49,7 +49,7 @@ if (!isset($_COOKIE['osrt_login'])) {
         }
     
         // Update the product in the database
-        $sql = "UPDATE products SET 
+        $sql = "UPDATE categories SET 
                     category_name = ?, 
                     category_image = ? 
                 WHERE ID = ?";
