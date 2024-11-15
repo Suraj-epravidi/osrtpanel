@@ -504,6 +504,26 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
             </div>
           </div>
         </div>
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 boxStatus">
+          <div class="card">
+            <div class="card-header p-3 pt-2">
+              <div
+                class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">person</i>
+              </div>
+              <div class="text-end pt-1">
+                <p class="text-sm mb-0 text-capitalize">Change Welcome Image (Responsive)</p>
+                <h4 class="mb-0"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addWelcomeImageResponsiveModal">Click here</button></h4>
+              </div>
+            </div>
+            <hr class="dark horizontal my-0" />
+            <div class="card-footer p-3">
+              <p class="mb-0">
+                <span class="text-success text-sm font-weight-bolder"> </span>
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
       </div>
     </div>
@@ -539,10 +559,36 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="addWelcomeImageLabel">Add a New Video</h5>
+        <h5 class="modal-title" id="addWelcomeImageLabel">Add a New JPG Image</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <form action="./pages/upload_welcome_image.php" method="POST" enctype="multipart/form-data">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="product_image" class="form-label">Choose file</label>
+            <div class="input-group">
+              <input type="file" class="form-control" id="product_image" name="product_image" accept="image/*"
+                aria-describedby="inputGroupFileAddon" aria-label="Upload" required>
+              <label class="input-group-text" for="product_image">Browse</label>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">SUBMIT</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="addWelcomeImageResponsiveModal" tabindex="-1" aria-labelledby="addWelcomeImageResponsiveLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addWelcomeImageResponsiveLabel">Add a New JPG Image</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="./pages/upload_welcome_responsive_image.php" method="POST" enctype="multipart/form-data">
         <div class="modal-body">
           <div class="mb-3">
             <label for="product_image" class="form-label">Choose file</label>
