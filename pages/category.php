@@ -308,7 +308,7 @@ $conn->close();
         <input type="hidden" name="product_id" id="edit_product_id">
         <div class="mb-3">
             <label for="edit_product_name" class="form-label">Category Name</label>
-            <input type="text" class="form-control" id="edit_product_name" name="product_name" required>
+            <input type="text" class="form-control" id="category_name" name="product_name" required>
         </div>
 
         <!-- Display image and trigger input on click -->
