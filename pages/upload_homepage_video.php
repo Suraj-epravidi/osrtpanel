@@ -1,4 +1,7 @@
 <?php
+// Initialize a message variable
+$message = '';
+
 // Check if a file has been uploaded
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['product_image'])) {
     // Define the uploads directory
@@ -10,51 +13,53 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['product_image'])) {
     }
 
     // Set the desired filename for the uploaded video
-    $uploadFile = $uploadDir . 'default-video.mp4';
+    $uploadFile = $uploadDir . 'homepage-video.mp4';
 
     // Check for upload errors
     if ($_FILES['product_image']['error'] === UPLOAD_ERR_OK) {
         // Restrict the file type to only MP4
         $fileType = pathinfo($_FILES['product_image']['name'], PATHINFO_EXTENSION);
         if (strtolower($fileType) !== 'mp4') {
-            echo "Only MP4 files are allowed.";
-            exit;
-        }
-
-        // Move the uploaded file to the uploads directory with the specified name
-        if (move_uploaded_file($_FILES['product_image']['tmp_name'], $uploadFile)) {
-            echo "The video has been successfully uploaded as default-video.mp4!";
+            $message = "Only MP4 files are allowed.";
         } else {
-            echo "Failed to upload the video.";
+            // Move the uploaded file to the uploads directory with the specified name
+            if (move_uploaded_file($_FILES['product_image']['tmp_name'], $uploadFile)) {
+                $message = "The video has been successfully uploaded as default-video.mp4!";
+            } else {
+                $message = "Failed to upload the video.";
+            }
         }
     } else {
         // Handle specific file upload errors
         switch ($_FILES['product_image']['error']) {
             case UPLOAD_ERR_INI_SIZE:
             case UPLOAD_ERR_FORM_SIZE:
-                echo "The uploaded file exceeds the maximum size limit.";
+                $message = "The uploaded file exceeds the maximum size limit.";
                 break;
             case UPLOAD_ERR_PARTIAL:
-                echo "The file was only partially uploaded.";
+                $message = "The file was only partially uploaded.";
                 break;
             case UPLOAD_ERR_NO_FILE:
-                echo "No file was uploaded.";
+                $message = "No file was uploaded.";
                 break;
             case UPLOAD_ERR_NO_TMP_DIR:
-                echo "Missing temporary folder.";
+                $message = "Missing temporary folder.";
                 break;
             case UPLOAD_ERR_CANT_WRITE:
-                echo "Failed to write file to disk.";
+                $message = "Failed to write file to disk.";
                 break;
             case UPLOAD_ERR_EXTENSION:
-                echo "File upload stopped by a PHP extension.";
+                $message = "File upload stopped by a PHP extension.";
                 break;
             default:
-                echo "Unknown upload error.";
+                $message = "Unknown upload error.";
                 break;
         }
     }
 } else {
-    echo "No video file was submitted.";
+    $message = "No video file was submitted.";
 }
-?>
+
+// Redirect back to index.php with the message in the query string
+header("Location: ../index.php?message=" . urlencode($message));
+exit();
