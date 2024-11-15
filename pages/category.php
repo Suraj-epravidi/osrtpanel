@@ -375,22 +375,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Allow image pasting from clipboard
-    document.getElementById('edit_product_image').addEventListener('paste', function(event) {
-        const items = event.clipboardData.items;
-        for (let i = 0; i < items.length; i++) {
-            if (items[i].type.indexOf('image') !== -1) {
-                const file = items[i].getAsFile();
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    // Set the image preview to the clipboard image
-                    productImagePreview.src = e.target.result;
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-    });
-
+    
     // Trigger the hidden file input when image preview is clicked
     productImagePreview.addEventListener('click', function() {
         fileInput.click();

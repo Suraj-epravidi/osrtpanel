@@ -62,7 +62,7 @@ if (!isset($_COOKIE['osrt_login'])) {
         
         // Execute the statement
         if ($stmt->execute()) {
-        header("Location:./products.php");
+        header("Location:./category.php");
         } else {
             echo "Error updating product: " . $conn->error;
         }
