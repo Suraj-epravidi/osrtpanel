@@ -10,33 +10,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $category_name = $_POST['category_name'];
 
     // Image upload handling
-    $target_dir = "../pages/category/";
-    $image_name = null;
+ 
     
     if (isset($_FILES['review_image']) && $_FILES['review_image']['error'] == 0) {
-        $image_name = basename($_FILES["review_image"]["name"]);
-        $image_type = strtolower(pathinfo($image_name, PATHINFO_EXTENSION));
-        $target_file = $target_dir . $image_name;
+        $imageDir = '../pages/category';
+
+        // Get the uploaded file info
+        $imageTmpName = $_FILES['new_image']['tmp_name'];
+        $imageExtension = pathinfo($_FILES['new_image']['name'], PATHINFO_EXTENSION);
+        $newImageName =  $category_name . '.' . $imageExtension; // Rename the new image
         
-        // Check if the file is an actual image
-        $check = getimagesize($_FILES["review_image"]["tmp_name"]);
-        if ($check === false) {
-            die("The uploaded file is not an image.");
-        }
-
-        // Check file size (e.g., limit to 5MB)
-        if ($_FILES["review_image"]["size"] > 5000000) {
-            die("Sorry, your file is too large.");
-        }
-
-        // Allow certain file formats
-        $allowed_types = ["jpg", "jpeg", "png", "gif"];
-        if (!in_array($image_type, $allowed_types)) {
-            die("Sorry, only JPG, JPEG, PNG & GIF files are allowed.");
-        }
-
+        // Move the uploaded file to the server
         // Move the uploaded file to the target directory
-        if (!move_uploaded_file($_FILES["review_image"]["tmp_name"], $target_file)) {
+        if ( move_uploaded_file($imageTmpName, $imageDir . $newImageName)) {
             die("Sorry, there was an error uploading your file.");
         }
     }
