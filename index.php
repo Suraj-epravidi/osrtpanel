@@ -482,110 +482,18 @@ if (!isset($_COOKIE['osrt_login'])) {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="addProductModalLabel">Add a New Product</h5>
+        <h5 class="modal-title" id="addProductModalLabel">Add a New Video</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <form action="add_product.php" method="POST" enctype="multipart/form-data">
         <div class="modal-body">
-        <div class="mb-3">
-            <label for="product_name" class="form-label">Product Name</label>
-            <input type="text" class="form-control" id="product_name" name="product_name" required>
-          </div>
           <div class="mb-3">
-            <label for="description" class="form-label">Description</label>
-            <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
-          </div>
-          <div class="mb-3">
-            <label for="product_code" class="form-label">Product Code</label>
-            <input type="text" class="form-control" id="product_code" name="product_code" required>
-          </div>
-          <div class="mb-3">
-            <label for="color" class="form-label">Color</label>
-            <input type="text" class="form-control" id="color" name="color" required>
-          </div>
-          <div class="mb-3">
-            <label for="brand" class="form-label">Brand</label>
-            <input type="text" class="form-control" id="brand" name="brand" required>
-          </div>
-          <div class="mb-3">
-            <label for="material" class="form-label">Material</label>
-            <input type="text" class="form-control" id="material" name="material" required>
-          </div>
-          <div class="mb-3">
-            <label for="dimensions" class="form-label">Dimensions</label>
-            <input type="text" class="form-control" id="dimensions" name="dimensions" required>
-          </div>
-
-          <div class="mb-3">
-            <label for="category" class="form-label">Category</label>
-            <select class="form-control" id="category" name="category" required>
-              <option value="">Select Category</option>
-              <?php
-               function connectToDatabase() {
-                $servername = "192.250.235.20";
-                $username = "epravidi_osrt_data";
-                $password = "UQ!r.gTOz=oo";
-                $dbname = "epravidi_osrt";
-        
-                // Create connection
-                $conn = new mysqli($servername, $username, $password, $dbname);
-        
-                // Check connection
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
-                }
-        
-                return $conn;
-            }
-              $conn = connectToDatabase(); // Ensure this function is defined to connect to your DB
-              $sql = "SELECT category_name FROM categories"; // Replace 'categories' with your actual table name
-              $result = $conn->query($sql);
-              
-              if ($result && $result->num_rows > 0) {
-                  while ($row = $result->fetch_assoc()) {
-                      echo '<option value="' . htmlspecialchars($row["category_name"]) . '">' . htmlspecialchars($row["category_name"]) . '</option>';
-                  }
-              } else {
-                  echo '<option value="">No categories found</option>';
-              }
-              $conn->close();
-              ?>
-            </select>
-          </div>
-
-          <div class="mb-3">
-            <label for="stock" class="form-label">Stock</label>
-            <input type="number" class="form-control" id="stock" name="stock" required>
-          </div>
-          <div class="mb-3">
-            <label for="price" class="form-label">Price</label>
-            <input type="number" class="form-control" id="price" name="price" required>
-          </div>
-          <div class="mb-3">
-            <label for="product_image" class="form-label">Upload Product Image</label>
+            <label for="product_image" class="form-label">Choose file</label>
             <div class="input-group">
-              <input type="file" class="form-control" id="product_image" name="product_image" accept="image/*" aria-describedby="inputGroupFileAddon" aria-label="Upload" required>
+              <input type="file" class="form-control" id="product_image" name="product_image" accept="video/mp4"
+                aria-describedby="inputGroupFileAddon" aria-label="Upload" required>
               <label class="input-group-text" for="product_image">Browse</label>
-              <textarea class="form-control" id="product_image_textarea" name="product_image_textarea" rows="3" placeholder="Paste base64 image data or image URL here"></textarea>
             </div>
-            <script>
-              document.getElementById('product_image_textarea').addEventListener('paste', function(e) {
-                console.log("Paste called.");
-                console.log(e);
-                  var items = e.clipboardData.items;
-                  console.log(items);
-                  for (var i = 0; i < items.length; i++) {
-                      if (items[i].type.indexOf("image") !== -1) {
-                          var blob = items[i].getAsFile();
-                          var reader = new FileReader();
-                          reader.onloadend = function() {
-                              document.getElementById('product_image_textarea').src = reader.result;
-                          };
-                          reader.readAsDataURL(blob);
-                      }
-                  }
-              });
-            </script>
           </div>
         </div>
         <div class="modal-footer">
