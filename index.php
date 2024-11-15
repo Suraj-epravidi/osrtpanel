@@ -462,6 +462,7 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
           </div>
         </div>
       </div>
+      <div class="container-fluid py-4">
       <div class="row rowStatus">
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 boxStatus">
           <div class="card">
@@ -503,6 +504,7 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
 
