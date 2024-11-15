@@ -32,7 +32,7 @@ if (!isset($_COOKIE['osrt_login'])) {
 
         // Check if a new image is uploaded
         if (!empty($_FILES['new_image']['name'])) {
-            $imageDir = '../pages/category';
+            $imageDir = '../pages/category/';
             
             // Delete the old image if it exists
             if (!empty($oldImageName) && file_exists($imageDir . $oldImageName)) {
