@@ -305,7 +305,7 @@ $conn->close();
       </div>
       <form id="editProductForm" action="update_category.php" method="POST" enctype="multipart/form-data">
     <div class="modal-body">
-        <input type="hidden" name="category_id" id="edit_product_id">
+        <input type="hidden" name="category_id" id="category_id">
         <div class="mb-3">
             <label for="edit_product_name" class="form-label">Category Name</label>
             <input type="text" class="form-control" id="category_name" name="category_name" required>
