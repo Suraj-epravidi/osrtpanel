@@ -588,7 +588,7 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
         <h5 class="modal-title" id="addWelcomeImageResponsiveLabel">Add a New JPG Image</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="./pages/upload_welcome_responsive_image.php" method="POST" enctype="multipart/form-data">
+      <form action="./pages/upload_welcome_image_responsive.php" method="POST" enctype="multipart/form-data">
         <div class="modal-body">
           <div class="mb-3">
             <label for="product_image" class="form-label">Choose file</label>
