@@ -387,10 +387,10 @@ document.addEventListener("DOMContentLoaded", () => {
 </div>
 
 <script>
-  // Trigger file input when the image is clicked
-  document.getElementById('productImagePreview').addEventListener('click', function() {
-    document.getElementById('edit_product_image').click();
-  });
+  // // Trigger file input when the image is clicked
+  // document.getElementById('productImagePreview').addEventListener('click', function() {
+  //   document.getElementById('edit_product_image').click();
+  // });
 
 </script>
 
