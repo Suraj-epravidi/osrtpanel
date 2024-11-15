@@ -5,7 +5,7 @@ $message = '';
 // Check if a file has been uploaded
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['product_image'])) {
     // Define the uploads directory
-    $uploadDir = 'uploads/';
+    $uploadDir = '../../osrt.epravidi.com/uploads/';
 
     // Ensure the uploads directory exists
     if (!is_dir($uploadDir)) {
