@@ -3810,7 +3810,7 @@ textarea.form-control-lg {
   background-color: #fff;
   border-bottom: 0 solid rgba(0, 0, 0, 0.125); }
   .card-header:first-child {
-    border-radius: 0.75rem 0.75rem 0 0; }
+    border-radius: 0.75rem; }
 
 .card-footer {
   padding: 0.5rem 1rem;
