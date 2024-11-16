@@ -17544,3 +17544,11 @@ pre[class*="language-"] {
   text-align: left !important;
 }
 
+.mb-0.change-UI{
+  display: flex;
+}
+
+.btn.btn-primary.change-UI{
+  align-self: flex-start;
+  margin-right: 0;
+}

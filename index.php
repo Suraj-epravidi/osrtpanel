@@ -564,7 +564,7 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
             <div class="card-header p-3 pt-2">
               <div class="text-end pt-1 change-UI">
                 <p class="text-sm mb-0 text-capitalize change-UI">Change Homepage Video</p>
-                <h4 class="mb-0"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addReviewModal">Click here</button></h4>
+                <h4 class="mb-0 change-UI"><button type="button" class="btn btn-primary change-UI" data-bs-toggle="modal" data-bs-target="#addReviewModal">Click here</button></h4>
               </div>
             </div>
             <hr class="dark horizontal my-0" />
@@ -584,9 +584,9 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 boxStatus">
           <div class="card">
             <div class="card-header p-3 pt-2">
-              <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">Change Welcome Image (Responsive)</p>
-                <h4 class="mb-0"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addWelcomeImageResponsiveModal">Click here</button></h4>
+              <div class="text-end pt-1 change-UI">
+                <p class="text-sm mb-0 text-capitalize change-UI">Change Welcome Image (Responsive)</p>
+                <h4 class="mb-0 change-UI"><button type="button" class="btn btn-primary change-UI" data-bs-toggle="modal" data-bs-target="#addWelcomeImageResponsiveModal">Click here</button></h4>
               </div>
             </div>
             <hr class="dark horizontal my-0" />
