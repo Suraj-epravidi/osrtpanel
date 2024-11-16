@@ -17555,7 +17555,7 @@ button.btn.btn-primary.change-UI{
 .card.change-UI{
   width:max-content;
 }
-.container-fluid .py-4 .change-UI{
+.container-fluid.py-4.change-UI{
   margin-left:0;
 }
 .row.rowStatus.change-UIBox div {
