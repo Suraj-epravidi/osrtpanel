@@ -17548,7 +17548,7 @@ pre[class*="language-"] {
   display: flex;
 }
 
-.btn.btn-primary.change-UI{
+button.btn.btn-primary.change-UI{
   align-self: flex-start;
   margin-left: 0;
 }
