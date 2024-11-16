@@ -493,7 +493,7 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
             <div class="card-header p-3 pt-2">
               <div class="text-end pt-1 change-UI">
                 <p class="text-sm mb-0 text-capitalize change-UI">Change Welcome Image</p>
-                <h4 class="mb-0"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addWelcomeImageModal">Click here</button></h4>
+                <h4 class="mb-0"><button type="button" class="btn btn-primary change-UI" data-bs-toggle="modal" data-bs-target="#addWelcomeImageModal">Click here</button></h4>
               </div>
             </div>
 
