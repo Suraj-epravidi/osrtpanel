@@ -7172,6 +7172,9 @@ textarea.form-control-lg {
   text-align: left !important; }
 
 .text-end {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   text-align: right !important; }
 
 .text-center {
@@ -17535,3 +17538,9 @@ pre[class*="language-"] {
     overflow: auto !important; } }
 
 /*# sourceMappingURL=material-dashboard.css.map */
+
+.text-end.pt-1.change-UI{
+  align-items: flex-start;
+  text-align: left !important;
+}
+
