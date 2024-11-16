@@ -17559,6 +17559,7 @@ button.btn.btn-primary.change-UI{
   margin-left:0;
 }
 .row.rowStatus.change-UIBox div {
+  margin-top:50px;
   width: 300px;
   margin-right: 20px;
 }
