@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $imageFileType = strtolower(pathinfo($_FILES["product_image"]["name"], PATHINFO_EXTENSION));
     
     // Create the new file name
-    $new_file_name = $product_code . "_" . $brand . "_". $color . "." . $imageFileType;
+    $new_file_name = $product_code . "_" . $brand . "." . $imageFileType;
     $target_file = $target_dir . $new_file_name;
     $uploadOk = 1;
     // Check if the file is an actual image
