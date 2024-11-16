@@ -478,7 +478,7 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
       <div class="container-fluid py-4">
       <div class="row rowStatus">
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 boxStatus">
-          <div class="card">
+          <div class="card change-UI">
             <div class="card-header p-3 pt-2">
               <div class="text-end pt-1 change-UI">
                 <p class="text-sm mb-0 text-capitalize change-UI">Change Homepage Video</p>
@@ -489,7 +489,7 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
           </div>
         </div>
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 boxStatus">
-          <div class="card">
+          <div class="card change-UI">
             <div class="card-header p-3 pt-2">
               <div class="text-end pt-1 change-UI">
                 <p class="text-sm mb-0 text-capitalize change-UI">Change Welcome Image</p>
@@ -500,7 +500,7 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
           </div>
         </div>
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 boxStatus">
-          <div class="card">
+          <div class="card change-UI">
             <div class="card-header p-3 pt-2">
               <div class="text-end pt-1 change-UI">
                 <p class="text-sm mb-0 text-capitalize change-UI">Change Welcome Image (Responsive)</p>
