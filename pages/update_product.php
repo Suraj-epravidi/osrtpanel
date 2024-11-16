@@ -79,12 +79,12 @@ if (!isset($_COOKIE['osrt_login'])) {
                           $productCode, 
                           $color, 
                           $brand, 
-                          $material, 
-                          $dimensions, 
+                          $material,  
                           $category, 
                           $price, 
                           $stock,
-                          $newImageName, 
+                          $newImageName,
+                          $dimensions, 
                           $productId);
         
         // Execute the statement
