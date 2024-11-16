@@ -488,8 +488,12 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
           </div>
         </div>
       </div>
+
       <div class="container-fluid py-4 change-UI">
+      <h6 class="font-weight-bolder mb-0">Change Homepage Elements</h6>
       <div class="row rowStatus change-UIBox">
+
+
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 boxStatus">
           <div class="card change-UI">
             <div class="card-header p-3 pt-2">
