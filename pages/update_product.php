@@ -51,7 +51,7 @@ if (!isset($_COOKIE['osrt_login'])) {
             // Get the uploaded file info
             $imageTmpName = $_FILES['new_image']['tmp_name'];
             $imageExtension = pathinfo($_FILES['new_image']['name'], PATHINFO_EXTENSION);
-            $newImageName = $product_code . "_" . $brand . "." . $imageExtension; // Rename the new image
+            $newImageName = $productCode . "_" . $brand . "." . $imageExtension; // Rename the new image
             
             // Move the uploaded file to the server
             move_uploaded_file($imageTmpName, $imageDir . $newImageName);
