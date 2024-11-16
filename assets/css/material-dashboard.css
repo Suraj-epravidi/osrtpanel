@@ -17558,3 +17558,7 @@ button.btn.btn-primary.change-UI{
 .container-fluid .py-4 .change-UI{
   margin-left:0;
 }
+.row.rowStatus.change-UIBox div {
+  width: 300px;
+  margin-right: 20px;
+}
