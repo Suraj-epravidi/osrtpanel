@@ -64,12 +64,12 @@ if (!isset($_COOKIE['osrt_login'])) {
                     product_code = ?, 
                     color = ?, 
                     brand = ?, 
-                    material = ?, 
-                    dimensions = ?, 
+                    material = ?,  
                     category = ?, 
                     price = ?, 
                     stock=?,
-                    image = ? 
+                    image = ?,
+                    dimensions = ?
                 WHERE product_id = ?";
     
         $stmt = $conn->prepare($sql);
