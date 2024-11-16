@@ -485,7 +485,7 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
                 <h4 class="mb-0"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addReviewModal">Click here</button></h4>
               </div>
             </div>
-            <hr class="dark horizontal my-0" />
+
           </div>
         </div>
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 boxStatus">
@@ -496,7 +496,7 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
                 <h4 class="mb-0"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addWelcomeImageModal">Click here</button></h4>
               </div>
             </div>
-            <hr class="dark horizontal my-0" />
+
           </div>
         </div>
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 boxStatus">
@@ -507,7 +507,7 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
                 <h4 class="mb-0"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addWelcomeImageResponsiveModal">Click here</button></h4>
               </div>
             </div>
-            <hr class="dark horizontal my-0" />
+            
           </div>
         </div>
       </div>
