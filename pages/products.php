@@ -639,22 +639,6 @@ Download
         }
     });
 
-    // Allow image pasting from clipboard
-    document.getElementById('edit_product_image').addEventListener('paste', function(event) {
-        const items = event.clipboardData.items;
-        for (let i = 0; i < items.length; i++) {
-            if (items[i].type.indexOf('image') !== -1) {
-                const file = items[i].getAsFile();
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    // Set the image preview to the clipboard image
-                    productImagePreview.src = e.target.result;
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-    });
-
     // Trigger the hidden file input when image preview is clicked
     productImagePreview.addEventListener('click', function() {
         fileInput.click();
@@ -664,14 +648,6 @@ Download
     </div>
   </div>
 </div>
-
-<script>
-  // Trigger file input when the image is clicked
-  document.getElementById('productImagePreview').addEventListener('click', function() {
-    document.getElementById('edit_product_image').click();
-  });
-
-</script>
 
 <script>
   document.getElementById("deleteProductBtn").addEventListener("click", () => {
