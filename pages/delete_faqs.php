@@ -32,7 +32,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($stmt->execute()) {
             // Success: redirect back to the FAQ page or show a success message
             header("Location: https://osrtpanel.epravidi.com/pages/faq.php");
-            exit();
         } else {
             // Failure: display an error message
             echo "Error: Could not delete the FAQ.";
