@@ -327,7 +327,7 @@ $conn->close();
             <label for="edit_product_image" class="form-label">Category Image</label>
             <div class="input-group">
                 <!-- Image tag to display the current image -->
-                <img id="productImagePreview" src="default-image.jpg" alt="Product Image" style="width: 150px; height: 150px; object-fit: cover; cursor: pointer; border: 1px solid #ccc;">
+                <img id="productImagePreview" src="default-image.jpg" alt="Category Image" style="width: 150px; height: 150px; object-fit: cover; cursor: pointer; border: 1px solid #ccc;">
                 <!-- Hidden file input -->
                 <input type="file" class="form-control" id="edit_product_image" name="new_image" accept="image/*" style="display: none;">
             </div>
