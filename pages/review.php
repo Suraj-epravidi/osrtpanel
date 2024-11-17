@@ -265,9 +265,7 @@ $conn->close();
 ?>
 
 
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addReviewModal">
-  Add Review
-</button>
+
 
 <!-- Modal for adding a review -->
 <div class="modal fade" id="addReviewModal" tabindex="-1" aria-labelledby="addReviewModalLabel" aria-hidden="true">
@@ -369,6 +367,9 @@ $conn->close();
     window.location.href = "./review_download.php";
   }
 </script>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addReviewModal">
+  Add Review
+</button>
 <button type="button" class="btn btn-primary" onclick="redirectDownload()">
 Download
 </button>

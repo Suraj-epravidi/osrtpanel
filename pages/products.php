@@ -234,9 +234,7 @@ Website: www.epravidi.com<br><br></a>
             </div>
           </div>
        <!-- PHP-->
-       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addReviewModal">
-  Add Product
-</button>
+
   <!-- Modal for Adding a Product -->
   <div class="modal fade" id="addReviewModal" tabindex="-1" aria-labelledby="addReviewModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -426,6 +424,9 @@ $conn->close();
     window.location.href = "./product_download.php";
   }
 </script>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addReviewModal">
+  Add Product
+</button>
 <button type="button" class="btn btn-primary" onclick="redirectDownload()">
 Download
 </button>

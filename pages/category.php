@@ -262,9 +262,7 @@ $conn->close();
 ?>
 
 
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addReviewModal">
-  Add Category
-</button>
+
 
 <!-- Modal for adding a review -->
 <div class="modal fade" id="addReviewModal" tabindex="-1" aria-labelledby="addReviewModalLabel" aria-hidden="true">
@@ -428,6 +426,9 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "./category_download.php";
   }
 </script>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addReviewModal">
+  Add Category
+</button>
 <button type="button" class="btn btn-primary" onclick="redirectDownload()">
 Download
 </button>

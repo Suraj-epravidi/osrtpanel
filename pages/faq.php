@@ -260,9 +260,7 @@ $conn->close();
 ?>
 
 
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addReviewModal">
-  Add 
-</button>
+
 
 <!-- Modal for adding a review -->
 
@@ -327,6 +325,9 @@ $conn->close();
     window.location.href = "./faq_download.php";
   }
 </script>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addReviewModal">
+  Add 
+</button>
 <button type="button" class="btn btn-primary" onclick="redirectDownload()">
 Download
 </button>
