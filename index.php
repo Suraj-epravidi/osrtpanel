@@ -5,7 +5,7 @@ if (!isset($_COOKIE['osrt_login'])) {
 }
 $message = isset($_GET['message']) ? $_GET['message'] : '';
 ?>
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -126,12 +126,38 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
           <h6 class="font-weight-bolder mb-0">Dashboard</h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-          <!-- <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                   <!-- <div class="ms-md-auto pe-md-3 d-flex align-items-center">
               <div class="input-group input-group-outline">
                 <label class="form-label">Type here...</label>
                 <input type="text" class="form-control" />
               </div>
             </div> -->
+            <ul class="navbar-nav  justify-content-end">
+
+            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                </div>
+              </a>
+            </li>
+          
+          </ul>
+            <ul class="navbar-nav  justify-content-end">
+
+            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                </div>
+              </a>
+            </li>
+          
+          </ul>
         </div>
       </div>
     </nav>
@@ -462,66 +488,44 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
           </div>
         </div>
       </div>
-      <div class="container-fluid py-4">
-      <div class="row rowStatus">
+<br>
+      <div class="container-fluid py-4 change-UI">
+        
+      <h6 class="font-weight-bolder mb-0">Change Homepage Elements</h6>
+      <br>
+      <div class="row rowStatus change-UIBox">
+
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 boxStatus">
-          <div class="card">
+          <div class="card change-UI">
             <div class="card-header p-3 pt-2">
-              <div
-                class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">person</i>
-              </div>
-              <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">Change Homepage Video</p>
-                <h4 class="mb-0"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addReviewModal">Click here</button></h4>
+              <div class="text-end pt-1 change-UI">
+                <p class="text-sm mb-0 text-capitalize change-UI">Change Homepage Video</p>
+                <h4 class="mb-0 change-UI"><button type="button" class="btn btn-primary change-UI" data-bs-toggle="modal" data-bs-target="#addReviewModal">Click here</button></h4>
               </div>
             </div>
-            <hr class="dark horizontal my-0" />
-            <div class="card-footer p-3">
-              <p class="mb-0">
-                <span class="text-success text-sm font-weight-bolder"> </span>
-              </p>
-            </div>
+
           </div>
         </div>
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 boxStatus">
-          <div class="card">
+          <div class="card change-UI">
             <div class="card-header p-3 pt-2">
-              <div
-                class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">person</i>
-              </div>
-              <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">Change Welcome Image</p>
-                <h4 class="mb-0"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addWelcomeImageModal">Click here</button></h4>
+              <div class="text-end pt-1 change-UI">
+                <p class="text-sm mb-0 text-capitalize change-UI">Change Welcome Image</p>
+                <h4 class="mb-0"><button type="button" class="btn btn-primary change-UI" data-bs-toggle="modal" data-bs-target="#addWelcomeImageModal">Click here</button></h4>
               </div>
             </div>
-            <hr class="dark horizontal my-0" />
-            <div class="card-footer p-3">
-              <p class="mb-0">
-                <span class="text-success text-sm font-weight-bolder"> </span>
-              </p>
-            </div>
+
           </div>
         </div>
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 boxStatus">
-          <div class="card">
+          <div class="card change-UI">
             <div class="card-header p-3 pt-2">
-              <div
-                class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">person</i>
-              </div>
-              <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">Change Welcome Image (Responsive)</p>
-                <h4 class="mb-0"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addWelcomeImageResponsiveModal">Click here</button></h4>
+              <div class="text-end pt-1 change-UI">
+                <p class="text-sm mb-0 text-capitalize change-UI">Change Welcome Image (Responsive)</p>
+                <h4 class="mb-0 change-UI"><button type="button" class="btn btn-primary change-UI" data-bs-toggle="modal" data-bs-target="#addWelcomeImageResponsiveModal">Click here</button></h4>
               </div>
             </div>
-            <hr class="dark horizontal my-0" />
-            <div class="card-footer p-3">
-              <p class="mb-0">
-                <span class="text-success text-sm font-weight-bolder"> </span>
-              </p>
-            </div>
+            
           </div>
         </div>
       </div>

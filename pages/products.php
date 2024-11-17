@@ -596,7 +596,7 @@ Download
             </select>
         </div>
         <div class="mb-3">
-            <label for="edit_category" class="form-label">Stock</label>
+            <label for="edit_stock" class="form-label">Stock</label>
             <input type="number" class="form-control" id="edit_stock" name="stock">
         </div>
         <div class="mb-3">
@@ -721,7 +721,8 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("edit_material").value = cells[6].textContent.trim();
       document.getElementById("edit_dimensions").value = cells[7].textContent.trim();
       document.getElementById("edit_category").value = cells[8].textContent.trim();
-      document.getElementById("edit_price").value = parseInt(cells[9].textContent.replace("Rs. ", "").trim()) || 0;
+      document.getElementById("edit_stock").value = cells[9].textContent.trim() || 0;
+      document.getElementById("edit_price").value = parseInt(cells[10].textContent.replace("Rs. ", "").trim()) || 0;
 
 
       // Get the image source from the 11th cell (10th index)

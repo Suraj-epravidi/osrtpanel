@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
  
     
     if (isset($_FILES['review_image']) && $_FILES['review_image']['error'] == 0) {
-        $imageDir = '../pages/category';
+        $imageDir = '../pages/category/';
 
         // Get the uploaded file info
         $imageTmpName = $_FILES['new_image']['tmp_name'];
