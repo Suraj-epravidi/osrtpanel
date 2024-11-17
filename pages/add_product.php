@@ -3,8 +3,7 @@ if (!isset($_COOKIE['osrt_login'])) {
   header("Location: ./sign-up.php");
   exit();
 }
-?>
-<?php
+$page = isset($_GET['page']) ? (int) $_GET('page') : 1;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get the form inputs
     $product_name = $_POST['product_name'];
@@ -65,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bind_param("ssssssssdds", $product_name, $description, $product_code, $color, $brand, $material, $dimensions, $category, $stock, $price, $new_file_name);
 
             if ($stmt->execute()) {
-               header("Location: https://osrtpanel.epravidi.com/pages/products.php");
+               header("Location: https://osrtpanel.epravidi.com/pages/products.php?page_no".$page);
 
             } else {
                 echo "Error: " . $stmt->error;

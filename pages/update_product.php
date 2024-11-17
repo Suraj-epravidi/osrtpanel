@@ -3,8 +3,7 @@ if (!isset($_COOKIE['osrt_login'])) {
   header("Location: ./sign-up.php");
   exit();
 }
-?>
-<?php
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1 ;
     $conn = new mysqli("192.250.235.20", "epravidi_osrt_data", "UQ!r.gTOz=oo", "epravidi_osrt");
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
@@ -89,7 +88,7 @@ if (!isset($_COOKIE['osrt_login'])) {
         
         // Execute the statement
         if ($stmt->execute()) {
-        header("Location:./products.php");
+        header("Location:./products.php?page_no=". $page);
         } else {
             echo "Error updating product: " . $conn->error;
         }

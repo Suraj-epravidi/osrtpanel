@@ -243,7 +243,7 @@ Website: www.epravidi.com<br><br></a>
         <h5 class="modal-title" id="addProductModalLabel">Add a New Product</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="add_product.php" method="POST" enctype="multipart/form-data">
+      <form action="add_product.php?page=<?php echo $page_no;?>" method="POST" enctype="multipart/form-data">
         <div class="modal-body">
         <div class="mb-3">
             <label for="product_name" class="form-label">Product Name</label>
@@ -543,7 +543,7 @@ Download
         <h5 class="modal-title" id="editProductModalLabel">Edit Product</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form id="editProductForm" action="update_product.php" method="POST" enctype="multipart/form-data">
+      <form id="editProductForm" action="update_product.php?page=<?php echo $page_no; ?>" method="POST" enctype="multipart/form-data">
     <div class="modal-body">
         <input type="hidden" name="product_id" id="edit_product_id">
         <div class="mb-3">
