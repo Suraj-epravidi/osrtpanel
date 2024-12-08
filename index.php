@@ -32,10 +32,10 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
 
 <body class="g-sidenav-show bg-gray-200">
   <?php if ($message): ?>
-          <script>
-              alert("<?php echo $message; ?>");
-          </script>
-      <?php endif; ?>
+    <script>
+      alert("<?php echo $message; ?>");
+    </script>
+  <?php endif; ?>
   <aside
     class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 bg-gradient-dark"
     id="sidenav-main">
@@ -126,13 +126,13 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
           <h6 class="font-weight-bolder mb-0">Dashboard</h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-                   <!-- <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+          <!-- <div class="ms-md-auto pe-md-3 d-flex align-items-center">
               <div class="input-group input-group-outline">
                 <label class="form-label">Type here...</label>
                 <input type="text" class="form-control" />
               </div>
             </div> -->
-            <ul class="navbar-nav  justify-content-end">
+          <ul class="navbar-nav  justify-content-end">
 
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
@@ -143,9 +143,9 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
                 </div>
               </a>
             </li>
-          
+
           </ul>
-            <ul class="navbar-nav  justify-content-end">
+          <ul class="navbar-nav  justify-content-end">
 
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
@@ -156,7 +156,7 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
                 </div>
               </a>
             </li>
-          
+
           </ul>
         </div>
       </div>
@@ -261,7 +261,6 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
 
             $stmt = $pdo->query("SELECT COUNT(*) AS today_visitors FROM visitors WHERE DATE(visited_at) = CURDATE()");
             $todayVisitors = $stmt->fetch(PDO::FETCH_ASSOC)['today_visitors'];
-
           } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
           }
@@ -488,129 +487,129 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
           </div>
         </div>
       </div>
-<br>
-      <div class="container-fluid py-4 change-UI">
-        
-      <h6 class="font-weight-bolder mb-0">Change Homepage Elements</h6>
       <br>
-      <div class="row rowStatus change-UIBox">
+      <div class="py-4 change-UI">
 
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 boxStatus">
-          <div class="card change-UI">
-            <div class="card-header p-3 pt-2">
-              <div class="text-end pt-1 change-UI">
-                <p class="text-sm mb-0 text-capitalize change-UI">Change Homepage Video</p>
-                <h4 class="mb-0 change-UI"><button type="button" class="btn btn-primary change-UI" data-bs-toggle="modal" data-bs-target="#addReviewModal">Click here</button></h4>
+        <h6 class="font-weight-bolder mb-0">Change Homepage Elements</h6>
+        <br>
+        <div class="row rowStatus change-UIBox">
+
+          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 boxStatus">
+            <div class="card change-UI">
+              <div class="card-header p-3 pt-2">
+                <div class="text-end pt-1 change-UI">
+                  <p class="text-sm mb-0 text-capitalize change-UI">Change Homepage Video</p>
+                  <h4 class="mb-0 change-UI"><button type="button" class="btn btn-primary change-UI" data-bs-toggle="modal" data-bs-target="#addReviewModal">Click here</button></h4>
+                </div>
               </div>
-            </div>
 
+            </div>
+          </div>
+          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 boxStatus">
+            <div class="card change-UI">
+              <div class="card-header p-3 pt-2">
+                <div class="text-end pt-1 change-UI">
+                  <p class="text-sm mb-0 text-capitalize change-UI">Change Welcome Image</p>
+                  <h4 class="mb-0"><button type="button" class="btn btn-primary change-UI" data-bs-toggle="modal" data-bs-target="#addWelcomeImageModal">Click here</button></h4>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 boxStatus">
+            <div class="card change-UI">
+              <div class="card-header p-3 pt-2">
+                <div class="text-end pt-1 change-UI">
+                  <p class="text-sm mb-0 text-capitalize change-UI">Change Welcome Image (Responsive)</p>
+                  <h4 class="mb-0 change-UI"><button type="button" class="btn btn-primary change-UI" data-bs-toggle="modal" data-bs-target="#addWelcomeImageResponsiveModal">Click here</button></h4>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 boxStatus">
-          <div class="card change-UI">
-            <div class="card-header p-3 pt-2">
-              <div class="text-end pt-1 change-UI">
-                <p class="text-sm mb-0 text-capitalize change-UI">Change Welcome Image</p>
-                <h4 class="mb-0"><button type="button" class="btn btn-primary change-UI" data-bs-toggle="modal" data-bs-target="#addWelcomeImageModal">Click here</button></h4>
-              </div>
-            </div>
-
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 boxStatus">
-          <div class="card change-UI">
-            <div class="card-header p-3 pt-2">
-              <div class="text-end pt-1 change-UI">
-                <p class="text-sm mb-0 text-capitalize change-UI">Change Welcome Image (Responsive)</p>
-                <h4 class="mb-0 change-UI"><button type="button" class="btn btn-primary change-UI" data-bs-toggle="modal" data-bs-target="#addWelcomeImageResponsiveModal">Click here</button></h4>
-              </div>
-            </div>
-            
-          </div>
-        </div>
-      </div>
       </div>
     </div>
 
     <!-- Lightbox Modal -->
     <div class="modal fade" id="addReviewModal" tabindex="-1" aria-labelledby="addReviewModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="addProductModalLabel">Add a New Video</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <form action="./pages/upload_homepage_video.php" method="POST" enctype="multipart/form-data">
-        <div class="modal-body">
-          <div class="mb-3">
-            <label for="product_image" class="form-label">Choose file</label>
-            <div class="input-group">
-              <input type="file" class="form-control" id="product_image" name="product_image" accept="video/mp4"
-                aria-describedby="inputGroupFileAddon" aria-label="Upload" required>
-              <label class="input-group-text" for="product_image">Browse</label>
-            </div>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addProductModalLabel">Add a New Video</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">SUBMIT</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="addWelcomeImageModal" tabindex="-1" aria-labelledby="addWelcomeImageLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="addWelcomeImageLabel">Add a New JPG Image</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <form action="./pages/upload_welcome_image.php" method="POST" enctype="multipart/form-data">
-        <div class="modal-body">
-          <div class="mb-3">
-            <label for="product_image" class="form-label">Choose file</label>
-            <div class="input-group">
-              <input type="file" class="form-control" id="product_image" name="product_image" accept="image/*"
-                aria-describedby="inputGroupFileAddon" aria-label="Upload" required>
-              <label class="input-group-text" for="product_image">Browse</label>
+          <form action="./pages/upload_homepage_video.php" method="POST" enctype="multipart/form-data">
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="product_image" class="form-label">Choose file</label>
+                <div class="input-group">
+                  <input type="file" class="form-control" id="product_image" name="product_image" accept="video/mp4"
+                    aria-describedby="inputGroupFileAddon" aria-label="Upload" required>
+                  <label class="input-group-text" for="product_image">Browse</label>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">SUBMIT</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="addWelcomeImageResponsiveModal" tabindex="-1" aria-labelledby="addWelcomeImageResponsiveLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="addWelcomeImageResponsiveLabel">Add a New JPG Image</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <form action="./pages/upload_welcome_image_responsive.php" method="POST" enctype="multipart/form-data">
-        <div class="modal-body">
-          <div class="mb-3">
-            <label for="product_image" class="form-label">Choose file</label>
-            <div class="input-group">
-              <input type="file" class="form-control" id="product_image" name="product_image" accept="image/*"
-                aria-describedby="inputGroupFileAddon" aria-label="Upload" required>
-              <label class="input-group-text" for="product_image">Browse</label>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">SUBMIT</button>
             </div>
-          </div>
+          </form>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">SUBMIT</button>
-        </div>
-      </form>
+      </div>
     </div>
-  </div>
-</div>
+    <div class="modal fade" id="addWelcomeImageModal" tabindex="-1" aria-labelledby="addWelcomeImageLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addWelcomeImageLabel">Add a New JPG Image</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form action="./pages/upload_welcome_image.php" method="POST" enctype="multipart/form-data">
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="product_image" class="form-label">Choose file</label>
+                <div class="input-group">
+                  <input type="file" class="form-control" id="product_image" name="product_image" accept="image/*"
+                    aria-describedby="inputGroupFileAddon" aria-label="Upload" required>
+                  <label class="input-group-text" for="product_image">Browse</label>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">SUBMIT</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="addWelcomeImageResponsiveModal" tabindex="-1" aria-labelledby="addWelcomeImageResponsiveLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addWelcomeImageResponsiveLabel">Add a New JPG Image</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form action="./pages/upload_welcome_image_responsive.php" method="POST" enctype="multipart/form-data">
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="product_image" class="form-label">Choose file</label>
+                <div class="input-group">
+                  <input type="file" class="form-control" id="product_image" name="product_image" accept="image/*"
+                    aria-describedby="inputGroupFileAddon" aria-label="Upload" required>
+                  <label class="input-group-text" for="product_image">Browse</label>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">SUBMIT</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </main>
 
   <!--   Core JS Files   -->
@@ -626,18 +625,16 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
       type: "bar",
       data: {
         labels: ["M", "T", "W", "T", "F", "S", "S"],
-        datasets: [
-          {
-            label: "Sales",
-            tension: 0.4,
-            borderWidth: 0,
-            borderRadius: 4,
-            borderSkipped: false,
-            backgroundColor: "rgba(255, 255, 255, .8)",
-            data: [50, 20, 10, 22, 50, 10, 40],
-            maxBarThickness: 6,
-          },
-        ],
+        datasets: [{
+          label: "Sales",
+          tension: 0.4,
+          borderWidth: 0,
+          borderRadius: 4,
+          borderSkipped: false,
+          backgroundColor: "rgba(255, 255, 255, .8)",
+          data: [50, 20, 10, 22, 50, 10, 40],
+          maxBarThickness: 6,
+        }, ],
       },
       options: {
         responsive: true,
@@ -718,23 +715,21 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
           "Nov",
           "Dec",
         ],
-        datasets: [
-          {
-            label: "Mobile apps",
-            tension: 0,
-            borderWidth: 0,
-            pointRadius: 5,
-            pointBackgroundColor: "rgba(255, 255, 255, .8)",
-            pointBorderColor: "transparent",
-            borderColor: "rgba(255, 255, 255, .8)",
-            borderColor: "rgba(255, 255, 255, .8)",
-            borderWidth: 4,
-            backgroundColor: "transparent",
-            fill: true,
-            data: [50, 40, 300, 320, 500, 350, 200, 230, 500],
-            maxBarThickness: 6,
-          },
-        ],
+        datasets: [{
+          label: "Mobile apps",
+          tension: 0,
+          borderWidth: 0,
+          pointRadius: 5,
+          pointBackgroundColor: "rgba(255, 255, 255, .8)",
+          pointBorderColor: "transparent",
+          borderColor: "rgba(255, 255, 255, .8)",
+          borderColor: "rgba(255, 255, 255, .8)",
+          borderWidth: 4,
+          backgroundColor: "transparent",
+          fill: true,
+          data: [50, 40, 300, 320, 500, 350, 200, 230, 500],
+          maxBarThickness: 6,
+        }, ],
       },
       options: {
         responsive: true,
@@ -812,22 +807,20 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
           "Nov",
           "Dec",
         ],
-        datasets: [
-          {
-            label: "Mobile apps",
-            tension: 0,
-            borderWidth: 0,
-            pointRadius: 5,
-            pointBackgroundColor: "rgba(255, 255, 255, .8)",
-            pointBorderColor: "transparent",
-            borderColor: "rgba(255, 255, 255, .8)",
-            borderWidth: 4,
-            backgroundColor: "transparent",
-            fill: true,
-            data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
-            maxBarThickness: 6,
-          },
-        ],
+        datasets: [{
+          label: "Mobile apps",
+          tension: 0,
+          borderWidth: 0,
+          pointRadius: 5,
+          pointBackgroundColor: "rgba(255, 255, 255, .8)",
+          pointBorderColor: "transparent",
+          borderColor: "rgba(255, 255, 255, .8)",
+          borderWidth: 4,
+          backgroundColor: "transparent",
+          fill: true,
+          data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+          maxBarThickness: 6,
+        }, ],
       },
       options: {
         responsive: true,
