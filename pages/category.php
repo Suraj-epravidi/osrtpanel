@@ -160,10 +160,10 @@ if (!isset($_COOKIE['osrt_login'])) {
             <li
               class="breadcrumb-item text-sm text-dark active"
               aria-current="page">
-              Dashboard
+              Categories
             </li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">Dashboard</h6>
+          <h6 class="font-weight-bolder mb-0">Categories</h6>
           <a class="opacity-5 text-dark" href="javascript:;"><br>How to Use the Add Category Section<br><br>
 
             Click the "Add Category" button located at the top of the page. This will open a modal form where you can input details for the new category, including:<br><br>

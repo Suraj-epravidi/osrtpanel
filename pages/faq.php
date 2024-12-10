@@ -160,10 +160,10 @@ if (!isset($_COOKIE['osrt_login'])) {
             <li
               class="breadcrumb-item text-sm text-dark active"
               aria-current="page">
-              Dashboard
+              FAQs
             </li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">Dashboard</h6>
+          <h6 class="font-weight-bolder mb-0">FAQs</h6>
           <a class="opacity-5 text-dark" href="javascript:;"><br>How to Use the Add Review Section<br><br>
 
             Adding a New FAQ: <br> To add a new FAQ, click on the Add button located above the FAQ table. This will open a modal window where you can enter the FAQ details.<br><br>

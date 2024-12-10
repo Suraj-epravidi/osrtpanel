@@ -160,10 +160,10 @@ if (!isset($_COOKIE['osrt_login'])) {
             <li
               class="breadcrumb-item text-sm text-dark active"
               aria-current="page">
-              Dashboard
+              Brands
             </li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">Dashboard</h6>
+          <h6 class="font-weight-bolder mb-0">Brands</h6>
 
 
           <a class="opacity-5 text-dark" href="javascript:;"><br>How to Use the Add Brand Section<br><br>

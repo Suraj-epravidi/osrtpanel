@@ -164,10 +164,10 @@ if (!isset($_COOKIE['osrt_login'])) {
             <li
               class="breadcrumb-item text-sm text-dark active"
               aria-current="page">
-              Dashboard
+              Products
             </li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">Dashboard</h6>
+          <h6 class="font-weight-bolder mb-0">Products</h6>
 
 
 

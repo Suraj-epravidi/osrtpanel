@@ -161,10 +161,10 @@ if (!isset($_COOKIE['osrt_login'])) {
             <li
               class="breadcrumb-item text-sm text-dark active"
               aria-current="page">
-              Dashboard
+              Tables
             </li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">Dashboard</h6>
+          <h6 class="font-weight-bolder mb-0">Tables</h6>
           <a class="opacity-5 text-dark" href="javascript:;">
             <br><br>This page shows a Contact Form table listing entries from users who have submitted inquiries. The table displays:<br><br>
 
