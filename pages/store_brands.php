@@ -1,9 +1,4 @@
-<?php
-if (!isset($_COOKIE['osrt_login'])) {
-  header("Location: ./sign-up.php");
-  exit();
-}
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -128,7 +123,7 @@ if (!isset($_COOKIE['osrt_login'])) {
           </li>
           <li class="nav-item">
             <a
-              class="nav-link text-white active bg-gradient-primary"
+              class="nav-link text-white"
               href="../pages/brands.php"
             >
               <div
@@ -141,8 +136,8 @@ if (!isset($_COOKIE['osrt_login'])) {
           </li>
           <li class="nav-item">
             <a
-              class="nav-link text-white"
-              href="../pages/store_brands.php"
+              class="nav-link text-white active bg-gradient-primary"
+              href="../pages/brands.php"
             >
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
@@ -202,54 +197,17 @@ if (!isset($_COOKIE['osrt_login'])) {
               </li>
             </ol>
             <h6 class="font-weight-bolder mb-0">Dashboard</h6>
-
-
-            <a class="opacity-5 text-dark" href="javascript:;"><br>How to Use the Add Brand Section<br><br>
-
-            Adding a New Brand:<br><br>
-
-Click the "Add Brand" button located above the table. This will open a modal (popup) window where you can add a new brand.<br><br>
-Fill out the following fields in the modal:<br><br>
-Brand Name: Enter the name of the brand.<br>
-Brand Website: Provide the website URL of the brand.<br>
-Upload Logo: Choose an image file for the brand's logo (optional).<br>
-Once all fields are filled, click the "Submit" button to add the brand to the table.<br><br>
-Deleting a Brand:<br>
-
-To delete a brand entry, click the "Delete" button in the last column of the respective brand row.
-A confirmation dialog will appear. Select "OK" if you're sure you want to delete the brand, or "Cancel" to abort the action.<br><br>
-
-If you encounter any issues or have questions, please don’t hesitate to contact Epravidi for assistance. Our support team is here to help ensure smooth management of your product data.
-<br>
-Contact Epravidi:<br>
-<br>
-Email: support@epravidi.com
-Phone: +977 9813722923
-Website: www.epravidi.com<br><br></a>
           </nav>
           <div
             class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4"
             id="navbar"
           >
-                     <!-- <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+            <div class="ms-md-auto pe-md-3 d-flex align-items-center">
               <div class="input-group input-group-outline">
                 <label class="form-label">Type here...</label>
                 <input type="text" class="form-control" />
               </div>
-            </div> -->
-            <ul class="navbar-nav  justify-content-end">
-
-            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
-                <div class="sidenav-toggler-inner">
-                  <i class="sidenav-toggler-line"></i>
-                  <i class="sidenav-toggler-line"></i>
-                  <i class="sidenav-toggler-line"></i>
-                </div>
-              </a>
-            </li>
-          
-          </ul>
+            </div>
           </div>
         </div>
       </nav>
@@ -258,10 +216,10 @@ Website: www.epravidi.com<br><br></a>
        <?php
 // Database connection function
 function connectToDatabase() {
-    $servername = "192.250.235.20";
-    $username = "epravidi_osrt_data";
-    $password = "UQ!r.gTOz=oo";
-    $dbname = "epravidi_osrt";
+  $servername = "192.250.235.20";
+  $username = "epravidi_osrt_data";
+  $password = "UQ!r.gTOz=oo";
+  $dbname = "epravidi_osrt";
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -276,7 +234,7 @@ function connectToDatabase() {
 
 // Function to fetch reviews from the database
 function getProductReviews($conn) {
-    $sql = "SELECT brand_name, brand_website, brand_logo FROM brands";
+    $sql = "SELECT brand_name, brand_website, brand_logo FROM store_brands";
     $result = $conn->query($sql);
 
     if ($result && $result->num_rows > 0) {
@@ -293,7 +251,9 @@ $conn->close();
 ?>
 
 
-
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addReviewModal">
+  Add Store Brand
+</button>
 
 <!-- Modal for adding a review -->
 <div class="modal fade" id="addReviewModal" tabindex="-1" aria-labelledby="addReviewModalLabel" aria-hidden="true">
@@ -303,7 +263,7 @@ $conn->close();
         <h5 class="modal-title" id="addReviewModalLabel">Add a Brand</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="add_brand.php" method="POST" enctype="multipart/form-data">
+      <form action="add_store_brands.php" method="POST" enctype="multipart/form-data">
         <div class="modal-body">
           <div class="mb-3">
             <label for="product_id" class="form-label">Brand Name</label>
@@ -390,23 +350,12 @@ $conn->close();
 
 
 <div class="container-fluid py-4">
-<script>
-  function redirectDownload(){
-    window.location.href = "./brand_download.php";
-  }
-</script>
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addReviewModal">
-  Add Brand
-</button>
-<button type="button" class="btn btn-primary" onclick="redirectDownload()">
-Download
-</button>
   <div class="row">
     <div class="col-12">
       <div class="card my-4">
         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
           <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-            <h6 class="text-white text-capitalize ps-3">Brands</h6>
+            <h6 class="text-white text-capitalize ps-3">Store Brands</h6>
           </div>
         </div>  
         <div class="card-body px-0 pb-2">
@@ -440,7 +389,7 @@ Download
                 </td>
                 <td class="text-center">
                     <!-- Delete button -->
-                    <form action="delete_brand.php" method="POST" onsubmit="return confirm('Are you sure you want to delete this brand?');">
+                    <form action="delete_store_brands.php" method="POST" onsubmit="return confirm('Are you sure you want to delete this brand?');">
                         <input type="hidden" name="brand_name" value="<?php echo htmlspecialchars($review['brand_name']); ?>">
                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                     </form>

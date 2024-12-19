@@ -91,6 +91,19 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
           </a>
         </li>
         <li class="nav-item">
+            <a
+              class="nav-link text-white"
+              href="../pages/store_brands.php"
+            >
+              <div
+                class="text-white text-center me-2 d-flex align-items-center justify-content-center"
+              >
+              <i class="material-icons opacity-10">table_view</i>
+              </div>
+              <span class="nav-link-text ms-1">Store Brands</span>
+            </a>
+          </li>
+        <li class="nav-item">
           <a class="nav-link text-white" href="./pages/faq.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
@@ -109,6 +122,7 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
       </ul>
     </div>
   </aside>
+ 
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
     <!-- Navbar -->
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
