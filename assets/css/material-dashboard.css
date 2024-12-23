@@ -5705,7 +5705,7 @@ fieldset:disabled .btn {
   border-bottom: 0 solid rgba(0, 0, 0, 0.125);
 }
 
-.card-header>h4 {
+.card-header > h4{
   font-size: 2.25rem;
 }
 
@@ -20793,8 +20793,7 @@ fieldset:disabled .btn {
   background: transparent;
 }
 
-.card .my-4 {
-  height: fit-content;
+.card {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
