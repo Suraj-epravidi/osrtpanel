@@ -1,5 +1,3 @@
-product_backup.php
-
 <?php
 if (!isset($_COOKIE['osrt_login'])) {
   header("Location: ./sign-up.php");
@@ -352,6 +350,18 @@ Website: www.epravidi.com<br><br></a>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <button type="submit" class="btn btn-primary">Add Product</button>
         </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Add Product</button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Add Product</button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Add Product</button>
+        </div>
       </form>
     </div>
   </div>
@@ -432,6 +442,77 @@ $conn->close();
 <button type="button" class="btn btn-primary" onclick="redirectDownload()">
 Download
 </button>
+<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#importReviewModal">
+Import
+<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#importReviewModal">
+AI search Image
+<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#importReviewModal">
+Generate All images
+<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#importReviewModal">
+AI generate Description
+<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#importReviewModal">
+Generate All description
+</button>
+
+
+<p class="opacity-5 text-dark">AI User Credit: <br>
+
+
+<div class="modal fade" id="importReviewModal" tabindex="-1" aria-labelledby="importReviewModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="importProductModalLabel">Import A File</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+        <form enctype="multipart/form-data" method="post">
+          <input type = "file" name = "excel" required value="">
+          <button type = "submit" name = "import">Import File</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<?php
+
+  if(isset($_POST["import"])){
+
+  $fileName = $_FILES["excel"]["name"];
+
+  $fileExtension = explode('.', $fileName);
+
+  $fileExtension = strtolower(end($fileExtension));
+
+  $newFileName = date("Y.m.d") . " - " . date("h.i.sa") . "." . $fileExtension;
+
+  $targetDirectory = "uploads/" . $newFileName;
+
+  move_uploaded_file($_FILES["excel"]["tmp_name"], $targetDirectory);
+
+  error_reporting(0);
+
+
+  require "excelReader/excel_reader2.php";
+  require "excelReader/SpreadsheetReader.php";
+
+ $reader  = new SpreadsheetReader($targetDirectory);
+ foreach($reader as $key => $row){
+ 	$product_name = $row[0];
+	$description = $row[1];
+	$product_code = $row[2];
+	$color = $row[3];
+	$brand = $row[4];
+	$material= $row[5];
+	$category = $row[6];
+	$price = $row[7];
+	$stock = $row[8];
+	$dimensions = $row[9];
+	
+	mysqli_query($conn, "INSERT INTO products VALUES('', '$product_name', '$description', '$product_code, '$color', '$brand', '$material', '$category', '$price', '$stock', '$dimensions')");
+}
+  }
+?>
 
   <div class="row">
     <div class="col-12">
