@@ -135,7 +135,6 @@ if (!isset($_COOKIE['osrt_login'])) {
           </li>
         <li class="nav-item">
           <a class="nav-link text-white"
-
             href="../pages/faq.php">
             <div
               class="text-white text-center me-2 d-flex align-items-center justify-content-center">

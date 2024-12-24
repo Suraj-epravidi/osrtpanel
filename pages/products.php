@@ -393,80 +393,151 @@ if (!isset($_COOKIE['osrt_login'])) {
     $conn->close();
     ?>
 
-    <!-- HTML for displaying the products -->
+<!-- HTML for displaying the products -->
 
-    <div class="container-fluid py-4">
-      <script>
-        function redirectDownload() {
-          window.location.href = "./product_download.php";
-        }
-      </script>
-      <button type="button" class="btn btn-primary" style="margin-left: 0px;" data-bs-toggle="modal" data-bs-target="#addReviewModal">
-        Add Product
-      </button>
-      <button type="button" class="btn btn-primary" style="margin-left: 6px;" onclick="redirectDownload()">
-        Download
-      </button>
-      <div class="row">
-        <div class="col-12">
-          <div class="card my-4">
-            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-              <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                <h6 class="text-white text-capitalize ps-3">Products</h6>
-              </div>
-            </div>
-            <div class="card-body px-0 pb-2">
-              <div class="table-responsive p-0">
-                <table class="table align-items-center mb-0">
-                  <thead>
-                    <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sn no</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Product Name</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Description</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Product Code</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Color</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Brand</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Material</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Dimensions</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Category</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Stock</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Price</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Image</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php if (!empty($products)): ?>
-                      <?php foreach ($products as $product): ?>
-                        <tr>
-                          <td><?php echo htmlspecialchars($product['product_id']); ?></td>
-                          <td><?php echo htmlspecialchars($product['product_name']); ?></td>
-                          <td><?php echo htmlspecialchars($product['description']); ?></td>
-                          <td><?php echo htmlspecialchars($product['product_code']); ?></td>
-                          <td><?php echo htmlspecialchars($product['color']); ?></td>
-                          <td><?php echo htmlspecialchars($product['brand']); ?></td>
-                          <td><?php echo htmlspecialchars($product['material']); ?></td>
-                          <td><?php echo htmlspecialchars($product['dimensions']); ?></td>
-                          <td><?php echo htmlspecialchars($product['category']); ?></td>
-                          <td><?php echo htmlspecialchars($product['stock']); ?></td>
-                          <td>Rs. <?php echo htmlspecialchars($product['price']); ?></td>
-                          <td>
-                            <?php if (!empty($product['image'])): ?>
-                              <img src="../pages/product_image/<?php echo htmlspecialchars($product['image']); ?>" alt="Product Image" style="width: 50px; height: 50px;">
-                            <?php else: ?>
-                              <span>No image</span>
-                            <?php endif; ?>
-                          </td>
-                        </tr>
-                      <?php endforeach; ?>
-                    <?php else: ?>
-                      <tr>
-                        <td colspan="12">No products found.</td>
-                      </tr>
-                    <?php endif; ?>
-                  </tbody>
-                </table>
-              </div>
-            </div>
+<div class="container-fluid py-4">
+<script>
+  function redirectDownload(){
+    window.location.href = "./product_download.php";
+  }
+</script>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addReviewModal">
+  Add Product
+</button>
+<button type="button" class="btn btn-primary" onclick="redirectDownload()">
+Download
+</button>
+<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#importReviewModal">
+Import
+<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#importReviewModal">
+AI search Image
+<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#importReviewModal">
+Generate All images
+<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#importReviewModal">
+AI generate Description
+<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#importReviewModal">
+Generate All description
+</button>
+
+
+<p class="opacity-5 text-dark">AI User Credit: <br>
+
+
+<div class="modal fade" id="importReviewModal" tabindex="-1" aria-labelledby="importReviewModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="importProductModalLabel">Import A File</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+        <form enctype="multipart/form-data" method="post">
+          <input type = "file" name = "excel" required value="">
+          <button type = "submit" name = "import">Import File</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<?php
+
+  if(isset($_POST["import"])){
+
+  $fileName = $_FILES["excel"]["name"];
+
+  $fileExtension = explode('.', $fileName);
+
+  $fileExtension = strtolower(end($fileExtension));
+
+  $newFileName = date("Y.m.d") . " - " . date("h.i.sa") . "." . $fileExtension;
+
+  $targetDirectory = "uploads/" . $newFileName;
+
+  move_uploaded_file($_FILES["excel"]["tmp_name"], $targetDirectory);
+
+  error_reporting(0);
+
+
+  require "excelReader/excel_reader2.php";
+  require "excelReader/SpreadsheetReader.php";
+
+ $reader  = new SpreadsheetReader($targetDirectory);
+ foreach($reader as $key => $row){
+ 	$product_name = $row[0];
+	$description = $row[1];
+	$product_code = $row[2];
+	$color = $row[3];
+	$brand = $row[4];
+	$material= $row[5];
+	$category = $row[6];
+	$price = $row[7];
+	$stock = $row[8];
+	$dimensions = $row[9];
+	
+	mysqli_query($conn, "INSERT INTO products VALUES('', '$product_name', '$description', '$product_code, '$color', '$brand', '$material', '$category', '$price', '$stock', '$dimensions')");
+}
+  }
+?>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card my-4">
+        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+          <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+            <h6 class="text-white text-capitalize ps-3">Products</h6>
+          </div>
+        </div>
+        <div class="card-body px-0 pb-2">
+          <div class="table-responsive p-0">
+            <table class="table align-items-center mb-0">
+              <thead>
+                <tr>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sn no</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Product Name</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Description</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Product Code</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Color</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Brand</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Material</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Dimensions</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Category</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Stock</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Price</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Image</th>
+                </tr>
+              </thead>
+              <tbody>
+              <?php if (!empty($products)): ?>
+            <?php foreach ($products as $product): ?>
+                <tr>
+                    <td><?php echo htmlspecialchars($product['product_id']); ?></td>
+                    <td><?php echo htmlspecialchars($product['product_name']); ?></td>
+                    <td><?php echo htmlspecialchars($product['description']); ?></td>
+                    <td><?php echo htmlspecialchars($product['product_code']); ?></td>
+                    <td><?php echo htmlspecialchars($product['color']); ?></td>
+                    <td><?php echo htmlspecialchars($product['brand']); ?></td>
+                    <td><?php echo htmlspecialchars($product['material']); ?></td>
+                    <td><?php echo htmlspecialchars($product['dimensions']); ?></td>
+                    <td><?php echo htmlspecialchars($product['category']); ?></td>
+                    <td><?php echo htmlspecialchars($product['stock']); ?></td>
+                    <td>Rs. <?php echo htmlspecialchars($product['price']); ?></td>
+                    <td>
+                        <?php if (!empty($product['image'])): ?>
+                            <img src="../pages/product_image/<?php echo htmlspecialchars($product['image']); ?>" alt="Product Image" style="width: 50px; height: 50px;">
+                        <?php else: ?>
+                            <span>No image</span>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <tr>
+                <td colspan="12">No products found.</td>
+            </tr>
+        <?php endif; ?>
+              </tbody>
+            </table>
+
           </div>
         </div>
       </div>
