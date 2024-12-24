@@ -1,4 +1,4 @@
-./pages/product_image
+./pages/product_image/*
 webhook.php
-./pages/brands
-./pages/uploads
+./pages/brands/*
+./pages/uploads/*
