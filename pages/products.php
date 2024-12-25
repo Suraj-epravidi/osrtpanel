@@ -409,15 +409,12 @@ Download
 </button>
 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#importReviewModal">
 Import
-<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#importReviewModal">
-AI search Image
-<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#importReviewModal">
-Generate All images
-<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#importReviewModal">
-AI generate Description
-<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#importReviewModal">
-Generate All description
-</button>
+<form method="POST" action="scrape.php">
+    <button class="btn btn-primary" name="ai_search_image">AI Search Image</button>
+    <button class="btn btn-primary" name="generate_all_images">Generate All Images</button>
+    <button class="btn btn-primary" name="ai_generate_description">AI Generate Description</button>
+    <button class="btn btn-primary" name="generate_all_descriptions">Generate All Descriptions</button>
+</form>
 
 
 <p class="opacity-5 text-dark">AI User Credit: <br>
