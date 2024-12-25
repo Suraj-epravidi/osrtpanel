@@ -416,8 +416,20 @@ Import
     <button class="btn btn-primary" name="generate_all_descriptions">Generate All Descriptions</button>
 </form>
 
+<?php
+// Endpoint URL
+$url = "http://37.27.0.247:5000/get-credits";
 
-<p class="opacity-5 text-dark">AI User Credit: <br>
+// Fetch the JSON response from the API
+$response = file_get_contents($url);
+
+// Decode the JSON response into an associative array
+$data = json_decode($response, true);
+
+// Extract the 'credits' value
+$credits = $data['credits'] ?? 'N/A'; // Fallback to 'N/A' if 'credits' is not set
+?>
+<p class="opacity-5 text-dark">AI User Credit: <?php echo htmlspecialchars($credits); ?> <br>
 
 
 <div class="modal fade" id="importReviewModal" tabindex="-1" aria-labelledby="importReviewModalLabel" aria-hidden="true">
