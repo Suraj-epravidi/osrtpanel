@@ -54,7 +54,7 @@ if (isset($_POST['ai_search_image'])) {
                 echo "Image not found for product: " . $row['product_name'] . "<br>";
             } elseif ($response['http_code'] == 200) {
                 // Update database with the new image URL
-                $image_url = $response['response']['image_url'];
+                $image_url = "http://37.27.0.247:5000" . $response['response']['image_url'];
                 $updateQuery = "UPDATE products SET image = '$image_url' WHERE product_code = '{$row['product_code']}'";
                 $conn->query($updateQuery);
                 echo "Image successfully fetched for product: " . $row['product_name'] . "<br>";
@@ -83,7 +83,7 @@ if (isset($_POST['generate_all_images'])) {
 
         if ($response['http_code'] == 200) {
             // Update database with the new image URL
-            $image_url = $response['response']['image_url'];
+            $image_url = "http://37.27.0.247:5000" . $response['response']['image_url'];
             $updateQuery = "UPDATE products SET image = '$image_url' WHERE product_code = '{$row['product_code']}'";
             $conn->query($updateQuery);
             echo "Image successfully generated for product: " . $row['product_name'] . "<br>";
@@ -151,5 +151,9 @@ if (isset($_POST['generate_all_descriptions'])) {
     }
 }
 
+// Redirect to products.php after completion
 $conn->close();
+header("Location: products.php");
+exit;
+
 ?>

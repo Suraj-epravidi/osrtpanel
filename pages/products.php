@@ -520,7 +520,7 @@ Import
                     <td>Rs. <?php echo htmlspecialchars($product['price']); ?></td>
                     <td>
                         <?php if (!empty($product['image'])): ?>
-                            <img src="../pages/product_image/<?php echo htmlspecialchars($product['image']); ?>" alt="Product Image" style="width: 50px; height: 50px;">
+                            <img src="<?php echo htmlspecialchars($product['image']); ?>" alt="Product Image" style="width: 50px; height: 50px;">
                         <?php else: ?>
                             <span>No image</span>
                         <?php endif; ?>
