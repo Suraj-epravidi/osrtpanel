@@ -193,9 +193,7 @@ if (!isset($_COOKIE['osrt_login'])) {
             <br>
             Email: support@epravidi.com
             Phone: +977 9813722923
-            Website: www.epravidi.com<br>
-            Page will be unresponsive while the AI is generating description / images !!<br>
-          </a>
+            Website: www.epravidi.com<br><br></a>
         </nav>
 
       </div>
@@ -522,7 +520,7 @@ Import
                     <td>Rs. <?php echo htmlspecialchars($product['price']); ?></td>
                     <td>
                         <?php if (!empty($product['image'])): ?>
-                            <img src="<?php echo htmlspecialchars($product['image']); ?>" alt="Product Image" style="width: 50px; height: 50px;">
+                            <img src="../pages/product_image/<?php echo htmlspecialchars($product['image']); ?>" alt="Product Image" style="width: 50px; height: 50px;">
                         <?php else: ?>
                             <span>No image</span>
                         <?php endif; ?>

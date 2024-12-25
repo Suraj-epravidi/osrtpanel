@@ -35,6 +35,18 @@ function callWebScraper($endpoint, $data) {
     ];
 }
 
+// Function to save the image locally
+function saveImageLocally($image_url, $local_directory) {
+    $image_data = file_get_contents($image_url);
+    $file_path = $local_directory . basename($image_url);
+
+    if ($image_data !== false) {
+        file_put_contents($file_path, $image_data);
+        return $file_path;
+    }
+    return false;
+}
+
 // AI Search Image
 if (isset($_POST['ai_search_image'])) {
     $query = "SELECT product_name, product_code, brand FROM products WHERE image=\"\" LIMIT 10;";
@@ -53,11 +65,18 @@ if (isset($_POST['ai_search_image'])) {
             if ($response['http_code'] == 404) {
                 echo "Image not found for product: " . $row['product_name'] . "<br>";
             } elseif ($response['http_code'] == 200) {
-                // Update database with the new image URL
+                // Save the image locally
                 $image_url = "http://37.27.0.247:5000" . $response['response']['image_url'];
-                $updateQuery = "UPDATE products SET image = '$image_url' WHERE product_code = '{$row['product_code']}'";
-                $conn->query($updateQuery);
-                echo "Image successfully fetched for product: " . $row['product_name'] . "<br>";
+                $local_image_path = saveImageLocally($image_url, '../pages/product_image/');
+
+                if ($local_image_path) {
+                    // Update database with the local image path
+                    $updateQuery = "UPDATE products SET image = '$local_image_path' WHERE product_code = '{$row['product_code']}'";
+                    $conn->query($updateQuery);
+                    echo "Image successfully fetched and saved for product: " . $row['product_name'] . "<br>";
+                } else {
+                    echo "Error saving image for product: " . $row['product_name'] . "<br>";
+                }
             } else {
                 echo "Error processing product: " . $row['product_name'] . "<br>";
             }
@@ -82,11 +101,18 @@ if (isset($_POST['generate_all_images'])) {
         $response = callWebScraper('/scrape-image', $data);
 
         if ($response['http_code'] == 200) {
-            // Update database with the new image URL
+            // Save the image locally
             $image_url = "http://37.27.0.247:5000" . $response['response']['image_url'];
-            $updateQuery = "UPDATE products SET image = '$image_url' WHERE product_code = '{$row['product_code']}'";
-            $conn->query($updateQuery);
-            echo "Image successfully generated for product: " . $row['product_name'] . "<br>";
+            $local_image_path = saveImageLocally($image_url, '../pages/product_image/');
+
+            if ($local_image_path) {
+                // Update database with the local image path
+                $updateQuery = "UPDATE products SET image = '$local_image_path' WHERE product_code = '{$row['product_code']}'";
+                $conn->query($updateQuery);
+                echo "Image successfully generated and saved for product: " . $row['product_name'] . "<br>";
+            } else {
+                echo "Error saving image for product: " . $row['product_name'] . "<br>";
+            }
         } else {
             echo "Error generating image for product: " . $row['product_name'] . "<br>";
         }
