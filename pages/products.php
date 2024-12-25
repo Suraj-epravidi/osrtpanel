@@ -193,7 +193,9 @@ if (!isset($_COOKIE['osrt_login'])) {
             <br>
             Email: support@epravidi.com
             Phone: +977 9813722923
-            Website: www.epravidi.com<br><br></a>
+            Website: www.epravidi.com<br>
+            Page will be unresponsive while the AI is generating description / images !!<br>
+          </a>
         </nav>
 
       </div>
