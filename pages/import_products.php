@@ -9,13 +9,20 @@ if (isset($_POST['import'])) {
 
     // Check connection
     if ($conn->connect_error) {
-      die("Connection failed: " . $conn->connect_error);
+        die("Connection failed: " . $conn->connect_error);
     }
 
     // Check if a file is uploaded
     if (isset($_FILES['excel']['tmp_name']) && $_FILES['excel']['tmp_name'] !== '') {
         $file = $_FILES['excel']['tmp_name'];
-        
+
+        // Validate the file type
+        $fileType = mime_content_type($file);
+        if ($fileType !== 'text/plain' && $fileType !== 'text/csv') {
+            echo "<script>alert('Invalid file type. Please upload a CSV file.');</script>";
+            exit;
+        }
+
         // Open the file in read mode
         if (($handle = fopen($file, "r")) !== false) {
             // Skip the first row if it contains headers
@@ -35,14 +42,13 @@ if (isset($_POST['import'])) {
                 $brand = $conn->real_escape_string($data[5]); 
                 $material = $conn->real_escape_string($data[6]); 
                 $category = $conn->real_escape_string($data[7]); 
-                $price = $conn->real_escape_string($data[8]); 
-                $stock = $conn->real_escape_string($data[9]); 
+                $price = is_numeric($data[8]) ? $data[8] : 0; // Default to 0 if invalid
+                $stock = is_numeric($data[9]) ? $data[9] : 0; // Default to 0 if invalid
                 $dimensions = $conn->real_escape_string($data[10]); 
-                
 
                 // Insert data into the database
-                $query = "INSERT INTO products (product_id, product_name, description, product_code, color, brand, material, category, price, stock, image, dimensions, created at) VALUES ('$product_id', '$product_name', '$description', '$product_code', '$color', '$brand', '$material', '$category', '$price', '$stock', NULL, '$dimensions', NOW())";
-
+                $query = "INSERT INTO products (product_id, product_name, description, product_code, color, brand, material, category, price, stock, image, dimensions) 
+                          VALUES ('$product_id', '$product_name', '$description', '$product_code', '$color', '$brand', '$material', '$category', '$price', '$stock', NULL, '$dimensions')";
 
                 if (!$conn->query($query)) {
                     echo "Error: " . $conn->error . "<br>";
@@ -57,6 +63,7 @@ if (isset($_POST['import'])) {
     } else {
         echo "<script>alert('Please upload a file.');</script>";
     }
-  }
+
     $conn->close();
+}
 ?>
