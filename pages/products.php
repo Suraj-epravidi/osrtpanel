@@ -409,7 +409,7 @@ Download
 </button>
 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#importReviewModal">
 Import
-<form method="POST" action="your_script.php">
+<form method="POST" action="scrape.php">
     <button class="btn btn-primary" name="ai_search_image">AI Search Image</button>
     <button class="btn btn-primary" name="generate_all_images">Generate All Images</button>
     <button class="btn btn-primary" name="ai_generate_description">AI Generate Description</button>
