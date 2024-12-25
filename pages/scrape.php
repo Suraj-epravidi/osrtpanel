@@ -127,7 +127,7 @@ if (isset($_POST['ai_generate_description'])) {
 
 // Generate All Descriptions
 if (isset($_POST['generate_all_descriptions'])) {
-    $query = "SELECT product_name, product_code, brand FROM products";
+    $query = "SELECT product_name, product_code, brand FROM products LIMIT 10";
     $result = $conn->query($query);
 
     while ($row = $result->fetch_assoc()) {
