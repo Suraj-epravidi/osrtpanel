@@ -38,11 +38,11 @@ function callWebScraper($endpoint, $data) {
 // Function to save the image locally
 function saveImageLocally($image_url, $local_directory) {
     $image_data = file_get_contents($image_url);
-    $file_path = $local_directory . basename($image_url);
+    $file_name = basename($image_url); // Only the filename
 
     if ($image_data !== false) {
-        file_put_contents($file_path, $image_data);
-        return $file_path;
+        file_put_contents($local_directory . $file_name, $image_data);
+        return $file_name; // Return the file name instead of path
     }
     return false;
 }
@@ -67,11 +67,11 @@ if (isset($_POST['ai_search_image'])) {
             } elseif ($response['http_code'] == 200) {
                 // Save the image locally
                 $image_url = "http://37.27.0.247:5000" . $response['response']['image_url'];
-                $local_image_path = saveImageLocally($image_url, '../pages/product_image/');
+                $local_image_filename = saveImageLocally($image_url, '../pages/product_image/');
 
-                if ($local_image_path) {
-                    // Update database with the local image path
-                    $updateQuery = "UPDATE products SET image = '$local_image_path' WHERE product_code = '{$row['product_code']}'";
+                if ($local_image_filename) {
+                    // Update database with the local image filename
+                    $updateQuery = "UPDATE products SET image = '$local_image_filename' WHERE product_code = '{$row['product_code']}'";
                     $conn->query($updateQuery);
                     echo "Image successfully fetched and saved for product: " . $row['product_name'] . "<br>";
                 } else {
@@ -103,11 +103,11 @@ if (isset($_POST['generate_all_images'])) {
         if ($response['http_code'] == 200) {
             // Save the image locally
             $image_url = "http://37.27.0.247:5000" . $response['response']['image_url'];
-            $local_image_path = saveImageLocally($image_url, '../pages/product_image/');
+            $local_image_filename = saveImageLocally($image_url, '../pages/product_image/');
 
-            if ($local_image_path) {
-                // Update database with the local image path
-                $updateQuery = "UPDATE products SET image = '$local_image_path' WHERE product_code = '{$row['product_code']}'";
+            if ($local_image_filename) {
+                // Update database with the local image filename
+                $updateQuery = "UPDATE products SET image = '$local_image_filename' WHERE product_code = '{$row['product_code']}'";
                 $conn->query($updateQuery);
                 echo "Image successfully generated and saved for product: " . $row['product_name'] . "<br>";
             } else {
