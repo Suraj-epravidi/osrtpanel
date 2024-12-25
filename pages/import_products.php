@@ -66,4 +66,5 @@ if (isset($_POST['import'])) {
 
     $conn->close();
 }
+header("Location: https://osrtpanel.epravidi.com/pages/products.php");
 ?>
