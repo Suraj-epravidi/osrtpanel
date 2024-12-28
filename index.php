@@ -191,10 +191,10 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 boxStatus">
           <?php
           // Database configuration
-          $host = "192.250.235.20";  // Replace with your server name
-          $username = "epravidi_osrt_data";   // Replace with your database username
+          $host = "localhost";  // Replace with your server name
+          $username = "osrtraders_epravidi";   // Replace with your database username
           $password = "UQ!r.gTOz=oo";      // Replace with your database password
-          $dbname = "epravidi_osrt";
+          $dbname = "osrtraders_epravidi_osrt";
 
           // Create connection
           $conn = new mysqli($host, $username, $password, $dbname);
@@ -251,10 +251,10 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
             }
           </script>
           <?php
-          $host = "192.250.235.20";
-          $username = "epravidi_osrt_data";
+          $host = "localhost";
+          $username = "osrtraders_epravidi";
           $password = "UQ!r.gTOz=oo";
-          $dbname = "epravidi_osrt";
+          $dbname = "osrtraders_epravidi_osrt";
           try {
             // Connect to the database
             $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);

@@ -127,7 +127,7 @@
 [10-Dec-2024 15:56:24 UTC] PHP Warning:  Undefined variable $page_no in /home/epravidi/osrtPanel/pages/products.php on line 246
 [11-Dec-2024 15:39:01 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'admin'@'localhost' (using password: NO) in /home/epravidi/osrtPanel/pages/store_brands.php:212
 Stack trace:
-#0 /home/epravidi/osrtPanel/pages/store_brands.php(212): mysqli->__construct('localhost', 'admin', Object(SensitiveParameterValue), 'epravidi_osrt')
+#0 /home/epravidi/osrtPanel/pages/store_brands.php(212): mysqli->__construct('localhost', 'admin', Object(SensitiveParameterValue), 'osrtraders_epravidi_osrt')
 #1 /home/epravidi/osrtPanel/pages/store_brands.php(235): connectToDatabase()
 #2 {main}
   thrown in /home/epravidi/osrtPanel/pages/store_brands.php on line 212

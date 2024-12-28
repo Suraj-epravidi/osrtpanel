@@ -4,7 +4,7 @@ if (!isset($_COOKIE['osrt_login'])) {
   exit();
 }
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1 ;
-    $conn = new mysqli("192.250.235.20", "epravidi_osrt_data", "UQ!r.gTOz=oo", "epravidi_osrt");
+    $conn = new mysqli("localhost", "osrtraders_epravidi", "UQ!r.gTOz=oo", "osrtraders_epravidi_osrt");
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }

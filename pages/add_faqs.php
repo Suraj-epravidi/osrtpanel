@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $answers= $_POST['answer'];
 
     // Connect to the database
-    $conn = new mysqli("192.250.235.20", "epravidi_osrt_data", "UQ!r.gTOz=oo", "epravidi_osrt");
+    $conn = new mysqli("localhost", "osrtraders_epravidi", "UQ!r.gTOz=oo", "osrtraders_epravidi_osrt");
 
     // Check connection
     if ($conn->connect_error) {
