@@ -257,13 +257,13 @@ if (!isset($_COOKIE['osrt_login'])) {
                   <?php
                   function connectToDatabase()
                   {
-                    $servername = "localhost";
-                    $username = "osrtraders_epravidi";
-                    $password = "UQ!r.gTOz=oo";
+                    $host = "localhost";  // Replace with your server name
+                    $username = "osrtraders_epravidi";   // Replace with your database username
+                    $password = "UQ!r.gTOz=oo";      // Replace with your database password
                     $dbname = "osrtraders_epravidi_osrt";
-
+          
                     // Create connection
-                    $conn = new mysqli($servername, $username, $password, $dbname);
+                    $conn = new mysqli($host, $username, $password, $dbname);
 
                     // Check connection
                     if ($conn->connect_error) {
@@ -356,11 +356,13 @@ if (!isset($_COOKIE['osrt_login'])) {
     </style>
     <?php
     // Database connection
-    $servername = "localhost";
-    $username = "osrtraders_epravidi";
-    $password = "UQ!r.gTOz=oo";
+    $host = "localhost";  // Replace with your server name
+    $username = "osrtraders_epravidi";   // Replace with your database username
+    $password = "UQ!r.gTOz=oo";      // Replace with your database password
     $dbname = "osrtraders_epravidi_osrt";
-    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Create connection
+    $conn = new mysqli($host, $username, $password, $dbname);
 
     // Check connection
     if ($conn->connect_error) {
